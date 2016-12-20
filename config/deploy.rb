@@ -3,7 +3,7 @@ lock "3.7.0"
 
 set :application, 'pinterest'
 
-set :repo_url, 'git@github.com:junk83/pinterest.git'
+set :repo_url, 'github:junk83/pinterest.git'
 
 set :branch, 'master'
 
