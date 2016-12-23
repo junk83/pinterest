@@ -1,313 +1,682 @@
-.AppBase {
-  margin-top: -1px;
-  min-width: 320px;
-  padding-top: 1px;
-}
-
-.Header {
-  background-color: #fff;
-  box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
-  position: fixed;
-  transition: opacity 1s ease;
-  width: 100%;
-  z-index: 671;
-
-  .headerContainer {
-    display: flex;
-    overflow: visible;
-    position: static;
-    width: auto !important;
-    z-index: 680;
-
-    padding: 12px 16px;
-    left: 0;
-    right: 0;
-    top: 0;
-
-    .rightHeaderContent {
-      -webkit-box-ordinal-group: 100000;
-      order: 99999;
-      -webkit-box-flex: 0;
-      flex: none;
-    }
-  }
-}
-
-.RightHeader {
-  background-color: #fff;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  -webkit-box-align: center;
-  align-items: center;
-
-  &>.DenzelReactBridge{
-    align-items: center;
-    display: flex;
-  }
-}
-
-.UserNavigateButton {
-  background: transparent;
-  border: none;
-  height: auto;
-  width: auto;
-  box-sizing: border-box;
-  color: #818181;
-  cursor: pointer;
-  display: inline-block;
-  outline: none;
-  position: relative;
-  text-align: left;
-  z-index: 104;
-  -webkit-font-smoothing: subpixel-antialiased;
-
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-bottom: 6px;
-  padding-top: 6px;
-
-  &::after{
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  &.merged{
-    border-bottom-right-radius: 0 0;
-    border-top-right-radius: 0 0;
-    margin-right: -1px;
-  }
-
-  .usernameLink {
-    width: 20px;
-    height: 24px;
-    background: url(spritesheet.png) -247px -310px no-repeat;
-
-    align-items: center;
-    display: flex;
-
-    .profileImage{
-      display: none;
-    }
-  }
-}
-
-.NewsConversationsButton {
-  background: transparent;
-  border: none;
-
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-bottom: 6px;
-  padding-top: 6px;
-
-  em{
-    width: 22px;
-    height: 24px;
-    background: url(spritesheet.png) -199px -310px no-repeat;
-  }
-}
-
-.leftHeaderContent {
-  float: none;
-  margin-left: 0;
-  margin-right: 0;
-  padding-right: 0;
-  width: auto;
-  align-items: center;
-  display: flex;
-  -webkit-box-flex: 1;
-  // -ms-flex: 1 1 auto;
-  -webkit-flex: 1 1 auto;
-  flex: 1 1 auto;
-  min-height: 0;
-  min-width: 0;
-
-  .categoriesMenuReactWrapper {
-    -webkit-box-ordinal-group: 100000;
-    // -ms-flex-order: 99999;
-    // -webkit-order: 99999;
-    order: 99999;
-
-    .categoriesHeader {
-      background-color: #fff !important;
-      background-image: none !important;
-      border: none !important;
-      // -webkit-box-shadow: none !important;
-      box-shadow: none !important;
-      height: auto !important;
-      padding-left: 16px;
-      padding-right: 16px;
-      padding-bottom: 6px;
-      padding-top: 6px;
-      display: flex;
-
-      em {
-        width: 25px;
-        height: 25px;
-        background: url(spritesheet.png) -232px -260px no-repeat;
-      }
-    }
-  }
-
-  .SearchForm.guided.buttonOnRight {
-    margin-right: 0;
-  }
-  .SearchForm.guided {
-    // -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    height: auto;
-    width: auto;
-    padding-left: 16px;
-    padding-right: 16px;
-    -webkit-box-flex: 1;
-    flex: 1 1 auto;
-    min-height: 0;
-    min-width: 0;
-  }
-  .SearchForm {
-    position: relative;
-    text-align: left;
-
-    .TypeaheadField.guided {
-      display: block;
-      float: none;
-      width: 100%;
-    }
-
-    .TypeaheadField {
-      position: relative;
-    }
-
-    .TypeaheadField.guided.buttonOnRight {
-      &::before {
-        width: 20px;
-        height: 20px;
-        background: url(spritesheet.png) -376px -108px no-repeat;
-        content: " ";
-        margin-top: 10px;
-        position: absolute;
-        z-index: 999999999;
-        margin-left: 16px;
-        margin-right: 8px;
-      }
-      .tokenizedInputWrapper {
-        padding-left: 44px;
-        -webkit-box-align: center;
-        align-items: center;
-        display: flex;
-        box-sizing: border-box;
-        height: 40px;
-        position: relative;
-        z-index: 670;
-        border: none;
-        border-radius: 4px;
-        background-color: #efefef;
-      }
-    }
-
-    .TokenizedInput{
-      .guided.typeaheadWithTitles {
-        margin-left: 0;
-      }
-      .tokenizedItem {
-        overflow: hidden;
-        color: #000;
-        display: inline-block;
-        // height: auto;
-        // margin: 3px;
-        white-space: nowrap;
-      }
-      .tokensWrapper{
-        input {
-          background: transparent;
-          border: 0;
-          // -webkit-box-shadow: none;
-          box-shadow: none;
-        }
-      }
-      .guided {
-        // margin-left: 3px;
-        margin-right: 30px;
-        overflow: hidden;
-        width: 100%;
-
-        .tokensWrapper{
-          display: flex;
-          width: 100%;
-          cursor: text;
-          float: left;
-          min-height: 1px;
-          white-space: nowrap;
-          .tokenizedItem{
-            height: auto;
-            margin: 0;
-            padding-left: 8px;
-            vertical-align: middle;
-            .inputToken {
-              width: auto;
-              -webkit-box-flex: 1;
-              flex: 1 1 auto;
-              min-height: 0;
-              min-width: 0;
-            }
-          }
-        }
-      }
-      .field{
-        height: auto;
-        padding: 0;
-        -webkit-font-smoothing: antialiased;
-        // -moz-osx-font-smoothing: grayscale;
-        color: #a7a7a7;
-        font-size: 16px;
-        font-weight: 600;
-        // height: 32px;
-        line-height: 20px;
-      }
-      .scrollWrapper {
-        overflow: hidden;
-      }
-    }
-  }
-}
-
-.centeredWithinWrapper {
-  margin: 0 auto;
-}
-
 .appContent {
   padding-top: 64px;
 }
 
-.visuallyHidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+.Grid {
+  margin: 0 auto 14px;
+  position: relative;
+  &.hasFooter{
+    padding-bottom: 22.5px;
+  }
+  .centeredWithinWrapper {
+    width: 1040px;
+  }
+}
+.GridItems {
+  margin: 0 auto 14px;
+  position: relative;
+  .item {
+    transform-style: preserve-3d;
+  }
+  .centeredWithinWrapper {
+    margin-bottom: 14px;
+    padding-bottom: 4px;
+  }
+  &.padItems {
+    &.variableHeightLayout{
+      &>.item {
+        margin: 0;
+        padding: 24px 12px;
+        width: 236px;
+      }
+    }
+  }
+  &.variableHeightLayout{
+    &>.item{
+      position: absolute;
+      margin: 0;
+    }
+  }
 }
 
-.Input {
-  overflow: hidden;
-  // border-top: 1px solid #dfdfdf;
-  // padding: 15px 21px 15px 27px;
-  // background-color: #f3f3f3;
-  // background: -webkit-gradient(linear, left top, left bottom, from(#f0f0f0), to(#f5f5f5));
-  // background: -webkit-linear-gradient(#f0f0f0, #f5f5f5);
-  // background: linear-gradient(#f0f0f0, #f5f5f5);
-  // -webkit-box-sizing: border-box;
-  // box-sizing: border-box;
-  width: 100%;
-  border-radius: 3px;
-  // border: 1px solid #d6d3ce;
-  // -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.12) inset;
-  // box-shadow: 0 0 3px rgba(0,0,0,0.12) inset;
-  // color: #333;
-  // font-size: 14px;
-  // padding: 7px;
+.item {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.Pin {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  backface-visibility: hidden;
+  font-size: 11px;
+  position: relative;
+  transform: rotateY(0deg);
+  &.summary {
+    &:not(.hideHoverUI) {
+      cursor: zoom-in;
+      margin: -10px;
+      padding: 10px;
+      position: relative;
+      opacity: 1;
+      visibility: visible;
+      background: inherit;
+
+      .pinWrapper {
+        cursor: zoom-in;
+        margin: -10px;
+        padding: 10px;
+        position: relative;
+        border-radius: 6px;
+
+        &::before {
+          background: rgba(0,0,0,0.05);
+          border-radius: 8px;
+          content: " " !important;
+          height: 100%;
+          left: 0;
+          opacity: 0;
+          pointer-events: none;
+          position: absolute;
+          top: 0;
+          transform: scale(0.96);
+          width: 100%;
+          z-index: 3;
+        }
+      }
+    }
+    width: 236px;
+    background: #fff;
+    border-radius: 6px;
+    display: inline-block;
+
+    .rightSideButtonsWrapper{
+      background-clip: padding-box;
+      display: flex;
+      position: absolute;
+      top: 8px;
+      z-index: 103;
+      .btn {
+        background-clip: padding-box;
+        &:last-child {
+          margin-right: 0;
+        }
+        &.isBrioFlat {
+          background-image: none;
+          border: 0;
+          border-radius: 4px;
+          box-shadow: none;
+          color: #555;
+          text-shadow: none;
+          background-color: #fff;
+          font-size: 14px;
+          opacity: .97;
+          span {
+            margin-left: 4px;
+          }
+          &.sendSmall {
+            height: 36px;
+            margin-right: 4px !important;
+            padding: 10px;
+            em {
+              top: -1px;
+            }
+          }
+        }
+      }
+    }
+    .sendPinGrid {
+      float: left;
+    }
+    .pinNavLink {
+      display: block;
+      font-size: 11px;
+      font-weight: normal;
+      padding: 10px 12px;
+      &.navLinkOverlay {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        z-index: 102;
+        em {
+          display: none;
+        }
+        .buttonText {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: #fff;
+          display: block;
+          font-size: 11px;
+          font-weight: 500;
+          line-height: 18px;
+        }
+      }
+    }
+    .pinImageActionButtonWrapper{
+      margin-bottom: 8px;
+      position: relative;
+      .navLinkOverlay {
+        // letter-spacing: -0.05px;
+        // line-height: 12px;
+        // word-spacing: 0;
+        // -moz-osx-font-smoothing: grayscale;
+        opacity: 0;
+      }
+      .leftSideButtonsWrapper {
+        left: inherit;
+        right: 8px;
+        opacity: 0;
+        display: flex;
+        position: absolute;
+        top: 8px;
+        z-index: 103;
+        .btn {
+          background-clip: padding-box;
+          &.isBrioFlat {
+            // background-color: #efefef;
+            background-image: none;
+            // border: 0;
+            border-radius: 4px;
+            // -webkit-box-shadow: none;
+            // box-shadow: none;
+            // color: #555;
+            height: 36px;
+            // text-shadow: none;
+            // background-color: #fff;
+            font-size: 14px;
+            opacity: .97;
+            span {
+              margin-left: 4px;
+            }
+            &.primary{
+              background-color: #bd081c;
+              border: 0;
+              -webkit-box-shadow: none;
+              box-shadow: none;
+              color: #efefef;
+              text-shadow: none;
+            }
+          }
+        }
+        .repinSmall {
+          float: left;
+          em {
+            width: 10px;
+            height: 20px;
+            background: url(spritesheet.png) -478px -201px no-repeat;
+            position: relative;
+            top: 0;
+          }
+        }
+      }
+      .rightSideButtonsWrapper {
+        left: 8px;
+        right: inherit;
+        opacity: 0;
+      }
+      .pinImageDim {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: 101;
+        border-radius: 8px;
+        .dimOverlay {
+          bottom: 0;
+          left: 0;
+          right: 0;
+          top: 0;
+          background-color: #000;
+          border-radius: 6px 6px 0 0;
+          opacity: 0;
+          position: absolute;
+          transition: opacity .04s linear;
+        }
+        .dimGradient {
+          background-color: rgba(0,0,0,0.15);
+          background: linear-gradient(transparent, rgba(0,0,0,0.3));
+          bottom: 0;
+          height: 100px;
+          left: 0;
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
+    .pinHolder {
+      cursor: pointer;
+      position: relative;
+      z-index: 3;
+      &::after {
+        background: rgba(0,0,0,0.02);
+        border-radius: 8px;
+        bottom: 0;
+        content: " ";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 5;
+      }
+    }
+    .pinDomain {
+      display: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      bottom: 0;
+      color: #f7f7f7;
+      font-size: 12px;
+      left: 0;
+      margin-top: -6px;
+      opacity: 0.5;
+      padding: 0 14px;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      text-shadow: 0 -1px rgba(0,0,0,0.17);
+      top: 50%;
+    }
+    .pinImageWrapper {
+      border-radius: 8px;
+      cursor: zoom-in;
+      display: block;
+      padding: 0;
+      position: relative;
+      &::after {
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        bottom: 0;
+        content: "";
+        height: 1px;
+        left: 0;
+        margin-top: -1px;
+        position: absolute;
+        right: 0;
+        z-index: 10;
+        display: none;
+      }
+    }
+    .pinUiImage {
+      margin: auto;
+    }
+    .pinImg {
+      display: block;
+      margin: 0 auto;
+      z-index: 5;
+      &.loaded {
+        opacity: 1;
+      }
+      &.fade {
+        transition: opacity 0.04s linear;
+      }
+      &.fullBleed {
+        border-radius: 8px;
+      }
+    }
+    .richPinMeta {
+      max-width: 145px;
+      .richPinMetaLink {
+        overflow: hidden;
+        display: block;
+      }
+      .richIconAndAttribution {
+        margin: 7px 0 3px;
+        padding-bottom: 0;
+        padding-top: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-left: 8px;
+        padding-right: 8px;
+        .richPinGridAttributionTitle {
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 0;
+
+          margin-bottom: 6px;
+
+          font-size: 11px;
+          letter-spacing: -0.05px;
+          line-height: 12px;
+          word-spacing: 0;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-weight: bold;
+          color: #b5b5b5;
+        }
+      }
+    }
+    .richPinGridTitle {
+      max-height: 100%;
+      max-width: 180px;
+      padding-bottom: 0;
+      padding-top: 0;
+      overflow: hidden;
+      clear: both;
+      color: #444;
+      font-weight: bold;
+
+      margin-bottom: 6px;
+
+      font-size: 14px;
+      letter-spacing: -0.15px;
+      line-height: 16px;
+      word-spacing: 0;
+
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      // color: #666;
+      margin: 0;
+      padding: 3px 0 4px;
+    }
+    &.pinWithSocialCounts{
+      .pinMetaWrapper {
+        min-height: 13px;
+        position: relative;
+      }
+      .richPinMeta {
+        max-width: 145px;
+      }
+      .pinMeta {
+        max-width: 145px;
+      }
+      .pinDpSocialCounts {
+        top: 1px;
+        z-index: 3;
+        right: 0;
+        position: absolute;
+
+      }
+    }
+    .pinSocialMeta {
+      &::after{
+        content: "";
+        display: table;
+        clear: both;
+      }
+      .socialItem {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background: transparent;
+        color: #a7a7a7;
+        display: inline-block;
+        padding: 0 7px 0 0;
+      }
+    }
+    .SocialIconsCounts {
+      .repinIconSmall {
+        width: 6px;
+        height: 11px;
+        background: url(spritesheet.png) -423px -12px no-repeat;
+      }
+      .socialMetaCount {
+        font-size: 11px;
+        letter-spacing: -0.05px;
+        line-height: 12px;
+        word-spacing: 0;
+        color: #b5b5b5;
+        font-weight: bold;
+      }
+    }
+    .Button {
+      &.hidePinInfo {
+        em {
+          width: 20px;
+          height: 20px;
+          background: url(spritesheet.png) 0px -372px no-repeat;
+        }
+      }
+    }
+    .creditItem {
+      -webkit-font-smoothing: antialiased;
+      .creditImg {
+        height: 24px;
+        width: 24px;
+        -webkit-box-flex: 0;
+        flex: none;
+        background-color: #efefef;
+        margin-right: 8px;
+
+        float: left;
+        &::after {
+          display: none;
+          border-radius: 3px;
+          box-shadow: 0 0 2px rgba(0,0,0,0.33) inset;
+          content: " ";
+          height: 30px;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 30px;
+        }
+        &.user {
+          position: relative;
+          border-radius: 50%;
+          &::after {
+            display: none;
+            border-radius: 50%;
+            box-shadow: 0 0 2px rgba(0,0,0,0.33) inset;
+            content: " ";
+            height: 30px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 30px;
+          }
+          .heightContainer {
+            position: relative;
+          }
+          img {
+            border-radius: 50%;
+          }
+        }
+      }
+      .creditName {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+      }
+      .creditTitle {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: block;
+      }
+    }
+    .creditFooter {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: #b0b0b0;
+      font-weight: normal;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      .footerSrc {
+        color: #b0b0b0;
+      }
+    }
+  }
+  .pinImageActionButtonWrapper {
+    .navLinkOverlay {
+      background: linear-gradient(to bottom, transparent, rgba(85,85,85,0.5) 50%);
+      border-radius: 0 0 8px 8px;
+      padding-top: 20px;
+
+      letter-spacing: -0.05px;
+      word-spacing: 0;
+
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+  .pinMetaWrapper {
+    padding-bottom: 0;
+    padding-top: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .pinMeta {
+    position: relative;
+    .pinDescription {
+      max-width: 180px;
+      margin-top: 0;
+      padding: 0;
+      font-size: 12px;
+      letter-spacing: -0.1px;
+      line-height: 14px;
+      word-spacing: 0;
+      margin-bottom: 6px;
+    }
+  }
+  .pinDescription {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #333;
+    // font-size: 13px;
+    // line-height: 17px;
+    word-wrap: break-word;
+  }
+  .pinCreditWrapper {
+    border-radius: 0 0 6px 6px;
+    z-index: 102;
+
+    .hidePinInfo {
+      float: right;
+      opacity: 0;
+      transition: opacity .3s ease-in-out;
+    }
+  }
+  .pinCredits {
+    border-top: none !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    flex-direction: column-reverse;
+    display: flex;
+    &>.pinCreditWrapper {
+      padding-left: 8px;
+      padding-right: 8px;
+      margin-top: 6px;
+
+      -webkit-box-align: center;
+      align-items: center;
+      display: flex;
+      position: relative;
+      &::before {
+        background: rgba(0,0,0,0.05);
+        border-radius: 4px;
+        content: " ";
+        height: calc(100% + 10px);
+        opacity: 0;
+        pointer-events: none;
+        top: -5px;
+        transform: scale(0.96);
+        width: 100%;
+        z-index: 3;
+        left: 0;
+        position: absolute;
+      }
+      .hidePinInfo {
+        margin-right: 0;
+        margin-top: 0;
+        margin-left: 16px;
+
+        -webkit-box-ordinal-group: 100000;
+        -ms-flex-order: 99999;
+        order: 99999;
+        -webkit-box-flex: 0;
+        -ms-flex: none;
+        flex: none;
+      }
+      .creditItem {
+        border-radius: 4px;
+        padding: 0;
+
+        font-size: 11px;
+        letter-spacing: -0.05px;
+        line-height: 12px;
+        word-spacing: 0;
+
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        min-height: 0;
+        min-width: 0;
+        &>a {
+          -webkit-box-align: center;
+          align-items: center;
+          display: flex;
+        }
+        .creditImg {
+          img {
+            height: 24px;
+            width: 24px;
+          }
+        }
+        .creditName {
+          width: 125px;
+          font-weight: bold;
+          color: #555;
+        }
+        .creditTitle {
+          width: 125px;
+          font-weight: normal;
+          color: #555;
+        }
+      }
+    }
+    button {
+      z-index: 3;
+    }
+  }
+  .creditFooter {
+    border-top: none !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    width: 100% !important;
+    font-size: 11px;
+    letter-spacing: -0.05px;
+    line-height: 12px;
+    word-spacing: 0;
+
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-bottom: 6px;
+  }
+}
+
+
+.Image {
+  max-width: 100%;
+  position: relative;
+  &>.heightContainer {
+    &>img{
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    }
+  }
+  &.unknownImage{
+    &>.heightContainer {
+      &>img {
+        position: static;
+      }
+    }
+  }
 }
