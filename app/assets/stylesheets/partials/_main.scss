@@ -52,6 +52,10 @@
   font-size: 11px;
   position: relative;
   transform: rotateY(0deg);
+  .bulkEditPinWrapper {
+    display: none;
+  }
+
   &.summary {
     &:not(.hideHoverUI) {
       cursor: zoom-in;
@@ -68,7 +72,18 @@
         padding: 10px;
         position: relative;
         border-radius: 6px;
-
+        &:not(.pinImageWrapperDisableHover) {
+          &:hover {
+            &::before {
+              animation: tapAnimation 0.25s cubic-bezier(0.31, 1, 0.34, 1) forwards;
+            }
+            .pinImageActionButtonWrapper {
+              .leftSideButtonsWrapper, .rightSideButtonsWrapper, .navLinkOverlay {
+                opacity: 1;
+              }
+            }
+          }
+        }
         &::before {
           background: rgba(0,0,0,0.05);
           border-radius: 8px;
@@ -102,11 +117,16 @@
           margin-right: 0;
         }
         &.isBrioFlat {
+          &:hover {
+            background-color: #efefef;
+            border: 0;
+          }
           background-image: none;
           border: 0;
           border-radius: 4px;
           box-shadow: none;
           color: #555;
+          height: 36px;
           text-shadow: none;
           background-color: #fff;
           font-size: 14px;
@@ -139,6 +159,9 @@
         position: absolute;
         right: 0;
         z-index: 102;
+        &.squished {
+          display: none;
+        }
         em {
           display: none;
         }
@@ -157,6 +180,16 @@
     .pinImageActionButtonWrapper{
       margin-bottom: 8px;
       position: relative;
+      &:hover {
+        .leftSideButtonsWrapper, .rightSideButtonsWrapper, .pinImageDim {
+          opacity: 1;
+        }
+        .pinImageDim {
+          .dimOverlay {
+            opacity: .1;
+          }
+        }
+      }
       .navLinkOverlay {
         // letter-spacing: -0.05px;
         // line-height: 12px;
@@ -200,16 +233,6 @@
             }
           }
         }
-        .repinSmall {
-          float: left;
-          em {
-            width: 10px;
-            height: 20px;
-            background: url(spritesheet.png) -478px -201px no-repeat;
-            position: relative;
-            top: 0;
-          }
-        }
       }
       .rightSideButtonsWrapper {
         left: 8px;
@@ -221,7 +244,7 @@
         left: 0;
         right: 0;
         top: 0;
-        opacity: 0;
+        // opacity: 0;
         overflow: hidden;
         position: absolute;
         z-index: 101;
@@ -249,9 +272,16 @@
       }
     }
     .pinHolder {
-      cursor: pointer;
+      // cursor: pointer;
       position: relative;
       z-index: 3;
+      &:hover {
+        .pinImageWrapper {
+          &::after {
+            border-bottom-color: rgba(0,0,0,0.08);
+          }
+        }
+      }
       &::after {
         background: rgba(0,0,0,0.02);
         border-radius: 8px;
@@ -290,6 +320,10 @@
       display: block;
       padding: 0;
       position: relative;
+      &.collapsed {
+        overflow: hidden;
+        max-height: 800px;
+      }
       &::after {
         border-bottom: 1px solid rgba(0,0,0,0.1);
         bottom: 0;
@@ -310,6 +344,9 @@
       display: block;
       margin: 0 auto;
       z-index: 5;
+      &:hover {
+        cursor: pointer;
+      }
       &.loaded {
         opacity: 1;
       }
@@ -431,6 +468,9 @@
         font-weight: bold;
       }
     }
+    .dimGradient {
+      opacity: 0;
+    }
     .Button {
       &.hidePinInfo {
         em {
@@ -509,6 +549,57 @@
         color: #b0b0b0;
       }
     }
+    .pinCredits {
+      &>.pinCreditWrapper {
+        padding-left: 8px;
+        padding-right: 8px;
+        margin-top: 6px;
+        align-items: center;
+        display: flex;
+        position: relative;
+        &::before {
+          background: rgba(0,0,0,0.05);
+          border-radius: 4px;
+          content: " ";
+          height: calc(100% + 10px);
+          opacity: 0;
+          pointer-events: none;
+          top: -5px;
+          transform: scale(0.96);
+          width: 100%;
+          z-index: 3;
+          left: 0;
+          position: absolute;
+        }
+        &.creditHover {
+          &::before {
+            animation: tapAnimation 0.25s cubic-bezier(0.31, 1, 0.34, 1) forwards;
+          }
+        }
+        &:hover {
+          background: transparent;
+          &::before {
+            animation: tapAnimation 0.25s cubic-bezier(0.31, 1, 0.34, 1) forwards;
+          }
+        }
+      }
+      button {
+        z-index: 3;
+      }
+    }
+    .pinCreditWrapper {
+      border-radius: 0 0 6px 6px;
+      // position: relative;
+      z-index: 102;
+      .hidePinInfo {
+        float: right;
+      }
+    }
+  }
+  .pinImageWrapper {
+    &::after {
+      display: none;
+    }
   }
   .pinImageActionButtonWrapper {
     .navLinkOverlay {
@@ -552,6 +643,11 @@
   .pinCreditWrapper {
     border-radius: 0 0 6px 6px;
     z-index: 102;
+    &:hover {
+      .hidePinInfo {
+        opacity: 1;
+      }
+    }
 
     .hidePinInfo {
       float: right;
@@ -594,10 +690,8 @@
         margin-left: 16px;
 
         -webkit-box-ordinal-group: 100000;
-        -ms-flex-order: 99999;
         order: 99999;
         -webkit-box-flex: 0;
-        -ms-flex: none;
         flex: none;
       }
       .creditItem {

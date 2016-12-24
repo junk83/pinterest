@@ -37,11 +37,58 @@ html, body {
 .Button {
   outline: none;
   position: relative;
+  &.expandGiraffe {
+    background: rgba(255,255,255,0.9) !important;
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+    box-shadow: none !important;
+    top: 763px;
+    z-index: 2;
+    font-size: 11px;
+    left: 0;
+    padding: 12px 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    // top: 764px;
+    width: 100%;
+    font-weight: bold;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiase;
+    letter-spacing: -0.1px;
+    line-height: 14px;
+    word-spacing: 0;
+    &::after {
+      display: none !important;
+      background: rgba(0,0,0,0.1);
+      bottom: 0;
+      content: "";
+      height: 1px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      z-index: 202;
+    }
+    span {
+      color: #666;
+      font-weight: bold;
+    }
+  }
+  &.repinSmall {
+    float: left;
+    em {
+      width: 10px;
+      height: 20px;
+      background: url(spritesheet2.png) -478px -201px no-repeat;
+      position: relative;
+      top: 0;
+    }
+  }
   &.sendSmall {
     margin-left: 0 !important;
     line-height: 16px;
     &.isBrioFlat {
-      em{
+      em {
         width: 16px;
         height: 16px;
         background: url(spritesheet.png) -318px -372px no-repeat;
@@ -58,7 +105,7 @@ html, body {
     white-space: nowrap;
     // background-color: #f0f0f0;
     // padding: 7px 13px;
-    &.primary {
+    &.primary, &.primaryOnHover:hover {
       -webkit-font-smoothing: antialiased;
     }
     &.isBrioFlat{
@@ -149,6 +196,13 @@ a {
    color: #717171;
    font-weight: bold;
    text-decoration: none;
+
+   &:hover, &:active {
+     outline: 0;
+   }
+   &:focus, &:hover {
+     color: #8a8a8a;
+   }
 }
 
 label {
@@ -204,6 +258,19 @@ img {
     opacity: 1;
   }
 }
+@keyframes tapAnimation {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.96);
+    transform: scale(0.96)
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1)
+  }
+}
 
 .visuallyHidden {
   border: 0;
@@ -214,4 +281,8 @@ img {
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+:focus {
+  outline: #d1d1d1 auto 1px;
 }
