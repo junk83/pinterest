@@ -124,6 +124,50 @@ html, body {
     position: relative;
     vertical-align: middle;
   }
+  &.footerIcon {
+    border-radius: 50%;
+    box-shadow: 0 2px 0 0 rgba(0,0,0,0.1), 0 0 0 0.5px rgba(0,0,0,0.04);
+    &.borderless {
+      background-color: #fff;
+    }
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+  &.addPinFooter {
+    padding: 12.5px 13px !important;
+    &:not(.disabled) {
+      &:hover {
+        em {
+          width: 14px;
+          height: 14px;
+          background: url(spritesheet.png) -405px -244px no-repeat;
+        }
+      }
+    }
+    em {
+      width: 14px;
+      height: 14px;
+      background: url(spritesheet.png) -405px -244px no-repeat;
+    }
+  }
+  &.moreFooter {
+    padding: 12.5px 15px !important;
+    &:not(.disabled) {
+      &:hover {
+        em {
+          width: 10px;
+          height: 15px;
+          background: url(spritesheet.png) -405px -305px no-repeat;
+        }
+      }
+    }
+    em {
+      width: 10px;
+      height: 15px;
+      background: url(spritesheet.png) -405px -305px no-repeat;
+    }
+  }
 
   .accessibilityText {
     font: 0 / 0 serif;
