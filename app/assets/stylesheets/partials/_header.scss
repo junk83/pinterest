@@ -101,6 +101,16 @@
     margin-right: -1px;
   }
 
+  &:hover {
+    background: transparent;
+    box-shadow: none !important;
+    .usernameLink {
+      width: 20px;
+      height: 24px;
+      background: url(spritesheet.png) -313px -310px no-repeat;
+    }
+  }
+
   .usernameLink {
     width: 20px;
     height: 24px;
@@ -124,11 +134,62 @@
   padding-bottom: 6px;
   padding-top: 6px;
 
+  &:hover {
+    box-shadow: none;
+    em {
+      width: 22px;
+      height: 24px;
+      background: url(spritesheet.png) -175px -310px no-repeat;
+    }
+  }
+
   em{
     width: 22px;
     height: 24px;
     background: url(spritesheet.png) -199px -310px no-repeat;
   }
+}
+
+.Badge {
+  animation: popBadge .5s ease-out;
+  animation-fill-mode: forwards;
+  background: #bd081c;
+  border-radius: 50%;
+  color: #fff;
+  content: " ";
+  font-size: 10px;
+  font-weight: bold;
+  height: 16px;
+  line-height: 15px;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  right: 8px;
+  text-align: center;
+  top: -2px;
+  vertical-align: middle;
+  width: 16px;
+  z-index: 1000;
+}
+
+@keyframes popBadge {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0);
+        transform: scale(0)
+    }
+
+    75% {
+        opacity: 1;
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
 }
 
 .categoriesHeader {
