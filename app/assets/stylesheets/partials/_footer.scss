@@ -60,6 +60,7 @@
 }
 
 .GridFooter{
+  margin-top: 31px;
   .gridLoadingWrapper {
     position: relative;
     z-index: -2;
@@ -101,6 +102,25 @@
     }
     .gridFooterSpinner {
       display: block;
+    }
+  }
+  .gridError {
+    border-top: #ccc dashed 2px;
+    bottom: 0;
+    // display: none;
+    left: 0;
+    right: 0;
+    text-align: center;
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .btn {
+      margin: 20px auto 50px;
+      span {
+        font-weight: normal;
+      }
     }
   }
 }
