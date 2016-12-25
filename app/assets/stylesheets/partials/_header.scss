@@ -211,23 +211,22 @@
     background: url(spritesheet.png) -232px -260px no-repeat;
   }
 }
-// 後で修正する
 .SearchForm {
   position: relative;
   text-align: left;
 
   &.guided{
-    box-sizing: border-box;
-    height: auto;
-    width: auto;
-
-    padding-left: 16px;
-    padding-right: 16px;
-
     -webkit-box-flex: 1;
     flex: 1 1 auto;
     min-height: 0;
     min-width: 0;
+
+    padding-left: 16px;
+    padding-right: 16px;
+
+    box-sizing: border-box;
+    height: auto;
+    width: auto;
 
     &.buttonOnRight{
       margin-right: 0;
@@ -235,7 +234,6 @@
     }
   }
   .TypeaheadField{
-    position: relative;
     &.guided{
       display: block;
       float: none;
@@ -256,14 +254,6 @@
         }
 
         &::before{
-          width: 20px;
-          height: 20px;
-          background: url(spritesheet.png) -376px -108px no-repeat;
-          content: " ";
-          margin-top: 10px;
-          position: absolute;
-          z-index: 999999999;
-
           margin-left: 16px;
           margin-right: 8px;
         }
@@ -272,15 +262,117 @@
   }
 }
 
+.TypeaheadField {
+  position: relative;
+  &.guided {
+    &.buttonOnRight {
+      &::before {
+        margin-right: 8px;
+        margin-left: 16px;
 
-// あとで修正する
+        width: 20px;
+        height: 20px;
+        background: url(spritesheet.png) -376px -108px no-repeat;
+        content: " ";
+        margin-top: 10px;
+        position: absolute;
+        z-index: 999999999;
+      }
+      .tokenizedInputWrapper {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+
+        padding-left: 44px;
+      }
+    }
+    .tokenizedInputWrapper {
+      box-sizing: border-box;
+      height: 40px;
+      position: relative;
+      z-index: 670;
+    }
+  }
+  .tokenizedInputWrapper {
+    background-color: #efefef;
+    border: none;
+    border-radius: 4px;
+  }
+}
+
 .TokenizedInput{
   &.guided{
+    width: 100%;
     margin-right: 30px;
     overflow: hidden;
-    width: 100%;
     &.typeaheadWithTitles {
       margin-left: 0;
+    }
+    .tokensWrapper {
+      width: 100%;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      left: 0;
+      overflow: visible;
+      position: relative;
+      transition-duration: .25s;
+      transition-property: left;
+      cursor: text;
+      .tokenizedItem {
+        margin: 0;
+        padding-left: 8px;
+        vertical-align: middle;
+        height: auto;
+        &.inputToken {
+          -webkit-box-flex: 1;
+          flex: 1 1 auto;
+          min-height: 0;
+          min-width: 0;
+          width: auto;
+          .field {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            // color: #a7a7a7;
+            font-size: 16px;
+            font-weight: 600;
+            // height: 32px;
+            line-height: 20px;
+            // padding: 6px 0 6px 4px;
+            height: auto;
+            padding: 0;
+            &:focus {
+              color: #333;
+            }
+          }
+        }
+      }
+    }
+    .removeAll {
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      // display: inline-block;
+      margin-top: -6px;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transition: display 1s linear;
+      &.hidden {
+        display: none;
+      }
+      em {
+        width: 12px;
+        height: 12px;
+        background: url(spritesheet.png) -224px -194px no-repeat;
+        float: left;
+      }
+      &:hover {
+        em {
+          width: 12px;
+          height: 12px;
+          background: url(spritesheet.png) -405px -378px no-repeat;
+        }
+      }
     }
   }
   .scrollWrapper {
@@ -295,47 +387,49 @@
     white-space: nowrap;
   }
   .tokensWrapper{
-    input {
-      background: transparent;
-      border: 0;
-      // -webkit-box-shadow: none;
-      box-shadow: none;
-    }
-  }
-
-  .tokensWrapper{
-    display: flex;
-    width: 100%;
     cursor: text;
     float: left;
     min-height: 1px;
     white-space: nowrap;
-    .tokenizedItem{
-      height: auto;
-      margin: 0;
-      padding-left: 8px;
-      vertical-align: middle;
-      .inputToken {
-        width: auto;
-        -webkit-box-flex: 1;
-        flex: 1 1 auto;
-        min-height: 0;
-        min-width: 0;
+    input {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      &:focus {
+        outline: none;
       }
     }
   }
 
-  .field{
-    height: auto;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-    // -moz-osx-font-smoothing: grayscale;
-    color: #a7a7a7;
-    font-size: 16px;
-    font-weight: 600;
-    // height: 32px;
-    line-height: 20px;
-  }
+  // .tokensWrapper{
+  //
+  //
+  //   .tokenizedItem{
+  //     height: auto;
+  //     margin: 0;
+  //     padding-left: 8px;
+  //     vertical-align: middle;
+  //     .inputToken {
+  //       width: auto;
+  //       -webkit-box-flex: 1;
+  //       flex: 1 1 auto;
+  //       min-height: 0;
+  //       min-width: 0;
+  //     }
+  //   }
+  // }
+  //
+  // .field{
+  //   height: auto;
+  //   padding: 0;
+  //   -webkit-font-smoothing: antialiased;
+  //   // -moz-osx-font-smoothing: grayscale;
+  //   color: #a7a7a7;
+  //   font-size: 16px;
+  //   font-weight: 600;
+  //   // height: 32px;
+  //   line-height: 20px;
+  // }
 }
 
 
