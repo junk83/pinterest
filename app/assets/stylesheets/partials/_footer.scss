@@ -58,3 +58,49 @@
     }
   }
 }
+
+.GridFooter{
+  .gridLoadingWrapper {
+    position: relative;
+    z-index: -2;
+  }
+  hr {
+    display: none;
+  }
+  .gridLoading {
+    background: #fff;
+    display: inline-block;
+    left: 50%;
+    margin-left: -24.5px;
+    padding: 20px 10px;
+    position: absolute;
+    text-align: center;
+    top: -26.5px;
+    width: 29px;
+    .gridFooterLogoIcon {
+      width: 29px;
+      height: 31px;
+      background: url(spritesheet.png) -339px -163px no-repeat;
+      // display: inline-block;
+      font: 0 / 0 serif;
+      text-shadow: none;
+      color: transparent;
+    }
+    .gridFooterSpinner {
+      // display: inline-block;
+      opacity: 0.5;
+      width: 32px;
+      height: 32px;
+      background: url(spinner-medium.gif) 0px 0px no-repeat;
+      // display: none;
+    }
+  }
+  &.showGridLoading{
+    .gridFooterLogoIcon {
+      display: none;
+    }
+    .gridFooterSpinner {
+      display: block;
+    }
+  }
+}
