@@ -105,6 +105,19 @@ html, body {
     white-space: nowrap;
     // background-color: #f0f0f0;
     // padding: 7px 13px;
+    &.categoriesHeader {
+      &.exploreCategoriesMenu {
+        &:not(.disabled) {
+          &:hover {
+            em {
+              width: 25px;
+              height: 25px;
+              background: url(spritesheet.png) -205px -260px no-repeat;
+            }
+          }
+        }
+      }
+    }
     &.primary, &.primaryOnHover:hover {
       -webkit-font-smoothing: antialiased;
     }
