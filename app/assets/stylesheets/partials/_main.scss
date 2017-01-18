@@ -780,3 +780,10 @@
     }
   }
 }
+
+.clearfix {
+  &:before {
+    content: " ";
+    display: table;  
+  }
+}
