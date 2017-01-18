@@ -174,18 +174,27 @@
               .SkipToContent {
                 display: none;
               }
-
-
-              .FacebookConnectButton__icon {
-
+              .FacebookConnectButton__icon{
+                background-color: #3b5998;
+                height: 45px;
+                display: inline-block;
+                position: relative;
+                text-decoration: none;
+                border-radius: 4px;
+              }
+              .FacebookConnectButton__icon:after {
+                    content: "";
+                    position: absolute;
+                    top: 11px;
+                    left: 11px;
                     width: 24px;
                     height: 24px;
-                    background: url("spritesheet3.png") -89px 0px no-repeat;
+                    background: url("/assets/spritesheet3.png") -89px 0px no-repeat;
               }
               @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
                 .FacebookConnectButton__icon {
 
-                    background-image: url("spritesheet4.png");
+                    background-image: url("/assets/spritesheet4.png");
                     background-position:  -88px 0px;
                     background-size: 123px 102px;
                 }
@@ -251,12 +260,12 @@
 
                     width: 87px;
                     height: 21px;
-                    background: url("spritesheet3.png") 0px 0px no-repeat;
+                    background: url("/assets/spritesheet3.png") 0px 0px no-repeat;
               }
               @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
                 .PinterestLogo {
 
-                    background-image: url("spritesheet4.png");
+                    background-image: url("/assets/spritesheet4.png");
                     background-position:  0px 0px;
                     background-size: 123px 102px;
                 }
@@ -332,13 +341,13 @@
 
                     width: 14px;
                     height: 14px;
-                    background: url("spritesheet3.png") -86px -75px no-repeat;
+                    background: url("/assets/spritesheet3.png") -86px -75px no-repeat;
               }
               .Gender__infoIconLight {
 
                     width: 14px;
                     height: 14px;
-                    background: url("spritesheet3.png") -64px -91px no-repeat;
+                    background: url("/assets/spritesheet3.png") -64px -91px no-repeat;
               }
               .Gender__infoIconLight:focus {
                 outline:none;
@@ -350,24 +359,24 @@
 
                     width: 15px;
                     height: 15px;
-                    background: url("spritesheet3.png") -31px -91px no-repeat;
+                    background: url("/assets/spritesheet3.png") -31px -91px no-repeat;
               }
               @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
                 .Gender__infoIconDark {
 
-                    background-image: url("spritesheet4.png");
+                    background-image: url("/assets/spritesheet4.png");
                     background-position:  -83px -72px;
                     background-size: 123px 102px;
                 }
                 .Gender__infoIconLight {
 
-                    background-image: url("spritesheet4.png");
+                    background-image: url("/assets/spritesheet4.png");
                     background-position:  -30px -87px;
                     background-size: 123px 102px;
                 }
                 .Gender__iconSearchClear {
 
-                    background-image: url("spritesheet4.png");
+                    background-image: url("/assets/spritesheet4.png");
                     background-position:  -88px -50px;
                     background-size: 123px 102px;
                 }
@@ -377,17 +386,16 @@
 
                     width: 14px;
                     height: 14px;
-                    background: url("spritesheet3.png") -48px -91px no-repeat;
+                    background: url("/assets/spritesheet3.png") -48px -91px no-repeat;
               }
               @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
                 .InputField__errorIcon {
 
-                    background-image: url("spritesheet4.png");
+                    background-image: url("/assets/spritesheet4.png");
                     background-position:  -98px -72px;
                     background-size: 123px 102px;
                 }
               }
-
               .Tooltip_message:before, .Tooltip_message:after {
                 border-style: solid;
                 content: '';
@@ -441,12 +449,12 @@
 
                     width: 38px;
                     height: 38px;
-                    background: url("spritesheet3.png") 0px -23px no-repeat;
+                    background: url("/assets/spritesheet3.png") 0px -23px no-repeat;
               }
               @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
                 .GoogleConnectButton__icon {
 
-                    background-image: url("spritesheet4.png");
+                    background-image: url("/assets/spritesheet4.png");
                     background-position:  0px -22px;
                     background-size: 123px 102px;
                 }
@@ -469,7 +477,7 @@
               .loadingSpinner {
 
                       background-image:
-                        url("white-spinner-small.gif");
+                        url("/assets/white-spinner-small.gif");
                         background-size: 16px 16px;
                         background-repeat: no-repeat;
               }
@@ -477,7 +485,7 @@
                 .loadingSpinner {
 
                       background-image:
-                        url("white-spinner-small-2x.gif");
+                        url("/assets/white-spinner-small-2x.gif");
                         background-size: 16px 16px;
                         background-repeat: no-repeat;
                 }
@@ -487,7 +495,7 @@
               .PinClickSignupInspiredWall_Background {
 
                       background-image:
-                        url("inspired_wall_grid.jpg");
+                        url("/assets/inspired_wall_grid.jpg");
                         background-size: 380px 533px;
                         background-repeat: no-repeat;
               }
@@ -608,16 +616,18 @@
                 <div data-test-signup="true" style="margin: 0px auto; position: relative; text-align: center;">
                   <div style="margin: 0px auto; width: 268px;">
                     <!-- <form method="POST" novalidate=""> -->
-                    <%= form_for(@user, url: { action: "register" }) do |f| %>
+                    <%= form_for(@user, url: { action: "register" }, html: { novalidate: true }) do |f| %>
                       <fieldset style="position: relative; margin-bottom: 7px;">
-                        <%= f.email_field :email, autocomplete: "username", placeholder: "メール", style: "background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;" %>
+                        <%= f.email_field :email, autocomplete: "username", required: true, placeholder: "メール", style: "background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;" %>
+                        <%= apphelper_show_flash_massage(notice) if notice %>
                         <!-- <input type="email" autocomplete="username" name="id" placeholder="メール" value="" style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;"> -->
                       </fieldset>
                       <fieldset style="position: relative;">
-                        <% if flash %>
+                        <!-- <% if flash %>
                         <em>(<%= @minimum_password_length %> characters minimum)</em>
-                        <% end %>
-                        <%= f.password_field :password, autocomplete: "current-password", minlength: "6", placeholder: "パスワードを作成", style: "background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;" %>
+                        <% end %> -->
+                        <%= f.password_field :password, autocomplete: "current-password", required: true, minlength: "6", placeholder: "パスワードを作成", style: "background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;" %>
+                        <!-- <%= apphelper_show_flash_massage(notice) %> -->
                         <!-- <%= f.hidden_field :first_name, value: "test" %> -->
                         <!-- <%= f.hidden_field :user_name, value: "test" %> -->
                         <!-- <input type="password" autocomplete="current-password" name="password" placeholder="パスワードを作成" value="" style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;"> -->
@@ -630,11 +640,16 @@
                     <% end %>
                     <p class="AlternativesSeparator" style="margin-bottom: 10px; overflow: hidden; text-align: center; color: rgb(0, 0, 0); font-weight: bold;">または</p>
                     <div style="height: 50px;">
-                      <div class="fb-login-button fb_iframe_widget" data-scope="public_profile,email,user_likes,user_about_me,user_birthday,user_friends" onlogin="checkLoginState" login_text="" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=274266067164&amp;container_width=268&amp;locale=ja_JP&amp;scope=public_profile%2Cemail%2Cuser_likes%2Cuser_about_me%2Cuser_birthday%2Cuser_friends&amp;sdk=joey">
+                      <!-- <span style="vertical-align: bottom; width: 268px; height: 50px;"> -->
+                        <%= link_to user_facebook_omniauth_authorize_path, class: "FacebookConnectButton__icon", style: "vertical-align: bottom; width: 268px;" do %>
+                        <div style="color: #ffffff;    position: relative; top: 11px;  font-size: 15px; text-align: center; margin: 0 20px 0 50px; border: none;">Facebookで登録</div>
+                        <% end %>
+                      <!-- </span> -->
+                      <!-- <div class="fb-login-button fb_iframe_widget" data-scope="public_profile,email,user_likes,user_about_me,user_birthday,user_friends" onlogin="checkLoginState" login_text="" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=274266067164&amp;container_width=268&amp;locale=ja_JP&amp;scope=public_profile%2Cemail%2Cuser_likes%2Cuser_about_me%2Cuser_birthday%2Cuser_friends&amp;sdk=joey">
                         <span style="vertical-align: bottom; width: 268px; height: 50px;">
                           <iframe name="f29f585eab5222" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:login_button Facebook Social Plugin" src="https://www.facebook.com/v2.7/plugins/login_button.php?app_id=274266067164&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FiPrOY23SGAp.js%3Fversion%3D42%23cb%3Df25d9bc34e40e58%26domain%3Djp.pinterest.com%26origin%3Dhttps%253A%252F%252Fjp.pinterest.com%252Ff34c35f1bdcafc%26relation%3Dparent.parent&amp;container_width=268&amp;locale=ja_JP&amp;scope=public_profile%2Cemail%2Cuser_likes%2Cuser_about_me%2Cuser_birthday%2Cuser_friends&amp;sdk=joey" style="border: none; visibility: visible; width: 268px; height: 50px;" class=""></iframe>
                         </span>
-                      </div>
+                      </div> -->
                     </div>
                     <div style="margin-top: 15px;">
                       <span class="" style="-webkit-font-smoothing: antialiased; font-size: 11px; font-weight: normal; text-align: center; transition: opacity 0.2s linear; color: rgb(170, 170, 170); width: 224px;">

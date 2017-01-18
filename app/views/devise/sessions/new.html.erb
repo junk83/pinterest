@@ -174,18 +174,27 @@
               .SkipToContent {
                 display: none;
               }
-
-
-              .FacebookConnectButton__icon {
-
+              .FacebookConnectButton__icon{
+                background-color: #3b5998;
+                height: 45px;
+                display: inline-block;
+                position: relative;
+                text-decoration: none;
+                border-radius: 4px;
+              }
+              .FacebookConnectButton__icon:after {
+                    content: "";
+                    position: absolute;
+                    top: 11px;
+                    left: 11px;
                     width: 24px;
                     height: 24px;
-                    background: url("spritesheet3.png") -89px 0px no-repeat;
+                    background: url("/assets/spritesheet3.png") -89px 0px no-repeat;
               }
               @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
                 .FacebookConnectButton__icon {
 
-                    background-image: url("spritesheet4.png");
+                    background-image: url("/assets/spritesheet4.png");
                     background-position:  -88px 0px;
                     background-size: 123px 102px;
                 }
@@ -251,12 +260,12 @@
 
                     width: 87px;
                     height: 21px;
-                    background: url("spritesheet3.png") 0px 0px no-repeat;
+                    background: url("/assets/spritesheet3.png") 0px 0px no-repeat;
               }
               @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
                 .PinterestLogo {
 
-                    background-image: url("spritesheet4.png");
+                    background-image: url("/assets/spritesheet4.png");
                     background-position:  0px 0px;
                     background-size: 123px 102px;
                 }
@@ -332,13 +341,13 @@
 
                     width: 14px;
                     height: 14px;
-                    background: url("spritesheet3.png") -86px -75px no-repeat;
+                    background: url("/assets/spritesheet3.png") -86px -75px no-repeat;
               }
               .Gender__infoIconLight {
 
                     width: 14px;
                     height: 14px;
-                    background: url("spritesheet3.png") -64px -91px no-repeat;
+                    background: url("/assets/spritesheet3.png") -64px -91px no-repeat;
               }
               .Gender__infoIconLight:focus {
                 outline:none;
@@ -350,24 +359,24 @@
 
                     width: 15px;
                     height: 15px;
-                    background: url("spritesheet3.png") -31px -91px no-repeat;
+                    background: url("/assets/spritesheet3.png") -31px -91px no-repeat;
               }
               @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
                 .Gender__infoIconDark {
 
-                    background-image: url("spritesheet4.png");
+                    background-image: url("/assets/spritesheet4.png");
                     background-position:  -83px -72px;
                     background-size: 123px 102px;
                 }
                 .Gender__infoIconLight {
 
-                    background-image: url("spritesheet4.png");
+                    background-image: url("/assets/spritesheet4.png");
                     background-position:  -30px -87px;
                     background-size: 123px 102px;
                 }
                 .Gender__iconSearchClear {
 
-                    background-image: url("spritesheet4.png");
+                    background-image: url("/assets/spritesheet4.png");
                     background-position:  -88px -50px;
                     background-size: 123px 102px;
                 }
@@ -377,12 +386,12 @@
 
                     width: 14px;
                     height: 14px;
-                    background: url("spritesheet3.png") -48px -91px no-repeat;
+                    background: url("/assets/spritesheet3.png") -48px -91px no-repeat;
               }
               @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
                 .InputField__errorIcon {
 
-                    background-image: url("spritesheet4.png");
+                    background-image: url("/assets/spritesheet4.png");
                     background-position:  -98px -72px;
                     background-size: 123px 102px;
                 }
@@ -441,12 +450,12 @@
 
                     width: 38px;
                     height: 38px;
-                    background: url("spritesheet3.png") 0px -23px no-repeat;
+                    background: url("/assets/spritesheet3.png") 0px -23px no-repeat;
               }
               @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
                 .GoogleConnectButton__icon {
 
-                    background-image: url("spritesheet4.png");
+                    background-image: url("/assets/spritesheet4.png");
                     background-position:  0px -22px;
                     background-size: 123px 102px;
                 }
@@ -467,7 +476,7 @@
               }
 
               .loadingSpinner {
-                background-image: url("spinner-medium.gif");
+                background-image: url("/assets/spinner-medium.gif");
               }
             </style>
             <div style="background-color:#eee;border-radius:6px;position:relative;text-align:center;width:335px;margin:auto;box-shadow:0 2px 10px rgba(0,0,0,0.45);" data-reactid="3" data-test-login="true">
@@ -479,13 +488,16 @@
                   <h3 style="font-size:28px;font-weight:bold;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;letter-spacing:-1px;" data-reactid="8">他のピンを見るにはログインしてください</h3>
                 </div>
                 <div style="margin: 0px auto; width: 268px;">
-                  <div>
-                    <div style="height: 50px;">
-                      <div class="fb-login-button fb_iframe_widget" data-scope="public_profile,email,user_likes,user_about_me,user_birthday,user_friends" onlogin="checkLoginState" login_text="" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=274266067164&amp;container_width=268&amp;locale=ja_JP&amp;scope=public_profile%2Cemail%2Cuser_likes%2Cuser_about_me%2Cuser_birthday%2Cuser_friends&amp;sdk=joey">
+                  <!-- <div> -->
+                  <div style="height: 50px;">
+                    <%= link_to  user_facebook_omniauth_authorize_path, class: "FacebookConnectButton__icon", style: "vertical-align: bottom; width: 268px;" do %>
+                      <div style="color: #ffffff;    position: relative; top: 11px;  font-size: 15px; text-align: center; margin: 0 20px 0 50px; border: none;">Facebookでログイン</div>
+                    <% end %>
+                      <!-- <div class="fb-login-button fb_iframe_widget" data-scope="public_profile,email,user_likes,user_about_me,user_birthday,user_friends" onlogin="checkLoginState" login_text="" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=274266067164&amp;container_width=268&amp;locale=ja_JP&amp;scope=public_profile%2Cemail%2Cuser_likes%2Cuser_about_me%2Cuser_birthday%2Cuser_friends&amp;sdk=joey">
                         <span style="vertical-align: bottom; width: 268px; height: 50px;">
-                          <iframe name="f1b0f5815da953" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:login_button Facebook Social Plugin" src="https://www.facebook.com/v2.7/plugins/login_button.php?app_id=274266067164&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FiPrOY23SGAp.js%3Fversion%3D42%23cb%3Df2ac0345bdefad8%26domain%3Djp.pinterest.com%26origin%3Dhttps%253A%252F%252Fjp.pinterest.com%252Ff34c35f1bdcafc%26relation%3Dparent.parent&amp;container_width=268&amp;locale=ja_JP&amp;scope=public_profile%2Cemail%2Cuser_likes%2Cuser_about_me%2Cuser_birthday%2Cuser_friends&amp;sdk=joey" style="border: none; visibility: visible; width: 268px; height: 50px;" class=""></iframe>
+                          <iframe name="f1b0f5815da953" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:login_button Facebook Social Plugin" src="https://www.facebook.com/v2.7/plugins/login_button.phpsdk=joey" style="border: none; visibility: visible; width: 268px; height: 50px;" class=""></iframe>
                         </span>
-                      </div>
+                      </div> -->
                     </div>
                     <div style="height: 5px;"></div>
                     <!-- <button class="GoogleConnectButton" type="button" data-gapiattached="true" style="border: 0px; height: 40px; display: block; border-radius: 2px; -webkit-font-smoothing: antialiased; padding: 1px; font-size: 15px; font-weight: bold; outline: none; position: relative; box-shadow: none; cursor: pointer; margin-top: 0px; vertical-align: middle; text-align: left; margin-bottom: 9px; margin-right: 0px; background-clip: padding-box; transition: opacity 0.2s linear; width: 100%; background-color: rgb(66, 133, 244);">
@@ -493,15 +505,16 @@
                       <span style="color: rgb(255, 255, 255); text-shadow: rgba(0, 0, 0, 0.247059) 0px -1px; margin: 10px 0px 0px 20px; display: inline-block; font-family: &quot;Helvetica Neue&quot;, Helvetica, &quot;ヒラギノ角ゴ Pro W3&quot;, &quot;Hiragino Kaku Gothic Pro&quot;, メイリオ, Meiryo, &quot;ＭＳ Ｐゴシック&quot;, arial, sans-serif; vertical-align: top;">Google でログイン</span>
                     </button> -->
                     <p class="AlternativesSeparator" style="margin-bottom: 10px; overflow: hidden; text-align: center; color: rgb(0, 0, 0); font-weight: bold;">または</p>
-                  </div>
-                  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                  <!-- </div> -->
+                  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { novalidate: true }) do |f| %>
                   <!-- <form method="POST" novalidate=""> -->
                     <fieldset style="position: relative; margin-bottom: 7px;">
-                      <%= f.email_field :email, autocomplete: "username", placeholder: "メールアドレス", style: "background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;" %>
+                      <%= f.email_field :email, autocomplete: "username", placeholder: "メールアドレス", required: "true", style: "background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;" %>
+                      <%= apphelper_show_flash_massage(alert) if alert %>
                       <!-- <input type="email" autocomplete="username" name="id" placeholder="メールアドレス" value="" style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;"> -->
                     </fieldset>
                     <fieldset style="position: relative;">
-                      <%= f.password_field :password, autocomplete: "current-password", minlength: "6", placeholder: "パスワード", style: "background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;" %>
+                      <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", style: "background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;" %>
                       <!-- <input type="password" autocomplete="current-password" name="password" placeholder="パスワード" value="" style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;"> -->
                     </fieldset>
                     <%= f.submit "ログイン", class: "red SignupButton", style: "border: 0px; height: 36px; display: inline-block; border-radius: 4px; -webkit-font-smoothing: antialiased; padding: 0px 18px; font-size: 15px; font-weight: bold; outline: none; position: relative; box-shadow: none; cursor: pointer; margin-top: 10px; vertical-align: middle; text-align: center; background-color: rgb(189, 8, 28); color: rgb(255, 255, 255); width: 100%;" %>
