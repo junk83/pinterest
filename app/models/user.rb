@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  mount_uploader :image, ImageUploader
+
   def self.find_for_oauth(auth)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
