@@ -9,6 +9,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <!-- <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> -->
+    <div class="App AppBase Module full" data-component-type="17">
+      <%= render partial: "layouts/header" if current_user %>
+      <%= yield %>
+    </div>
   </body>
 </html>
