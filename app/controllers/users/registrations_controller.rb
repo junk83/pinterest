@@ -6,6 +6,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.valid?
       render :register
     else
+      set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+      expire_data_after_sign_in!
       render :new
     end
   end
@@ -18,4 +20,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
       super
     end
   end
+
 end
