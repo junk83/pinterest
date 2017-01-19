@@ -1,0 +1,114 @@
+.Modal__Overlay {
+  -webkit-box-align: center;
+  align-items: center;
+  // background-color: rgba(226,228,228,0.9);
+  bottom: 0;
+  // display: -webkit-box;
+  // display: -webkit-flex;
+  // display: -ms-flexbox;
+  display: flex;
+  left: 0;
+  overflow-y: scroll;
+  padding: 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 751;
+
+  background-color: rgba(0,0,0,0.6);
+  opacity: 0;
+}
+
+.Modal__Content {
+  border-radius: 6px;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+  margin: auto;
+  max-height: 100%;
+  position: relative;
+
+  .formFooter {
+    background: #fff;
+
+    .Button.rounded:not(.primary) {
+      background-image: none !important;
+      border: none !important;
+      border-radius: 4px !important;
+      // -webkit-box-shadow: none !important;
+      box-shadow: none !important;
+      padding: 10px 14px !important;
+      position: relative !important;
+      text-shadow: none !important;
+
+      .buttonText {
+        -webkit-font-smoothing: antialiased;
+        font-size: 14px;
+        letter-spacing: -0.15px;
+        line-height: 16px;
+        word-spacing: 0;
+
+        font-weight: bold;
+
+        color: #555 !important;
+      }
+    }
+  }
+}
+
+.UserChangePassword {
+  width: 530px;
+}
+
+.inModal {
+  .standardForm {
+    background-color: #fff;
+    border-radius: 6px;
+    // margin-bottom: 0;
+    width: auto;
+
+    &>h1 {
+      // border-bottom: 1px solid #e7e7e7;
+      color: #333;
+      font-size: 20px;
+      margin: 0;
+      min-height: 20px;
+      padding: 17px 18px 13px 18px;
+      position: relative;
+    }
+
+    &>ul>li {
+      padding-left: 18px;
+      padding-right: 21px;
+
+      &>h3 {
+        width: 130px;
+      }
+
+      &>div {
+        margin-left: 140px;
+      }
+    }
+  }
+}
+
+.modalHasClose {
+  .standardForm {
+    &>h1 {
+      padding-right: 50px;
+    }
+  }
+}
+
+.Button.closeModal, .Button.closeDialog {
+  margin: -6px;
+  padding: 6px;
+  position: absolute;
+  right: 18px;
+  top: 22px;
+
+  em {
+    width: 12px;
+    height: 12px;
+    background: url(webapp-common-main-1x.png) -261px -242px no-repeat;
+  }
+}
