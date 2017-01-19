@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     post 'users/sign_up/register' => 'users/registrations#register'
   end
 
-  resources :users, only:[:show, :edit, :update]
+  resources :users, only:[:show, :edit, :update] do
+    collection do
+      patch 'update_password'
+    end
+  end
   root 'pins#index'
 end
