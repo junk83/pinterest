@@ -27,22 +27,26 @@
           </li>
         </ul>
         <!-- react-empty: 57 -->
-        <form class="standardForm" method="post" novalidate="" data-reactid="58" style="height: 3485px;">
+        <%= form_for @user, html: { class: "standardForm", novalidate: true, style: "height: 3485px;" } do |f| %>
+        <!-- <form class="standardForm" method="post" novalidate="" data-reactid="58" style="height: 3485px;"> -->
           <ul data-reactid="59">
             <li class="sectionTitle" id="accountBasics" data-reactid="60">
               <h2 data-reactid="61">アカウント情報</h2>
             </li>
             <li data-reactid="62">
               <h3 data-reactid="63">
-                <label class="settingLabel" for="accountBasicsEmail" data-reactid="64">メールアドレス</label>
+                <%= f.label "メールアドレス", class: "settingLabel", for: "accountBasicsEmail" %>
+                <!-- <label class="settingLabel" for="accountBasicsEmail" data-reactid="64">メールアドレス</label> -->
               </h3>
               <div data-reactid="65">
-                <input type="text" class="" id="accountBasicsEmail" name="email" value="drivethruprm83@yahoo.co.jp" data-reactid="66">
+                <%= f.text_field :email, id: "accountBasicsEmail"%>
+                <!-- <input type="text" class="" id="accountBasicsEmail" name="email" value="drivethruprm83@yahoo.co.jp" data-reactid="66"> -->
               </div>
             </li>
             <li data-reactid="67">
               <h3 data-reactid="68">
-                <label class="settingLabel" data-reactid="69">パスワード</label>
+                <%= f.label "パスワード", class: "settingLabel"%>
+                <!-- <label class="settingLabel" data-reactid="69">パスワード</label> -->
               </h3>
               <div data-reactid="70">
                 <button aria-label="パスワードを変更" class="changePasswordButton ShowModalButton Button Module hasText rounded borderless" type="button" data-reactid="71">
@@ -356,7 +360,8 @@
             </li>
             <li data-reactid="367">
               <h3 data-reactid="368">
-                <label class="settingLabel" data-reactid="369">性別</label>
+                <%= f.label "性別", class: "settingLabel" %>
+                <!-- <label class="settingLabel" data-reactid="369">性別</label> -->
               </h3>
               <div data-reactid="370">
                 <div class="fieldsetWrapper" data-reactid="371">
@@ -364,26 +369,30 @@
                     <ul data-reactid="373">
                       <li data-reactid="374">
                         <label data-reactid="375">
-                          <input type="radio" name="gender" value="male" data-reactid="376">
+                          <%= f.radio_button :gender, 'male' %>
+                          <!-- <input type="radio" name="gender" value="male" data-reactid="376"> -->
                           <span class="gender" data-reactid="377">男性</span>
                         </label>
                       </li>
                       <li data-reactid="378">
                         <label data-reactid="379">
-                          <input type="radio" name="gender" value="female" data-reactid="380">
+                          <%= f.radio_button :gender, 'female' %>
+                          <!-- <input type="radio" name="gender" value="female" data-reactid="380"> -->
                           <span class="gender" data-reactid="381">女性</span>
                         </label>
                       </li>
                       <li data-reactid="382">
                         <label data-reactid="383">
-                          <input type="radio" name="gender" value="unspecified" data-reactid="384" checked="">
+                          <%= f.radio_button :gender, 'unspecified', checked: @checked  %>
+                          <!-- <input type="radio" name="gender" value="unspecified" data-reactid="384" checked=""> -->
                           <span class="gender" data-reactid="385">カスタム</span>
                         </label>
                       </li>
                     </ul>
                   </fieldset>
                 </div>
-                <input type="text" class="customGender" name="custom_gender" placeholder="性別を入力" value="" data-reactid="386">
+                <%= f.text_field :gender, class: "customGender", placeholder: "性別を入力" %>
+                <!-- <input type="text" class="customGender" name="custom_gender" placeholder="性別を入力" value="" data-reactid="386"> -->
               </div>
             </li>
             <li data-reactid="387">
@@ -491,65 +500,82 @@
             </li>
             <li data-reactid="447">
               <h3 data-reactid="448">
-                <label class="settingLabel" for="userFirstName" data-reactid="449">名前</label>
+                <%= f.label "名前", class: "settingLabel", for: "userFirstName" %>
+                <!-- <label class="settingLabel" for="userFirstName" data-reactid="449">名前</label> -->
               </h3>
               <div data-reactid="450">
                 <div data-reactid="451">
-                  <input type="text" class="name first" id="userFirstName" name="first_name" value="drive" data-reactid="452">
+                  <%= f.text_field :first_name, class: "name first", id: "userFirstName"%>
+                  <!-- <input type="text" class="name first" id="userFirstName" name="first_name" value="drive" data-reactid="452"> -->
                   <label class="visuallyHidden" for="userLastName" data-reactid="453">姓</label>
-                  <input type="text" class="name last" id="userLastName" name="last_name" value="" data-reactid="454">
+                  <%= f.text_field :last_name, class: "name last", id: "userLastName" %>
+                  <!-- <input type="text" class="name last" id="userLastName" name="last_name" value="" data-reactid="454"> -->
                 </div>
               </div>
             </li>
             <li data-reactid="455">
               <h3 data-reactid="456">
-                <label class="settingLabel" data-reactid="457">写真</label>
+                <%= f.label "写真", class: "settingLabel"%>
+                <!-- <label class="settingLabel" data-reactid="457">写真</label> -->
               </h3>
               <div data-reactid="458">
                 <div data-reactid="459">
                   <div class="profileImageWrapper" data-reactid="460">
-                    <img alt="プロフィール写真" class="profileImage" src="https://s-media-cache-ak0.pinimg.com/avatars/drivethruprm83_1484208313_75.jpg" data-reactid="461">
+                    <% if @user.image.url %>
+                      <%= image_tag @user.image.url, alt: "プロフィール写真", class: "profileImage" %>
+                    <% else %>
+                      <%= image_tag "", class:"changePhoto Button Module btn hasText rounded" ,alt: "プロフィール写真"%>
+                    <% end %>
+                    <!-- <img alt="プロフィール写真" class="profileImage" src="https://s-media-cache-ak0.pinimg.com/avatars/drivethruprm83_1484208313_75.jpg" data-reactid="461"> -->
                   </div>
-                  <button aria-label="写真を変更" class="changePhoto Button Module btn hasText rounded" type="button" data-reactid="462">
+                  <%= f.file_field :image , class: "changePhoto Button Module btn hasText rounded" %>
+                  <!-- <button aria-label="写真を変更" class="changePhoto Button Module btn hasText rounded" type="button" data-reactid="462">
                     <span class="buttonText" data-reactid="463">写真を変更</span>
-                  </button>
+                  </button> -->
                 </div>
               </div>
             </li>
             <li data-reactid="464">
               <h3 data-reactid="465">
-                <label class="settingLabel" for="userUserName" data-reactid="466">ユーザー名</label>
+                <%= f.label "ユーザー名", class: "settingLabel", for: "userUserName" %>
+                <!-- <label class="settingLabel" for="userUserName" data-reactid="466">ユーザー名</label> -->
               </h3>
               <div data-reactid="467">
                 <div data-reactid="468">
                   <span class="domain" title="www.pinterest.com/" data-reactid="469">www.pinterest.com/</span>
-                  <input type="text" class="username" id="userUserName" name="username" value="drivethruprm83" data-reactid="470">
+                  <%= f.text_field :user_name, class: "username", id: "userUserName" %>
+                  <!-- <input type="text" class="username" id="userUserName" name="username" value="drivethruprm83" data-reactid="470"> -->
                 </div>
               </div>
             </li>
             <li data-reactid="471">
               <h3 data-reactid="472">
-                <label class="settingLabel" for="userAbout" data-reactid="473">自己紹介</label>
+                <%= f.label "自己紹介", class: "settingLabel", for: "userAbout" %>
+                <!-- <label class="settingLabel" for="userAbout" data-reactid="473">自己紹介</label> -->
               </h3>
               <div data-reactid="474">
                 <div data-reactid="475">
-                  <textarea class="" id="userAbout" name="about" data-reactid="476"></textarea>
+                  <%= f.text_area :about, id: "userAbout" %>
+                  <!-- <textarea class="" id="userAbout" name="about" data-reactid="476"></textarea> -->
                 </div>
               </div>
             </li>
             <li data-reactid="477">
               <h3 data-reactid="478">
-                <label class="settingLabel" for="userLocation" data-reactid="479">居住都市</label>
+                <%= f.label "居住都市", class: "settingLabel", for: "userLocation" %>
+                <!-- <label class="settingLabel" for="userLocation" data-reactid="479">居住都市</label> -->
               </h3>
               <div data-reactid="480">
                 <div data-reactid="481">
-                  <input type="text" id="userLocation" name="location" value="" data-reactid="482">
+                  <%= f.text_field :location, id: "userLocation" %>
+                  <!-- <input type="text" id="userLocation" name="location" value="" data-reactid="482"> -->
                 </div>
               </div>
             </li>
             <li data-reactid="483">
               <h3 data-reactid="484">
-                <label class="settingLabel" for="userWebsite" data-reactid="485">ウェブサイト</label>
+                <%= f.label "ウェブサイト", class: "settingLabel", for: "userWebsite" %>
+                <!-- <label class="settingLabel" for="userWebsite" data-reactid="485">ウェブサイト</label> -->
               </h3>
               <div data-reactid="486">
                 <div class="Module UserEditVerifyWebsite" data-reactid="487">
@@ -557,7 +583,8 @@
                     <span class="buttonText" data-reactid="489">ウェブサイトを確認</span>
                   </button>
                   <div class="fillWidth" data-reactid="490">
-                    <input type="url" class="website" id="userWebsite" name="website_url" value="" data-reactid="491">
+                    <%= f.text_field :website_url, class: "website", id: "userWebsite" %>
+                    <!-- <input type="url" class="website" id="userWebsite" name="website_url" value="" data-reactid="491"> -->
                   </div>
                 </div>
               </div>
@@ -972,12 +999,68 @@
                 <span class="buttonText" data-reactid="737">キャンセル</span>
               </button>
               <button aria-label="設定を保存" class="formFooterButton confirmButton Button Module btn hasText rounded primary" type="button" data-reactid="738">
-                <span class="buttonText" data-reactid="739">設定を保存</span>
+                <%= f.submit "設定を保存", class: "buttonText" %>
+                <!-- <span class="buttonText" data-reactid="739">設定を保存</span> -->
               </button>
             </div>
           </div>
-        </form>
+        <% end %>
+        <!-- </form> -->
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="ModalPortal">
+  <div data-reactroot="" class="Modal__Overlay Modal__Overlay--after-open">
+    <div class="Modal__Content Modal__Content--after-open UserChangePassword Module Modal__Content inModal modalHasClose" tabindex="-1">
+      <form class="standardForm" method="post" style="padding: 0px; margin: 0px;">
+        <h1>パスワードを変更する</h1>
+        <ul style="margin: 0px; border-radius: 0px; box-shadow: none;">
+          <li>
+            <h3>
+              <label class="settingLabel">現在のパスワード</label>
+            </h3>
+            <div>
+              <input type="password" class="" id="changePasswordOld" name="old" value="">
+              <button aria-label="お忘れになりましたか？" class="Button Module hasText rounded borderless" type="button">
+                <span class="buttonText">お忘れになりましたか？</span>
+              </button>
+            </div>
+          </li>
+          <li>
+            <h3>
+              <label class="settingLabel">新しいパスワード</label>
+            </h3>
+            <div>
+              <input type="password" class="" id="changePasswordNew" name="new" value="">
+            </div>
+          </li>
+          <li>
+            <h3>
+              <label class="settingLabel">再入力してください</label>
+            </h3>
+            <div>
+              <input type="password" class="" id="changePasswordNewConfirm" name="new_confirm" value="">
+            </div>
+          </li>
+        </ul>
+        <div class="formFooter" style="border-top-left-radius: 0px; border-top-right-radius: 0px; box-shadow: none;">
+          <div class="formFooterButtons">
+            <button aria-label="キャンセル" class="Button Module btn hasText rounded" type="button">
+              <span class="buttonText">キャンセル</span>
+            </button>
+            <button aria-label="パスワードの変更" class="Button Module btn hasText rounded disabled" disabled="" type="submit">
+              <span class="buttonText">パスワードの変更</span>
+            </button>
+          </div>
+        </div>
+      </form>
+      <button class="Button Module borderless cancelButton closeModal inModal show" type="button">
+        <em></em>
+        <!-- react-text: 31 -->&nbsp;
+        <!-- /react-text -->
+      </button>
     </div>
   </div>
 </div>
