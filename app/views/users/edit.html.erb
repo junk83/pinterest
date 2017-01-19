@@ -1014,15 +1014,18 @@
 <div class="ModalPortal">
   <div data-reactroot="" class="Modal__Overlay Modal__Overlay--after-open">
     <div class="Modal__Content Modal__Content--after-open UserChangePassword Module Modal__Content inModal modalHasClose" tabindex="-1">
-      <form class="standardForm" method="post" style="padding: 0px; margin: 0px;">
+      <%= form_for @user, url: update_password_users_path(@user), html: { class: "standardForm", style: "padding: 0px; margin: 0px;"} do |f| %>
+      <!-- <form class="standardForm" method="post" style="padding: 0px; margin: 0px;"> -->
         <h1>パスワードを変更する</h1>
         <ul style="margin: 0px; border-radius: 0px; box-shadow: none;">
           <li>
             <h3>
-              <label class="settingLabel">現在のパスワード</label>
+              <%= f.label "現在のパスワード", class: "settingLabel" %>
+              <!-- <label class="settingLabel">現在のパスワード</label> -->
             </h3>
             <div>
-              <input type="password" class="" id="changePasswordOld" name="old" value="">
+              <%= f.text_field :current_password, id: "changePasswordOld" %>
+              <!-- <input type="password" class="" id="changePasswordOld" name="old" value=""> -->
               <button aria-label="お忘れになりましたか？" class="Button Module hasText rounded borderless" type="button">
                 <span class="buttonText">お忘れになりましたか？</span>
               </button>
@@ -1030,18 +1033,22 @@
           </li>
           <li>
             <h3>
-              <label class="settingLabel">新しいパスワード</label>
+              <%= f.label "新しいパスワード", class: "settingLabel" %>
+              <!-- <label class="settingLabel">新しいパスワード</label> -->
             </h3>
             <div>
-              <input type="password" class="" id="changePasswordNew" name="new" value="">
+              <%= f.text_field :password, id: "changePasswordNew" %>
+              <!-- <input type="password" class="" id="changePasswordNew" name="new" value=""> -->
             </div>
           </li>
           <li>
             <h3>
-              <label class="settingLabel">再入力してください</label>
+              <%= f.label "再入力してください", class: "settingLabel" %>
+              <!-- <label class="settingLabel">再入力してください</label> -->
             </h3>
             <div>
-              <input type="password" class="" id="changePasswordNewConfirm" name="new_confirm" value="">
+              <%= f.text_field :password_confirmation, id: "changePasswordNewConfirm" %>
+              <!-- <input type="password" class="" id="changePasswordNewConfirm" name="new_confirm" value=""> -->
             </div>
           </li>
         </ul>
@@ -1050,12 +1057,14 @@
             <button aria-label="キャンセル" class="Button Module btn hasText rounded" type="button">
               <span class="buttonText">キャンセル</span>
             </button>
-            <button aria-label="パスワードの変更" class="Button Module btn hasText rounded disabled" disabled="" type="submit">
+            <%= f.submit "パスワードの変更", class: "Button Module btn hasText rounded" %>
+            <!-- <button aria-label="パスワードの変更" class="Button Module btn hasText rounded disabled" disabled="" type="submit">
               <span class="buttonText">パスワードの変更</span>
-            </button>
+            </button> -->
           </div>
         </div>
-      </form>
+      <% end %>
+      <!-- </form> -->
       <button class="Button Module borderless cancelButton closeModal inModal show" type="button">
         <em></em>
         <!-- react-text: 31 -->&nbsp;
