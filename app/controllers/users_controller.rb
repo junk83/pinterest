@@ -1,14 +1,21 @@
 class UsersController < ApplicationController
-  before_action :get_user, only: [:show, :edit]
+  before_action :get_user, only: [:show, :edit, :update]
 
   def show
   end
 
   def edit
-
+    if @user.gender != 'male' && @user.gender != 'female'
+      @checked = true
+    end
   end
 
   def update
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   private
