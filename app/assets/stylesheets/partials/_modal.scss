@@ -6,7 +6,7 @@
   // display: -webkit-box;
   // display: -webkit-flex;
   // display: -ms-flexbox;
-  display: flex;
+  display: none;
   left: 0;
   overflow-y: scroll;
   padding: 20px;
@@ -16,7 +16,7 @@
   z-index: 751;
 
   background-color: rgba(0,0,0,0.6);
-  opacity: 0;
+  opacity: 1;
 }
 
 .Modal__Content {
