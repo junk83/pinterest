@@ -55,8 +55,29 @@ $(function() {
     }
   };
 
+  /**
+  * モーダルウインドウの表示
+  */
+  var modalOpen = function(){
+    var current_scrollY = $(window).scrollTop();
+    $('.Modal__Overlay').css('display', 'flex');
+    // 背景を固定する
+    $('.UserSettingsPage').css({ position: 'fixed', width: '100%', top: -current_scrollY + 64 });
+  };
+
+  /**
+  * モーダルウインドウを閉じる
+  */
+  var modalClose = function(){
+    $('.Modal__Overlay').css('display', 'none');
+    // 背景の固定を解除する
+    $('.UserSettingsPage').attr({style: ''});
+  };
+
   // 実行
   $(document).on('click', 'a[href^="#"]', pageScroll);
   $(document).on('scroll', scrollMenu);
+  $(document).on('click', '.changePasswordButton', modalOpen);
+  $(document).on('click', '.cancelButton', modalClose);
 
 });
