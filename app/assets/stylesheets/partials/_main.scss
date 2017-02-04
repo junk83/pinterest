@@ -25,27 +25,36 @@
     margin-bottom: 14px;
     padding-bottom: 4px;
   }
+
+  &.variableHeightLayout > .item {
+    position: absolute;
+    opacity: 0;
+    padding-top: 10px;
+    width: 236px;
+  }
+
   &.padItems {
-    &.variableHeightLayout{
-      &>.item {
-        margin: 0;
-        padding: 24px 12px;
-        width: 236px;
-      }
-    }
-  }
-  &.variableHeightLayout{
     &>.item{
-      position: absolute;
+      margin: 14px 7px 0 7px;
+      width: 236px;
+    }
+    &.variableHeightLayout > .item {
       margin: 0;
+      padding: 24px 12px;
+      width: 236px;
     }
   }
+
+  &.animated .item {
+    transition: transform .2s ease-out;
+  }
+
 }
 
 .item {
-  display: flex;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
+  // display: flex;
+  // -webkit-box-pack: justify;
+  // justify-content: space-between;
 }
 
 .Pin {
@@ -60,6 +69,11 @@
   }
 
   &.summary {
+    width: 236px;
+    background: #fff;
+    border-radius: 6px;
+    display: inline-block;
+
     &:not(.hideHoverUI) {
       cursor: zoom-in;
       margin: -10px;
@@ -103,10 +117,6 @@
         }
       }
     }
-    width: 236px;
-    background: #fff;
-    border-radius: 6px;
-    display: inline-block;
 
     .rightSideButtonsWrapper{
       background-clip: padding-box;
@@ -460,7 +470,7 @@
       .repinIconSmall {
         width: 6px;
         height: 11px;
-        background: url(spritesheet.png) -423px -12px no-repeat;
+        background: url(webapp-common-above_the_fold-1x.png) -423px -12px no-repeat;
       }
       .socialMetaCount {
         font-size: 11px;
@@ -479,7 +489,7 @@
         em {
           width: 20px;
           height: 20px;
-          background: url(spritesheet.png) 0px -372px no-repeat;
+          background: url(webapp-common-above_the_fold-1x.png) 0px -372px no-repeat;
         }
       }
     }
@@ -597,6 +607,41 @@
       .hidePinInfo {
         float: right;
       }
+    }
+
+    &.cloned {
+      display: block;
+      z-index: 999999999;
+
+      .leftSideButtonsWrapper, .rightSideButtonsWrapper {
+        display: none;
+      }
+
+      .pinMeta {
+        cursor: text;
+        margin-right: 30px;
+      }
+
+      &.editingDescription
+        .pinMeta {
+          margin-right: 0;
+        }
+
+        .editingDescription {
+          display: none;
+        }
+
+        .pinDescriptionInput {
+          &:hover {
+            background: #e3e9ed;
+          }
+          width: 206px;
+        }
+    }
+
+    .pinWrapper {
+      border-radius: 6px;
+      position: relative;
     }
   }
   .pinImageWrapper {
@@ -756,6 +801,27 @@
     padding-right: 8px;
     margin-bottom: 6px;
   }
+
+  &.editingDescription .pinDescriptionInput {
+    display: block !important;
+    min-height: 17px;
+  }
+}
+
+.Pin.summary.cloned .pinDescriptionInput, .Pin.summary.cloned .pinDescription {
+  background: #fff;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  line-height: 17px;
+  outline: none;
+  overflow-x: hidden;
+  resize: none;
+  width: 190px;
+}
+
+.Pin .TextField .pinDescriptionInput.content.autogrow, .Pin .TextField .pinDescriptionInput:focus.content.autogrow {
+    overflow-y: scroll;
 }
 
 .centeredWithinWrapper {
@@ -778,5 +844,95 @@
         position: static;
       }
     }
+  }
+}
+
+.clearfix {
+  &:before {
+    content: " ";
+    display: table;
+  }
+}
+
+.Dropdown {
+  cursor: default;
+  text-align: left;
+
+  &.positionModuleElement.active {
+    min-height: 0;
+  }
+}
+
+.PositionModule>.Module {
+  display: none;
+}
+
+.AddPin.isDropdown {
+  overflow: hidden;
+  border-radius: 6px;
+  max-width: 230px;
+  width: auto;
+}
+
+.positionModuleElement {
+  -webkit-transform: translateZ(0);
+  background: #fff;
+  border-radius: 6px;
+  -webkit-box-shadow: -3 2px 0 0 rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 0 0 rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.07);
+  display: none;
+  position: absolute;
+  z-index: 685;
+
+  &>.Module {
+    display: block;
+  }
+
+  &.defaultCaret.positionLeft {
+    margin-left: -11px;
+
+    .positionModuleCaret {
+      width: 11px;
+      height: 20px;
+      background: url(webapp-common-main-1x.png) -258px -132px no-repeat;
+      right: -10px;
+    }
+  }
+
+  &.active {
+    display: block;
+    min-height: 50px;
+    min-width: 50px;
+  }
+
+  .positionModuleCaret {
+    position: absolute;
+    z-index: 686;
+  }
+
+  &.positionModuleFixed {
+    position: fixed;
+    z-index: 686;
+
+    .positionModuleCaret {
+      z-index: 687;
+    }
+  }
+}
+
+.Module.slideIn {
+  animation: menu-slide-in-up 0.3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes menu-slide-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

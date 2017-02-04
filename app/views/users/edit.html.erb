@@ -1,0 +1,1076 @@
+<div class="appContent">
+  <div class="mainContainer">
+    <div>
+      <div class="Nags"></div>
+    </div>
+    <div class="Module UserSettingsPage" >
+      <div ></div>
+      <div class="tocAndFormWrapper" >
+        <ul class="toc" >
+          <li role="button" tabindex="0"  class="selected">
+            <a href="#accountBasics" >アカウント情報</a>
+          </li>
+          <li role="button" tabindex="0" >
+            <a href="#profile" >プロフィール</a>
+          </li>
+          <li role="button" tabindex="0" >
+            <a href="#notifications" >お知らせ</a>
+          </li>
+          <li role="button" tabindex="0" >
+            <a href="#homefeedCustomization" >ホームフィード</a>
+          </li>
+          <li role="button" tabindex="0" >
+            <a href="#socialNetworks" >SNSアカウント</a>
+          </li>
+          <li role="button" tabindex="0" >
+            <a href="#apps" >アプリ</a>
+          </li>
+        </ul>
+        <!-- react-empty: 57 -->
+        <%= form_for @user, html: { class: "standardForm", novalidate: true, style: "height: 3485px;" } do |f| %>
+        <!-- <form class="standardForm" method="post" novalidate=""  style="height: 3485px;"> -->
+          <ul >
+            <li class="sectionTitle" id="accountBasics" >
+              <h2 >アカウント情報</h2>
+            </li>
+            <li >
+              <h3 >
+                <%= f.label "メールアドレス", class: "settingLabel", for: "accountBasicsEmail" %>
+                <!-- <label class="settingLabel" for="accountBasicsEmail" >メールアドレス</label> -->
+              </h3>
+              <div >
+                <%= f.text_field :email, id: "accountBasicsEmail"%>
+                <!-- <input type="text" class="" id="accountBasicsEmail" name="email" value="drivethruprm83@yahoo.co.jp" > -->
+              </div>
+            </li>
+            <li >
+              <h3 >
+                <%= f.label "パスワード", class: "settingLabel"%>
+                <!-- <label class="settingLabel" >パスワード</label> -->
+              </h3>
+              <div >
+                <button aria-label="パスワードを変更" class="changePasswordButton ShowModalButton Button Module hasText rounded borderless" type="button" >
+                  <span class="buttonText" >パスワードを変更</span>
+                </button>
+              </div>
+            </li>
+            <li >
+              <h3 >
+                <label class="settingLabel" for="accountBasicsLanguage" >言語</label>
+              </h3>
+              <div >
+                <div >
+                  <select class="Module Select" id="accountBasicsLanguage" name="locale" >
+                    <option value="id-ID" >Bahasa Indonesia</option>
+                    <option value="ms-MY" >Bahasa Malaysia</option>
+                    <option value="cs-CZ" >&#268;e&#353;tina</option>
+                    <option value="da-DK" >Dansk</option>
+                    <option value="de" >Deutsch</option>
+                    <option value="en-AU" >English (Australia)</option>
+                    <option value="en-IN" >English (India)</option>
+                    <option value="en-GB" >English (UK)</option>
+                    <option value="en-US" >English (US)</option>
+                    <option value="es-419" >Espa&#241;ol (Am&#233;ricas)</option>
+                    <option value="es-ES" >Espa&#241;ol (Espa&#241;a)</option>
+                    <option value="fr" >Fran&#231;ais</option>
+                    <option value="it" >Italiano</option>
+                    <option value="hu-HU" >Magyar</option>
+                    <option value="nl" >Nederlands</option>
+                    <option value="nb-NO" >Norsk bokm&#229;l</option>
+                    <option value="pl-PL" >Polski</option>
+                    <option value="pt-BR" >Portugu&#234;s (Brasil)</option>
+                    <option value="pt-PT" >Portugu&#234;s (Europeu)</option>
+                    <option value="ro-RO" >rom&#226;n&#259;</option>
+                    <option value="sk-SK" >sloven&#269;ina</option>
+                    <option value="fi-FI" data-reactid="100">suomi</option>
+                    <option value="sv-SE" data-reactid="101">Svenska</option>
+                    <option value="tl-PH" data-reactid="102">Tagalog</option>
+                    <option value="vi-VN" data-reactid="103">Ti&#7871;ng Vi&#7879;t</option>
+                    <option value="tr" data-reactid="104">T&#252;rk&#231;e</option>
+                    <option value="el-GR" data-reactid="105">ελληνικ&#940;</option>
+                    <option value="ru-RU" data-reactid="106">Русский</option>
+                    <option value="uk-UA" data-reactid="107">Укра&#1111;нська</option>
+                    <option value="hi-IN" data-reactid="108">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</option>
+                    <option value="th-TH" data-reactid="109">&#3616;&#3634;&#3625;&#3634;&#3652;&#3607;&#3618;</option>
+                    <option value="ko-KR" data-reactid="110">&#54620;&#44397;&#50612;</option>
+                    <option selected="" value="ja" data-reactid="111">日本語</option>
+                  </select>
+                </div>
+              </div>
+            </li>
+            <li data-reactid="112">
+              <h3 data-reactid="113">
+                <label class="settingLabel" for="accountBasicsCountry" data-reactid="114">居住国</label>
+              </h3>
+              <div data-reactid="115">
+                <div data-reactid="116">
+                  <select class="Module Select" id="accountBasicsCountry" name="country" data-reactid="117">
+                    <option value="IS" data-reactid="118">アイスランド (&#205;sland)</option>
+                    <option value="IE" data-reactid="119">アイルランド</option>
+                    <option value="AZ" data-reactid="120">アゼルバイジャン (Az&#601;rbaycan)</option>
+                    <option value="AF" data-reactid="121">アフガニスタン (&#1575;&#1601;&#1594;&#1575;&#1606;&#1587;&#1578;&#1575;&#1606;&#8206;)</option>
+                    <option value="US" data-reactid="122">アメリカ合衆国</option>
+                    <option value="VI" data-reactid="123">アメリカ領バージン諸島</option>
+                    <option value="AE" data-reactid="124">アラブ首長国連邦 (&#1575;&#1604;&#1573;&#1605;&#1575;&#1585;&#1575;&#1578; &#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577; &#1575;&#1604;&#1605;&#1578;&#1581;&#1583;&#1577;&#8206;)</option>
+                    <option value="AW" data-reactid="125">アルーバ</option>
+                    <option value="DZ" data-reactid="126">アルジェリア (&#1575;&#1604;&#1580;&#1586;&#1575;&#1574;&#1585;&#8206;)</option>
+                    <option value="AR" data-reactid="127">アルゼンチン</option>
+                    <option value="AL" data-reactid="128">アルバニア (Shqip&#235;ria)</option>
+                    <option value="AM" data-reactid="129">アルメニア (&#1344;&#1377;&#1397;&#1377;&#1405;&#1407;&#1377;&#1398;)</option>
+                    <option value="AI" data-reactid="130">アングィラ島</option>
+                    <option value="AO" data-reactid="131">アンゴラ</option>
+                    <option value="AG" data-reactid="132">アンティグア・バーブーダ</option>
+                    <option value="AD" data-reactid="133">アンドラ</option>
+                    <option value="YE" data-reactid="134">イエメン (&#1575;&#1604;&#1610;&#1605;&#1606;&#8206;)</option>
+                    <option value="GB" data-reactid="135">イギリス</option>
+                    <option value="IO" data-reactid="136">イギリス領インド洋地域</option>
+                    <option value="IL" data-reactid="137">イスラエル (&#1497;&#1513;&#1512;&#1488;&#1500;&#8206;)</option>
+                    <option value="IT" data-reactid="138">イタリア (Italia)</option>
+                    <option value="IQ" data-reactid="139">イラク (&#1575;&#1604;&#1593;&#1585;&#1575;&#1602;&#8206;)</option>
+                    <option value="IR" data-reactid="140">イラン・イスラム共和国 (&#1575;&#1740;&#1585;&#1575;&#1606;&#8206;)</option>
+                    <option value="IN" data-reactid="141">インド (&#2349;&#2366;&#2352;&#2340;)</option>
+                    <option value="ID" data-reactid="142">インドネシア</option>
+                    <option value="UG" data-reactid="143">ウガンダ</option>
+                    <option value="UA" data-reactid="144">ウクライナ (Укра&#1111;на)</option>
+                    <option value="UZ" data-reactid="145">ウズベキスタン (&#1038;збекистон)</option>
+                    <option value="UY" data-reactid="146">ウルグアイ</option>
+                    <option value="EC" data-reactid="147">エクアドル</option>
+                    <option value="EG" data-reactid="148">エジプト (&#1605;&#1589;&#1585;&#8206;)</option>
+                    <option value="EE" data-reactid="149">エストニア (Eesti)</option>
+                    <option value="ET" data-reactid="150">エチオピア</option>
+                    <option value="ER" data-reactid="151">エリトリア</option>
+                    <option value="SV" data-reactid="152">エルサルバドル</option>
+                    <option value="AU" data-reactid="153">オーストラリア</option>
+                    <option value="AT" data-reactid="154">オーストリア (&#214;sterreich)</option>
+                    <option value="AX" data-reactid="155">オーランド諸島</option>
+                    <option value="OM" data-reactid="156">オマーン (&#1593;&#1615;&#1605;&#1575;&#1606;&#8206;)</option>
+                    <option value="NL" data-reactid="157">オランダ (Nederland)</option>
+                    <option value="GH" data-reactid="158">ガーナ (Gaana)</option>
+                    <option value="CV" data-reactid="159">カーボベルデ (Kabu Verdi)</option>
+                    <option value="GG" data-reactid="160">ガーンジー島</option>
+                    <option value="GY" data-reactid="161">ガイアナ</option>
+                    <option value="KZ" data-reactid="162">カザフスタン (Казахстан)</option>
+                    <option value="QA" data-reactid="163">カタール (&#1602;&#1591;&#1585;&#8206;)</option>
+                    <option value="CA" data-reactid="164">カナダ</option>
+                    <option value="GA" data-reactid="165">ガボン</option>
+                    <option value="CM" data-reactid="166">カメルーン (Cameroun)</option>
+                    <option value="GM" data-reactid="167">ガンビア</option>
+                    <option value="KH" data-reactid="168">カンボジア (&#6016;&#6040;&#6098;&#6038;&#6075;&#6023;&#6070;)</option>
+                    <option value="GN" data-reactid="169">ギニー (Guin&#233;e)</option>
+                    <option value="GW" data-reactid="170">ギニアビサウ (Guin&#233; Bissau)</option>
+                    <option value="CY" data-reactid="171">キプロス (Κ&#973;προ&#962;)</option>
+                    <option value="CU" data-reactid="172">キューバ</option>
+                    <option value="CW" data-reactid="173">キュラソー島</option>
+                    <option value="GR" data-reactid="174">ギリシャ (Ελλ&#940;δα)</option>
+                    <option value="KI" data-reactid="175">キリバス</option>
+                    <option value="KG" data-reactid="176">キルギスタン</option>
+                    <option value="GT" data-reactid="177">グアテマラ</option>
+                    <option value="GP" data-reactid="178">グアドループ島</option>
+                    <option value="GU" data-reactid="179">グアム島</option>
+                    <option value="KW" data-reactid="180">クウェート (&#1575;&#1604;&#1603;&#1608;&#1610;&#1578;&#8206;)</option>
+                    <option value="CK" data-reactid="181">クック諸島</option>
+                    <option value="GL" data-reactid="182">グリーンランド (Kalaallit Nunaat)</option>
+                    <option value="CX" data-reactid="183">クリスマス島</option>
+                    <option value="GE" data-reactid="184">グルジア (&#4321;&#4304;&#4325;&#4304;&#4320;&#4311;&#4309;&#4308;&#4314;&#4317;)</option>
+                    <option value="GD" data-reactid="185">グレナダ</option>
+                    <option value="HR" data-reactid="186">クロアチア (Hrvatska)</option>
+                    <option value="KY" data-reactid="187">ケイマン諸島</option>
+                    <option value="KE" data-reactid="188">ケニア</option>
+                    <option value="CI" data-reactid="189">コートジボワール</option>
+                    <option value="CC" data-reactid="190">ココス（キーリング）諸島</option>
+                    <option value="CR" data-reactid="191">コスタリカ</option>
+                    <option value="KM" data-reactid="192">コモロ (&#1580;&#1586;&#1585; &#1575;&#1604;&#1602;&#1605;&#1585;&#8206;)</option>
+                    <option value="CO" data-reactid="193">コロンビア</option>
+                    <option value="CG" data-reactid="194">コンゴ (Congo-Brazzaville)</option>
+                    <option value="CD" data-reactid="195">コンゴ民主共和国 (Jamhuri ya Kidemokrasia ya Kongo)</option>
+                    <option value="SA" data-reactid="196">サウジアラビア (&#1575;&#1604;&#1605;&#1605;&#1604;&#1603;&#1577; &#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577; &#1575;&#1604;&#1587;&#1593;&#1608;&#1583;&#1610;&#1577;&#8206;)</option>
+                    <option value="GS" data-reactid="197">サウスジョージア・サウスサンドウィッチ諸島</option>
+                    <option value="WS" data-reactid="198">サモア諸島</option>
+                    <option value="SM" data-reactid="199">サン・マリノ</option>
+                    <option value="ST" data-reactid="200">サントメ・プリンシペ (S&#227;o Tom&#233; e Pr&#237;ncipe)</option>
+                    <option value="BL" data-reactid="201">サンバルテルミー島 (Saint-Barth&#233;lemy)</option>
+                    <option value="ZM" data-reactid="202">ザンビア</option>
+                    <option value="PM" data-reactid="203">サンピエール・ミクロン (Saint-Pierre-et-Miquelon)</option>
+                    <option value="MF" data-reactid="204">サンマルタン島（仏領） (Saint-Martin [partie fran&#231;aise])</option>
+                    <option value="SL" data-reactid="205">シエラ・レオネ</option>
+                    <option value="DJ" data-reactid="206">ジブチ</option>
+                    <option value="GI" data-reactid="207">ジブラルタル</option>
+                    <option value="JE" data-reactid="208">ジャージー島</option>
+                    <option value="JM" data-reactid="209">ジャマイカ</option>
+                    <option value="SY" data-reactid="210">シリアアラブ共和国 (&#1587;&#1608;&#1585;&#1610;&#1575;&#8206;)</option>
+                    <option value="SG" data-reactid="211">シンガポール</option>
+                    <option value="SX" data-reactid="212">シント・マールテン（オランダ領）</option>
+                    <option value="ZW" data-reactid="213">ジンバブエ</option>
+                    <option value="SD" data-reactid="214">スーダン (&#1575;&#1604;&#1587;&#1608;&#1583;&#1575;&#1606;&#8206;)</option>
+                    <option value="SZ" data-reactid="215">スイス</option>
+                    <option value="CH" data-reactid="216">スイス (Schweiz)</option>
+                    <option value="SJ" data-reactid="217">スヴァールバル諸島、ヤンマイエン島 (Svalbard og Jan Mayen)</option>
+                    <option value="SE" data-reactid="218">スウェーデン (Sverige)</option>
+                    <option value="ES" data-reactid="219">スペイン</option>
+                    <option value="SR" data-reactid="220">スリナム</option>
+                    <option value="LK" data-reactid="221">スリランカ (&#3521;&#3530;&#8205;&#3515;&#3539; &#3517;&#3458;&#3482;&#3535;&#3520;))</option>
+                    <option value="SK" data-reactid="222">スロバキア (Slovensko)</option>
+                    <option value="SI" data-reactid="223">スロベニア (Slovenija)</option>
+                    <option value="SC" data-reactid="224">セイシェル</option>
+                    <option value="SN" data-reactid="225">セネガル (S&#233;n&#233;gal)</option>
+                    <option value="RS" data-reactid="226">セルビア (Срби&#1112;а)</option>
+                    <option value="KN" data-reactid="227">セントクリストファー・ネイビス</option>
+                    <option value="VC" data-reactid="228">セントビンセント・グレナディーン</option>
+                    <option value="SH" data-reactid="229">セントヘレナ・アセンション、トリスタンダクーニャ</option>
+                    <option value="LC" data-reactid="230">セントルシア</option>
+                    <option value="SO" data-reactid="231">ソマリア民主共和国 (Soomaaliya)</option>
+                    <option value="SB" data-reactid="232">ソロモン諸島</option>
+                    <option value="TC" data-reactid="233">タークス・カイコス諸島</option>
+                    <option value="TH" data-reactid="234">タイ (&#3652;&#3607;&#3618;)</option>
+                    <option value="TJ" data-reactid="235">タジキスタン</option>
+                    <option value="TZ" data-reactid="236">タンザニア連合共和国</option>
+                    <option value="CZ" data-reactid="237">チェコ共和国 (&#268;esk&#225; republika)</option>
+                    <option value="TD" data-reactid="238">チャド (Tchad)</option>
+                    <option value="TN" data-reactid="239">チュニジア (&#1578;&#1608;&#1606;&#1587;&#8206;)</option>
+                    <option value="CL" data-reactid="240">チリ</option>
+                    <option value="TV" data-reactid="241">ツバル</option>
+                    <option value="DK" data-reactid="242">デンマーク (Danmark)</option>
+                    <option value="TG" data-reactid="243">トーゴ</option>
+                    <option value="DE" data-reactid="244">ドイツ (Deutschland)</option>
+                    <option value="TK" data-reactid="245">トケラウ諸島</option>
+                    <option value="DO" data-reactid="246">ドミニカ共和国 (Rep&#250;blica Dominicana)</option>
+                    <option value="DM" data-reactid="247">ドミニカ国</option>
+                    <option value="TT" data-reactid="248">トリニダード・トバゴ</option>
+                    <option value="TM" data-reactid="249">トルクメニスタン</option>
+                    <option value="TR" data-reactid="250">トルコ (T&#252;rkiye)</option>
+                    <option value="TO" data-reactid="251">トンガ</option>
+                    <option value="NG" data-reactid="252">ナイジェリア</option>
+                    <option value="NR" data-reactid="253">ナウル</option>
+                    <option value="NA" data-reactid="254">ナミビア</option>
+                    <option value="NU" data-reactid="255">ニウエ</option>
+                    <option value="NI" data-reactid="256">ニカラグア</option>
+                    <option value="NE" data-reactid="257">ニジェール (Nijar)</option>
+                    <option value="NC" data-reactid="258">ニューカレドニア (Nouvelle-Cal&#233;donie)</option>
+                    <option value="NZ" data-reactid="259">ニュージーランド</option>
+                    <option value="NP" data-reactid="260">ネパール (&#2344;&#2375;&#2346;&#2366;&#2354;)</option>
+                    <option value="NF" data-reactid="261">ノーフォーク島</option>
+                    <option value="NO" data-reactid="262">ノルウェー (Norge)</option>
+                    <option value="HM" data-reactid="263">ハード島とマクドナルド諸島</option>
+                    <option value="BH" data-reactid="264">バーレーン (&#1575;&#1604;&#1576;&#1581;&#1585;&#1610;&#1606;&#8206;)</option>
+                    <option value="HT" data-reactid="265">ハイチ</option>
+                    <option value="PK" data-reactid="266">パキスタン (&#1662;&#1575;&#1705;&#1587;&#1578;&#1575;&#1606;&#8206;)</option>
+                    <option value="PA" data-reactid="267">パナマ (Panam&#225;)</option>
+                    <option value="VU" data-reactid="268">バヌアツ</option>
+                    <option value="BS" data-reactid="269">バハマ</option>
+                    <option value="PG" data-reactid="270">パプアニューギニア独立国</option>
+                    <option value="BM" data-reactid="271">バミューダ</option>
+                    <option value="PW" data-reactid="272">パラオ</option>
+                    <option value="PY" data-reactid="273">パラグアイ</option>
+                    <option value="BB" data-reactid="274">バルバドス島</option>
+                    <option value="PS" data-reactid="275">パレスチナ自治政府 (&#1601;&#1604;&#1587;&#1591;&#1610;&#1606;&#8206;)</option>
+                    <option value="HU" data-reactid="276">ハンガリー (Magyarorsz&#225;g)</option>
+                    <option value="BD" data-reactid="277">バングラデシュ (&#2476;&#2494;&#2434;&#2482;&#2494;&#2470;&#2503;&#2486;)</option>
+                    <option value="PN" data-reactid="278">ピトケアン</option>
+                    <option value="BV" data-reactid="279">ブーヴェ島</option>
+                    <option value="BT" data-reactid="280">ブータン (&#3936;&#3926;&#4018;&#3956;&#3906;)</option>
+                    <option value="FJ" data-reactid="281">フィジー</option>
+                    <option value="PH" data-reactid="282">フィリピン</option>
+                    <option value="FI" data-reactid="283">フィンランド (Suomi)</option>
+                    <option value="PR" data-reactid="284">プエルトリコ</option>
+                    <option value="FO" data-reactid="285">フェロー諸島 (F&#248;royar)</option>
+                    <option value="FK" data-reactid="286">フォークランド諸島 (Islas Malvinas)</option>
+                    <option value="BR" data-reactid="287">ブラジル (Brasil)</option>
+                    <option value="FR" data-reactid="288">フランス</option>
+                    <option value="PF" data-reactid="289">フランス領ポリネシア (Polyn&#233;sie fran&#231;aise)</option>
+                    <option value="TF" data-reactid="290">フランス領南方地域 (Terres australes fran&#231;aises)</option>
+                    <option value="BG" data-reactid="291">ブルガリア (България)</option>
+                    <option value="BF" data-reactid="292">ブルキナファソ</option>
+                    <option value="BN" data-reactid="293">ブルネイ・ダルサラーム国</option>
+                    <option value="BI" data-reactid="294">ブルンジ (Uburundi)</option>
+                    <option value="VN" data-reactid="295">ベトナム (Vi&#7879;t Nam)</option>
+                    <option value="BJ" data-reactid="296">ベナン (B&#233;nin)</option>
+                    <option value="VE" data-reactid="297">ベネズエラ・ボリバル共和国</option>
+                    <option value="BY" data-reactid="298">ベラルーシ (Беларусь)</option>
+                    <option value="BZ" data-reactid="299">ベリーズ</option>
+                    <option value="PE" data-reactid="300">ペルー</option>
+                    <option value="BE" data-reactid="301">ベルギー (Belgi&#235;)</option>
+                    <option value="PL" data-reactid="302">ポーランド (Polska)</option>
+                    <option value="BA" data-reactid="303">ボスニア・ヘルツェゴビナ (Босна и Херцеговина)</option>
+                    <option value="BW" data-reactid="304">ボツワナ</option>
+                    <option value="BQ" data-reactid="305">ボネール島、シント・ユースタティウス島、サバ郡</option>
+                    <option value="BO" data-reactid="306">ボリビア多民族国</option>
+                    <option value="PT" data-reactid="307">ポルトガル</option>
+                    <option value="HN" data-reactid="308">ホンジュラス</option>
+                    <option value="MH" data-reactid="309">マーシャル諸島</option>
+                    <option value="MO" data-reactid="310">マカオ (澳門)</option>
+                    <option value="MK" data-reactid="311">マケドニア旧ユーゴスラビア共和国 (Македони&#1112;а)</option>
+                    <option value="MG" data-reactid="312">マダガスカル (Madagasikara)</option>
+                    <option value="YT" data-reactid="313">マヨット島</option>
+                    <option value="MW" data-reactid="314">マラウイ</option>
+                    <option value="ML" data-reactid="315">マリ</option>
+                    <option value="MT" data-reactid="316">マルタ</option>
+                    <option value="MQ" data-reactid="317">マルティニーク島</option>
+                    <option value="MY" data-reactid="318">マレーシア</option>
+                    <option value="IM" data-reactid="319">マン島</option>
+                    <option value="FM" data-reactid="320">ミクロネシア連邦</option>
+                    <option value="MM" data-reactid="321">ミャンマー (&#4121;&#4156;&#4116;&#4154;&#4121;&#4140;)</option>
+                    <option value="MX" data-reactid="322">メキシコ (M&#233;xico)</option>
+                    <option value="MU" data-reactid="323">モーリシャス (Moris)</option>
+                    <option value="MR" data-reactid="324">モーリタニア (&#1605;&#1608;&#1585;&#1610;&#1578;&#1575;&#1606;&#1610;&#1575;&#8206;)</option>
+                    <option value="MZ" data-reactid="325">モザンビーク (Mo&#231;ambique)</option>
+                    <option value="MC" data-reactid="326">モナコ</option>
+                    <option value="MV" data-reactid="327">モルディブ</option>
+                    <option value="MD" data-reactid="328">モルドバ共和国 (Republica Moldova)</option>
+                    <option value="MA" data-reactid="329">モロッコ (&#1575;&#1604;&#1605;&#1594;&#1585;&#1576;&#8206;)</option>
+                    <option value="MN" data-reactid="330">モンゴル国 (Монгол)</option>
+                    <option value="ME" data-reactid="331">モンテネグロ (Crna Gora)</option>
+                    <option value="MS" data-reactid="332">モントセラト島</option>
+                    <option value="JO" data-reactid="333">ヨルダン (&#1575;&#1604;&#1571;&#1585;&#1583;&#1606;&#8206;)</option>
+                    <option value="LA" data-reactid="334">ラオス人民民主共和国 (&#3754;.&#3739;.&#3739; &#3749;&#3762;&#3751;)</option>
+                    <option value="LV" data-reactid="335">ラトビア (Latvija)</option>
+                    <option value="LT" data-reactid="336">リトアニア (Lietuva)</option>
+                    <option value="LY" data-reactid="337">リビア (&#1604;&#1610;&#1576;&#1610;&#1575;&#8206;)</option>
+                    <option value="LI" data-reactid="338">リヒテンシュタイン</option>
+                    <option value="LR" data-reactid="339">リベリア</option>
+                    <option value="RO" data-reactid="340">ルーマニア (Rom&#226;nia)</option>
+                    <option value="LU" data-reactid="341">ルクセンブルグ</option>
+                    <option value="RW" data-reactid="342">ルワンダ</option>
+                    <option value="LS" data-reactid="343">レソト</option>
+                    <option value="LB" data-reactid="344">レバノン (&#1604;&#1576;&#1606;&#1575;&#1606;&#8206;)</option>
+                    <option value="RE" data-reactid="345">レユニオン</option>
+                    <option value="VA" data-reactid="346">ローマ教皇庁（バチカン市国） (Citt&#224; del Vaticano)</option>
+                    <option value="RU" data-reactid="347">ロシア連邦 (Россия)</option>
+                    <option value="WF" data-reactid="348">ワリー・エ・フトゥーナ諸島</option>
+                    <option value="CN" data-reactid="349">中国 (中国)</option>
+                    <option value="CF" data-reactid="350">中央アフリカ共和国 (R&#233;publique centrafricaine)</option>
+                    <option value="GF" data-reactid="351">仏領ギアナ (Guyane fran&#231;aise)</option>
+                    <option value="MP" data-reactid="352">北マリアナ諸島連邦</option>
+                    <option value="ZA" data-reactid="353">南アフリカ</option>
+                    <option value="SS" data-reactid="354">南スーダン (&#1580;&#1606;&#1608;&#1576; &#1575;&#1604;&#1587;&#1608;&#1583;&#1575;&#1606;&#8206;)</option>
+                    <option value="AQ" data-reactid="355">南極</option>
+                    <option value="TW" data-reactid="356">台湾 (台灣)</option>
+                    <option value="UM" data-reactid="357">合衆国領有小離島</option>
+                    <option value="KR" data-reactid="358">大韓民国 (&#45824;&#54620;&#48124;&#44397;)</option>
+                    <option selected="" value="JP" data-reactid="359">日本 (日本)</option>
+                    <option value="KP" data-reactid="360">朝鮮民主主義人民共和国 (&#51312;&#49440; &#48124;&#51452;&#51452;&#51032; &#51064;&#48124; &#44277;&#54868;&#44397;)</option>
+                    <option value="TL" data-reactid="361">東ティモール</option>
+                    <option value="AS" data-reactid="362">米サモア</option>
+                    <option value="VG" data-reactid="363">英領ヴァージン諸島</option>
+                    <option value="EH" data-reactid="364">西サハラ (&#1575;&#1604;&#1589;&#1581;&#1585;&#1575;&#1569; &#1575;&#1604;&#1594;&#1585;&#1576;&#1610;&#1577;&#8206;)</option>
+                    <option value="GQ" data-reactid="365">赤道ギニア (Guinea Ecuatorial)</option>
+                    <option value="HK" data-reactid="366">香港 (香港)</option>
+                  </select>
+                </div>
+              </div>
+            </li>
+            <li data-reactid="367">
+              <h3 data-reactid="368">
+                <%= f.label "性別", class: "settingLabel" %>
+                <!-- <label class="settingLabel" data-reactid="369">性別</label> -->
+              </h3>
+              <div data-reactid="370">
+                <div class="fieldsetWrapper" data-reactid="371">
+                  <fieldset class="formInlineCheckedSet" data-reactid="372">
+                    <ul data-reactid="373">
+                      <li data-reactid="374">
+                        <label data-reactid="375">
+                          <%= f.radio_button :gender, 'male' %>
+                          <!-- <input type="radio" name="gender" value="male" data-reactid="376"> -->
+                          <span class="gender" data-reactid="377">男性</span>
+                        </label>
+                      </li>
+                      <li data-reactid="378">
+                        <label data-reactid="379">
+                          <%= f.radio_button :gender, 'female' %>
+                          <!-- <input type="radio" name="gender" value="female" data-reactid="380"> -->
+                          <span class="gender" data-reactid="381">女性</span>
+                        </label>
+                      </li>
+                      <li data-reactid="382">
+                        <label data-reactid="383">
+                          <%= f.radio_button :gender, 'unspecified', checked: @checked  %>
+                          <!-- <input type="radio" name="gender" value="unspecified" data-reactid="384" checked=""> -->
+                          <span class="gender" data-reactid="385">カスタム</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </fieldset>
+                </div>
+                <%= f.text_field :gender, class: "customGender", placeholder: "性別を入力" %>
+                <!-- <input type="text" class="customGender" name="custom_gender" placeholder="性別を入力" value="" data-reactid="386"> -->
+              </div>
+            </li>
+            <li data-reactid="387">
+              <h3 data-reactid="388">
+                <label class="settingLabel" data-reactid="389">検索プライバシー</label>
+              </h3>
+              <div data-reactid="390">
+                <div class="fieldsetWrapper" data-reactid="391">
+                  <fieldset class="formInlineCheckedSet" data-reactid="392">
+                    <ul data-reactid="393">
+                      <li data-reactid="394">
+                        <label data-reactid="395">
+                          <div class="Module Checkbox fancyToggle fancyToggle styledToggle" data-reactid="396">
+                            <div class="slider" data-reactid="397"></div>
+                            <p class="onText status" data-reactid="398">Yes</p>
+                            <p class="offText status" data-reactid="399">No</p>
+                            <input type="checkbox" class="Module Checkbox" name="exclude_from_search" data-reactid="400" value="on">
+                          </div>
+                          <div data-reactid="401">
+                            <span class="exclude_from_search" data-reactid="402">検索エンジン（例：Google）でプロフィールを非表示にします。
+                              <a href="https://www.pinterest.com/_/_/help/entries/21051553" target="_blank">詳細</a>
+                            </span>
+                          </div>
+                        </label>
+                      </li>
+                    </ul>
+                  </fieldset>
+                </div>
+              </div>
+            </li>
+            <li data-reactid="403">
+              <h3 data-reactid="404">
+                <label class="settingLabel" data-reactid="405">パーソナライズ</label>
+              </h3>
+              <div data-reactid="406">
+                <div class="personalizationAndAdsSettings" data-reactid="407">
+                  <div class="fieldsetWrapper" data-reactid="408">
+                    <fieldset class="formInlineCheckedSet" data-reactid="409">
+                      <ul data-reactid="410">
+                        <li data-reactid="411">
+                          <label data-reactid="412">
+                            <div class="Module Checkbox fancyToggle fancyToggle styledToggle on" data-reactid="413">
+                              <div class="slider" data-reactid="414"></div>
+                              <p class="onText status" data-reactid="415">Yes</p>
+                              <p class="offText status" data-reactid="416">No</p>
+                              <input type="checkbox" class="Module Checkbox on" name="personalize_from_offsite_browsing" data-reactid="417" value="on" checked="">
+                            </div>
+                            <div data-reactid="418">
+                              <span class="personalize_from_offsite_browsing" data-reactid="419">ピナーがアクセスするサイトを元に、表示するおすすめや広告を改善しています。
+                                <a href="https://www.pinterest.com/_/_/help/articles/personalization-and-data" target="_blank">詳細</a>
+                              </span>
+                            </div>
+                          </label>
+                        </li>
+                        <li data-reactid="420">
+                          <label data-reactid="421">
+                            <div class="Module Checkbox fancyToggle fancyToggle styledToggle on" data-reactid="422">
+                              <div class="slider" data-reactid="423"></div>
+                              <p class="onText status" data-reactid="424">Yes</p>
+                              <p class="offText status" data-reactid="425">No</p>
+                              <input type="checkbox" class="Module Checkbox on" name="ads_customize_from_conversion" data-reactid="426" value="on" checked="">
+                            </div>
+                            <div data-reactid="427">
+                              <span class="ads_customize_from_conversion" data-reactid="428">Pinterest のパートナーからの利用情報を元にピナーに表示するおすすめや広告を改善しています。
+                                <a href="https://www.pinterest.com/_/_/help/articles/personalization-and-data#info-ad" target="_blank">詳細</a>
+                              </span>
+                            </div>
+                          </label>
+                        </li>
+                      </ul>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li data-reactid="429">
+              <h3 data-reactid="430">
+                <label class="settingLabel" data-reactid="431">検索履歴</label>
+              </h3>
+              <div data-reactid="432">
+                <div data-reactid="433">
+                  <button aria-label="検索履歴をクリア" class="clearRecentSearches Button Module btn hasText rounded" type="button" data-reactid="434">
+                    <span class="buttonText" data-reactid="435">検索履歴をクリア</span>
+                  </button>
+                  <span class="clearRecentSearchDetails" data-reactid="436">検索したキーワードを検索履歴から削除します。</span>
+                </div>
+              </div>
+            </li>
+            <li data-reactid="437">
+              <h3 data-reactid="438">
+                <label class="settingLabel" data-reactid="439">アカウント</label>
+              </h3>
+              <div data-reactid="440">
+                <div data-reactid="441">
+                  <button aria-label="アカウントを解除" class="deactivateAccountButton Button Module btn hasText rounded" type="button" data-reactid="442">
+                    <!-- <span class="buttonText" data-reactid="443">アカウントを解除</span> -->
+                    <%= link_to "アカウントを解除", destroy_user_session_path, method: :delete, class: "buttonText" %>
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="Module UserEdit full_page" data-reactid="444">
+            <li class="sectionTitle" id="profile" data-reactid="445">
+              <h2 data-reactid="446">プロフィール</h2>
+            </li>
+            <li data-reactid="447">
+              <h3 data-reactid="448">
+                <%= f.label "名前", class: "settingLabel", for: "userFirstName" %>
+                <!-- <label class="settingLabel" for="userFirstName" data-reactid="449">名前</label> -->
+              </h3>
+              <div data-reactid="450">
+                <div data-reactid="451">
+                  <%= f.text_field :first_name, class: "name first", id: "userFirstName"%>
+                  <!-- <input type="text" class="name first" id="userFirstName" name="first_name" value="drive" data-reactid="452"> -->
+                  <label class="visuallyHidden" for="userLastName" data-reactid="453">姓</label>
+                  <%= f.text_field :last_name, class: "name last", id: "userLastName" %>
+                  <!-- <input type="text" class="name last" id="userLastName" name="last_name" value="" data-reactid="454"> -->
+                </div>
+              </div>
+            </li>
+            <li data-reactid="455">
+              <h3 data-reactid="456">
+                <%= f.label "写真", class: "settingLabel"%>
+                <!-- <label class="settingLabel" data-reactid="457">写真</label> -->
+              </h3>
+              <div data-reactid="458">
+                <div data-reactid="459">
+                  <div class="profileImageWrapper" data-reactid="460">
+                    <% if @user.image.url %>
+                      <%= image_tag @user.image.url, alt: "プロフィール写真", class: "profileImage" %>
+                    <% else %>
+                      <%= image_tag "", class:"changePhoto Button Module btn hasText rounded" ,alt: "プロフィール写真"%>
+                    <% end %>
+                    <!-- <img alt="プロフィール写真" class="profileImage" src="https://s-media-cache-ak0.pinimg.com/avatars/drivethruprm83_1484208313_75.jpg" data-reactid="461"> -->
+                  </div>
+                  <%= f.file_field :image , class: "changePhoto Button Module btn hasText rounded" %>
+                  <!-- <button aria-label="写真を変更" class="changePhoto Button Module btn hasText rounded" type="button" data-reactid="462">
+                    <span class="buttonText" data-reactid="463">写真を変更</span>
+                  </button> -->
+                </div>
+              </div>
+            </li>
+            <li data-reactid="464">
+              <h3 data-reactid="465">
+                <%= f.label "ユーザー名", class: "settingLabel", for: "userUserName" %>
+                <!-- <label class="settingLabel" for="userUserName" data-reactid="466">ユーザー名</label> -->
+              </h3>
+              <div data-reactid="467">
+                <div data-reactid="468">
+                  <span class="domain" title="www.pinterest.com/" data-reactid="469">www.pinterest.com/</span>
+                  <%= f.text_field :user_name, class: "username", id: "userUserName" %>
+                  <!-- <input type="text" class="username" id="userUserName" name="username" value="drivethruprm83" data-reactid="470"> -->
+                </div>
+              </div>
+            </li>
+            <li data-reactid="471">
+              <h3 data-reactid="472">
+                <%= f.label "自己紹介", class: "settingLabel", for: "userAbout" %>
+                <!-- <label class="settingLabel" for="userAbout" data-reactid="473">自己紹介</label> -->
+              </h3>
+              <div data-reactid="474">
+                <div data-reactid="475">
+                  <%= f.text_area :about, id: "userAbout" %>
+                  <!-- <textarea class="" id="userAbout" name="about" data-reactid="476"></textarea> -->
+                </div>
+              </div>
+            </li>
+            <li data-reactid="477">
+              <h3 data-reactid="478">
+                <%= f.label "居住都市", class: "settingLabel", for: "userLocation" %>
+                <!-- <label class="settingLabel" for="userLocation" data-reactid="479">居住都市</label> -->
+              </h3>
+              <div data-reactid="480">
+                <div data-reactid="481">
+                  <%= f.text_field :location, id: "userLocation" %>
+                  <!-- <input type="text" id="userLocation" name="location" value="" data-reactid="482"> -->
+                </div>
+              </div>
+            </li>
+            <li data-reactid="483">
+              <h3 data-reactid="484">
+                <%= f.label "ウェブサイト", class: "settingLabel", for: "userWebsite" %>
+                <!-- <label class="settingLabel" for="userWebsite" data-reactid="485">ウェブサイト</label> -->
+              </h3>
+              <div data-reactid="486">
+                <div class="Module UserEditVerifyWebsite" data-reactid="487">
+                  <button aria-label="ウェブサイトを確認" class="verifyButton Button Module btn hasText rounded disabled" disabled="" type="button" data-reactid="488">
+                    <span class="buttonText" data-reactid="489">ウェブサイトを確認</span>
+                  </button>
+                  <div class="fillWidth" data-reactid="490">
+                    <%= f.text_field :website_url, class: "website", id: "userWebsite" %>
+                    <!-- <input type="url" class="website" id="userWebsite" name="website_url" value="" data-reactid="491"> -->
+                  </div>
+                </div>
+              </div>
+            </li>
+            <div class="showcaseEditWrapper flex" data-reactid="492">
+              <div class="showcaseHeaderWrapper col-9" data-reactid="493">
+                <div class="_2UEuS _2t4gs _2KmW_ _1h4d6 _1g8Us _32TBK" data-reactid="494">ギャラリー</div>
+                <div class="showcaseEditTextWrapper" data-reactid="495">
+                  <span class="_2UEuS _2t4gs _3GBV8 _1h4d6 _1g8Us" data-reactid="496">プロフィールの一番上にとっておきのアイデアを表示します。 </span>
+                  <a class="inline-block showHelpCenterLink" href="https://www.pinterest.com/_/_/help/articles/showcase" data-reactid="497">
+                    <div class="_2UEuS _2t4gs _3GBV8 _1h4d6 _1g8Us _32TBK" data-reactid="498">詳細</div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-3" data-reactid="499">
+                <a class="inline-block pull-right" href="/showcase/settings/" data-reactid="500">
+                  <button aria-label="編集" class="Button Module btn hasText rounded" type="button" data-reactid="501">
+                    <span class="buttonText" data-reactid="502">編集</span>
+                  </button>
+                </a>
+              </div>
+            </div>
+          </ul>
+          <ul class="Module NotificationSettings" data-reactid="503">
+            <li class="sectionTitle" id="notifications" data-reactid="504">
+              <h2 data-reactid="505">お知らせ</h2>
+            </li>
+            <div class="notificationHeadingDetails" data-reactid="506">重要な変更がある場合はメール通知でお知らせします。その他に興味のあるメール通知を選択してください。</div>
+            <li data-reactid="507">
+              <h3 data-reactid="508">
+                <label class="settingLabel" data-reactid="509">Pinterest にログインしているとき</label>
+              </h3>
+              <div data-reactid="510">
+                <div class="fieldsetWrapper" data-reactid="511">
+                  <fieldset class="formInlineCheckedSet" data-reactid="512">
+                    <ul data-reactid="513">
+                      <li data-reactid="514">
+                        <label data-reactid="515">
+                          <input type="radio" name="filter_settings" value="anyone" data-reactid="516" checked="">
+                          <span class="filter_settings" data-reactid="517">全員のお知らせを受信する</span>
+                        </label>
+                      </li>
+                      <li data-reactid="518">
+                        <label data-reactid="519">
+                          <input type="radio" name="filter_settings" value="following" data-reactid="520">
+                          <span class="filter_settings" data-reactid="521">フォローしているピナーのみ</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </fieldset>
+                </div>
+              </div>
+            </li>
+            <li data-reactid="522">
+              <h3 data-reactid="523">
+                <label class="settingLabel" for="notificationsByEmail" data-reactid="524">メール</label>
+              </h3>
+              <div data-reactid="525">
+                <div class="fieldsetWrapper" data-reactid="526">
+                  <fieldset class="formInlineCheckedSet" data-reactid="527">
+                    <ul data-reactid="528">
+                      <li data-reactid="529">
+                        <label data-reactid="530">
+                          <div class="Module Checkbox fancyToggle fancyToggle styledToggle" data-reactid="531">
+                            <div class="slider" data-reactid="532"></div>
+                            <p class="onText status" data-reactid="533">Yes</p>
+                            <p class="offText status" data-reactid="534">No</p>
+                            <input type="checkbox" class="Module Checkbox" id="notificationsByEmail" name="email_enabled" data-reactid="535" value="on">
+                          </div>
+                        </label>
+                      </li>
+                    </ul>
+                  </fieldset>
+                </div>
+              </div>
+            </li>
+            <li data-reactid="536">
+              <h3 data-reactid="537">
+                <label class="settingLabel" data-reactid="538">スマートフォンをお使いの場合</label>
+              </h3>
+              <div data-reactid="539">
+                <button aria-label="プッシュ通知の設定を編集" class="pushNotifButton ShowModalButton Button Module btn hasText rounded" type="button" data-reactid="540">
+                  <span class="buttonText" data-reactid="541">プッシュ通知の設定を編集</span>
+                </button>
+              </div>
+            </li>
+            <li data-reactid="542">
+              <h3 data-reactid="543">
+                <label class="settingLabel" data-reactid="544">デスクトップ</label>
+              </h3>
+              <div data-reactid="545">
+                <div class="fieldsetWrapper" data-reactid="546">
+                  <fieldset class="formInlineCheckedSet" data-reactid="547">
+                    <ul data-reactid="548">
+                      <li data-reactid="549">
+                        <label data-reactid="550">
+                          <div class="Module Checkbox fancyToggle fancyToggle styledToggle on" data-reactid="551">
+                            <div class="slider" data-reactid="552"></div>
+                            <p class="onText status" data-reactid="553">Yes</p>
+                            <p class="offText status" data-reactid="554">No</p>
+                            <input type="checkbox" class="Module Checkbox on" name="web_push_notification" data-reactid="555" value="on" checked="">
+                          </div>
+                          <span class="web_push_notification" data-reactid="556">Chrome ブラウザの通知</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </fieldset>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul data-reactid="557">
+            <li class="sectionTitle" id="homefeedCustomization" data-reactid="558">
+              <h2 data-reactid="559">ホームフィード</h2>
+            </li>
+            <li data-reactid="560">
+              <h3 data-reactid="561">
+                <label class="settingLabel" data-reactid="562">おすすめのピン</label>
+              </h3>
+              <div data-reactid="563">
+                <div class="PFYSettings" data-reactid="564">
+                  <div class="fieldsetWrapper" data-reactid="565">
+                    <fieldset class="formInlineCheckedSet" data-reactid="566">
+                      <ul data-reactid="567">
+                        <li data-reactid="568">
+                          <label data-reactid="569">
+                            <div class="Module Checkbox fancyToggle fancyToggle styledToggle on" data-reactid="570">
+                              <div class="slider" data-reactid="571"></div>
+                              <p class="onText status" data-reactid="572">Yes</p>
+                              <p class="offText status" data-reactid="573">No</p>
+                              <input type="checkbox" class="Module Checkbox on" name="pfy_preference" data-reactid="574" value="on" checked="">
+                            </div>
+                            <div data-reactid="575">
+                              <span class="pfy_preference" data-reactid="576">ホームフィードに「おすすめのピン」を表示する &#8226;
+                                <a href="https://www.pinterest.com/_/_/help/articles/picked-for-you-pins" target="_blank">詳細</a>
+                              </span>
+                            </div>
+                          </label>
+                        </li>
+                      </ul>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="Module UserSocialNetworkSettings" data-reactid="577">
+            <li class="sectionTitle" id="socialNetworks" data-reactid="578">
+              <h2 data-reactid="579">SNSアカウント</h2>
+            </li>
+            <div class="socialNetworkHeadingDetails" data-reactid="580">
+              <a class="external" href="https://www.pinterest.com/_/_/help/articles/share-pins-facebook-or-twitter/?source=settings_page" data-reactid="581">詳細</a>
+            </div>
+            <li class="socialHeader" data-reactid="582">
+              <h4 data-reactid="583">
+                <span class="socialIconFacebook" data-reactid="584"></span>
+                <span class="socialIconText" data-reactid="585">
+                  <!-- react-text: 586 -->現在 Facebook に接続していません
+                  <!-- /react-text -->
+                  <!-- react-text: 587 -->
+                  <!-- /react-text -->
+                </span>
+              </h4>
+            </li>
+            <li data-reactid="588">
+              <h3 data-reactid="589">
+                <label class="settingLabel" data-reactid="590">Facebook アカウントでログイン</label>
+              </h3>
+              <div data-reactid="591">
+                <div class="fieldsetWrapper" data-reactid="592">
+                  <fieldset class="formCheckedSet" data-reactid="593">
+                    <ul data-reactid="594">
+                      <li data-reactid="595">
+                        <label data-reactid="596">
+                          <div class="Module Checkbox fancyToggle fancyToggle styledToggle" data-reactid="597">
+                            <div class="slider" data-reactid="598"></div>
+                            <p class="onText status" data-reactid="599">Yes</p>
+                            <p class="offText status" data-reactid="600">No</p>
+                            <input type="checkbox" class="Module Checkbox" name="login_with_facebook" data-reactid="601" value="on">
+                          </div>
+                          <span class="login_with_facebook" data-reactid="602">Facebook アカウントを使ってログインする</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </fieldset>
+                </div>
+              </div>
+            </li>
+            <li class="socialHeader" data-reactid="603">
+              <h4 data-reactid="604">
+                <span class="socialIconTwitter" data-reactid="605"></span>
+                <span class="socialIconText" data-reactid="606">
+                  <!-- react-text: 607 -->現在 Twitter に接続していません
+                  <!-- /react-text -->
+                  <!-- react-text: 608 -->
+                  <!-- /react-text -->
+                </span>
+              </h4>
+            </li>
+            <li data-reactid="609">
+              <h3 data-reactid="610">
+                <label class="settingLabel" data-reactid="611">Twitter アカウントに接続</label>
+              </h3>
+              <div data-reactid="612">
+                <div class="fieldsetWrapper" data-reactid="613">
+                  <fieldset class="formCheckedSet" data-reactid="614">
+                    <ul data-reactid="615">
+                      <li data-reactid="616">
+                        <label data-reactid="617">
+                          <div class="Module Checkbox fancyToggle fancyToggle styledToggle" data-reactid="618">
+                            <div class="slider" data-reactid="619"></div>
+                            <p class="onText status" data-reactid="620">Yes</p>
+                            <p class="offText status" data-reactid="621">No</p>
+                            <input type="checkbox" class="Module Checkbox" name="connectToTwitter" data-reactid="622" value="on">
+                          </div>
+                          <span class="connectToTwitter" data-reactid="623">Twitter アカウントに接続する</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </fieldset>
+                </div>
+              </div>
+            </li>
+            <li class="socialHeader" data-reactid="624">
+              <h4 data-reactid="625">
+                <span class="socialIconGplus" data-reactid="626"></span>
+                <span class="socialIconText" data-reactid="627">
+                  <!-- react-text: 628 -->現在 Google+ に接続していません
+                  <!-- /react-text -->
+                  <!-- react-text: 629 -->
+                  <!-- /react-text -->
+                </span>
+              </h4>
+            </li>
+            <li data-reactid="630">
+              <h3 data-reactid="631">
+                <label class="settingLabel" data-reactid="632">Google+ アカウントに接続</label>
+              </h3>
+              <div data-reactid="633">
+                <div class="fieldsetWrapper" data-reactid="634">
+                  <fieldset class="formCheckedSet" data-reactid="635">
+                    <ul data-reactid="636">
+                      <li data-reactid="637">
+                        <label data-reactid="638">
+                          <div class="Module Checkbox fancyToggle fancyToggle styledToggle" data-reactid="639">
+                            <div class="slider" data-reactid="640"></div>
+                            <p class="onText status" data-reactid="641">Yes</p>
+                            <p class="offText status" data-reactid="642">No</p>
+                            <input type="checkbox" class="Module Checkbox" name="connectToGplus" data-reactid="643" value="on">
+                          </div>
+                          <span class="connectToGplus" data-reactid="644">Google+ アカウントに接続する</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </fieldset>
+                </div>
+              </div>
+            </li>
+            <li class="socialHeader" data-reactid="645">
+              <h4 data-reactid="646">
+                <span class="socialIconGoogle" data-reactid="647"></span>
+                <span class="socialIconText" data-reactid="648">
+                  <!-- react-text: 649 -->現在 Gmail に接続していません
+                  <!-- /react-text -->
+                  <!-- react-text: 650 -->
+                  <!-- /react-text -->
+                </span>
+              </h4>
+            </li>
+            <li data-reactid="651">
+              <h3 data-reactid="652">
+                <label class="settingLabel" data-reactid="653">Gmail アカウントに接続</label>
+              </h3>
+              <div data-reactid="654">
+                <div class="fieldsetWrapper" data-reactid="655">
+                  <fieldset class="formCheckedSet" data-reactid="656">
+                    <ul data-reactid="657">
+                      <li data-reactid="658">
+                        <label data-reactid="659">
+                          <div class="Module Checkbox fancyToggle fancyToggle styledToggle" data-reactid="660">
+                            <div class="slider" data-reactid="661"></div>
+                            <p class="onText status" data-reactid="662">Yes</p>
+                            <p class="offText status" data-reactid="663">No</p>
+                            <input type="checkbox" class="Module Checkbox" name="connectToGoogle" data-reactid="664" value="on">
+                          </div>
+                          <span class="connectToGoogle" data-reactid="665">Gmail アカウントに接続する</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </fieldset>
+                </div>
+              </div>
+            </li>
+            <li class="socialHeader" data-reactid="666">
+              <h4 data-reactid="667">
+                <span class="socialIconYahoo" data-reactid="668"></span>
+                <span class="socialIconText" data-reactid="669">
+                  <!-- react-text: 670 -->現在 Yahoo に接続していません
+                  <!-- /react-text -->
+                  <!-- react-text: 671 -->
+                  <!-- /react-text -->
+                </span>
+              </h4>
+            </li>
+            <li data-reactid="672">
+              <h3 data-reactid="673">
+                <label class="settingLabel" data-reactid="674">Yahoo アカウントに接続</label>
+              </h3>
+              <div data-reactid="675">
+                <div class="fieldsetWrapper" data-reactid="676">
+                  <fieldset class="formCheckedSet" data-reactid="677">
+                    <ul data-reactid="678">
+                      <li data-reactid="679">
+                        <label data-reactid="680">
+                          <div class="Module Checkbox fancyToggle fancyToggle styledToggle" data-reactid="681">
+                            <div class="slider" data-reactid="682"></div>
+                            <p class="onText status" data-reactid="683">Yes</p>
+                            <p class="offText status" data-reactid="684">No</p>
+                            <input type="checkbox" class="Module Checkbox" name="connectToYahoo" data-reactid="685" value="on">
+                          </div>
+                          <span class="connectToYahoo" data-reactid="686">Yahoo アカウントに接続する</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </fieldset>
+                </div>
+              </div>
+            </li>
+            <li class="socialHeader" data-reactid="687">
+              <h4 data-reactid="688">
+                <span class="socialIconRakuten" data-reactid="689"></span>
+                <span class="socialIconText" data-reactid="690">
+                  <!-- react-text: 691 -->現在 Rakuten に接続していません
+                  <!-- /react-text -->
+                  <!-- react-text: 692 -->
+                  <!-- /react-text -->
+                </span>
+              </h4>
+            </li>
+            <li data-reactid="693">
+              <h3 data-reactid="694">
+                <label class="settingLabel" data-reactid="695">次のアカウントに接続</label>
+              </h3>
+              <div data-reactid="696">
+                <div class="fieldsetWrapper" data-reactid="697">
+                  <fieldset class="formCheckedSet" data-reactid="698">
+                    <ul data-reactid="699">
+                      <li data-reactid="700">
+                        <label data-reactid="701">
+                          <div class="Module Checkbox fancyToggle fancyToggle styledToggle" data-reactid="702">
+                            <div class="slider" data-reactid="703"></div>
+                            <p class="onText status" data-reactid="704">Yes</p>
+                            <p class="offText status" data-reactid="705">No</p>
+                            <input type="checkbox" class="Module Checkbox" name="Rakuten" data-reactid="706" value="on">
+                          </div>
+                          <span class="Rakuten" data-reactid="707">楽天 アカウントに接続する</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </fieldset>
+                </div>
+              </div>
+            </li>
+            <li class="socialHeader" data-reactid="708">
+              <h4 data-reactid="709">
+                <span class="socialIconMicrosoft" data-reactid="710"></span>
+                <span class="socialIconText" data-reactid="711">
+                  <!-- react-text: 712 -->現在 Microsoft に接続していません
+                  <!-- /react-text -->
+                  <!-- react-text: 713 -->
+                  <!-- /react-text -->
+                </span>
+              </h4>
+            </li>
+            <li data-reactid="714">
+              <h3 data-reactid="715">
+                <label class="settingLabel" data-reactid="716">Microsoft アカウントに接続</label>
+              </h3>
+              <div data-reactid="717">
+                <div class="fieldsetWrapper" data-reactid="718">
+                  <fieldset class="formCheckedSet" data-reactid="719">
+                    <ul data-reactid="720">
+                      <li data-reactid="721">
+                        <label data-reactid="722">
+                          <div class="Module Checkbox fancyToggle fancyToggle styledToggle" data-reactid="723">
+                            <div class="slider" data-reactid="724"></div>
+                            <p class="onText status" data-reactid="725">Yes</p>
+                            <p class="offText status" data-reactid="726">No</p>
+                            <input type="checkbox" class="Module Checkbox" name="Microsoft" data-reactid="727" value="on">
+                          </div>
+                          <span class="Microsoft" data-reactid="728">Microsoft アカウントに接続する</span>
+                        </label>
+                      </li>
+                    </ul>
+                  </fieldset>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="userAppSettings" data-reactid="729">
+            <li class="sectionTitle" id="apps" data-reactid="730">
+              <h2 data-reactid="731">アプリ</h2>
+            </li>
+            <li class="noApps" data-reactid="732">
+              <!-- react-text: 733 -->承認したアプリはありません。
+              <!-- /react-text -->
+            </li>
+          </ul>
+          <div class="formFooter" style="position:fixed;" data-reactid="734">
+            <div class="formFooterButtons" data-reactid="735">
+              <button aria-label="キャンセル" class="formFooterButton cancelButton NavigateButton Button Module btn hasText rounded" type="button" data-reactid="736">
+                <span class="buttonText" data-reactid="737">キャンセル</span>
+              </button>
+              <button aria-label="設定を保存" class="formFooterButton confirmButton Button Module btn hasText rounded primary" type="button" data-reactid="738">
+                <%= f.submit "設定を保存", class: "buttonText" %>
+                <!-- <span class="buttonText" data-reactid="739">設定を保存</span> -->
+              </button>
+            </div>
+          </div>
+        <% end %>
+        <!-- </form> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ModalPortal">
+  <div data-reactroot="" class="Modal__Overlay Modal__Overlay--after-open">
+    <div class="Modal__Content Modal__Content--after-open UserChangePassword Module Modal__Content inModal modalHasClose" tabindex="-1">
+      <%= form_for @user, url: update_password_users_path(@user), html: { class: "standardForm", style: "padding: 0px; margin: 0px;"} do |f| %>
+      <!-- <form class="standardForm" method="post" style="padding: 0px; margin: 0px;"> -->
+        <h1>パスワードを変更する</h1>
+        <ul style="margin: 0px; border-radius: 0px; box-shadow: none;">
+          <li>
+            <h3>
+              <%= f.label "現在のパスワード", class: "settingLabel" %>
+              <!-- <label class="settingLabel">現在のパスワード</label> -->
+            </h3>
+            <div>
+              <%= f.text_field :current_password, id: "changePasswordOld" %>
+              <!-- <input type="password" class="" id="changePasswordOld" name="old" value=""> -->
+              <button aria-label="お忘れになりましたか？" class="Button Module hasText rounded borderless" type="button">
+                <span class="buttonText">お忘れになりましたか？</span>
+              </button>
+            </div>
+          </li>
+          <li>
+            <h3>
+              <%= f.label "新しいパスワード", class: "settingLabel" %>
+              <!-- <label class="settingLabel">新しいパスワード</label> -->
+            </h3>
+            <div>
+              <%= f.text_field :password, id: "changePasswordNew" %>
+              <!-- <input type="password" class="" id="changePasswordNew" name="new" value=""> -->
+            </div>
+          </li>
+          <li>
+            <h3>
+              <%= f.label "再入力してください", class: "settingLabel" %>
+              <!-- <label class="settingLabel">再入力してください</label> -->
+            </h3>
+            <div>
+              <%= f.text_field :password_confirmation, id: "changePasswordNewConfirm" %>
+              <!-- <input type="password" class="" id="changePasswordNewConfirm" name="new_confirm" value=""> -->
+            </div>
+          </li>
+        </ul>
+        <div class="formFooter" style="border-top-left-radius: 0px; border-top-right-radius: 0px; box-shadow: none;">
+          <div class="formFooterButtons">
+            <button aria-label="キャンセル" class="Button Module btn hasText rounded" type="button">
+              <span class="buttonText">キャンセル</span>
+            </button>
+            <%= f.submit "パスワードの変更", class: "Button Module btn hasText rounded" %>
+            <!-- <button aria-label="パスワードの変更" class="Button Module btn hasText rounded disabled" disabled="" type="submit">
+              <span class="buttonText">パスワードの変更</span>
+            </button> -->
+          </div>
+        </div>
+      <% end %>
+      <!-- </form> -->
+      <button class="Button Module borderless cancelButton closeModal inModal show" type="button">
+        <em></em>
+        <!-- react-text: 31 -->&nbsp;
+        <!-- /react-text -->
+      </button>
+    </div>
+  </div>
+</div>
