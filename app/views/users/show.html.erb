@@ -4,61 +4,100 @@
     <div class="Module UserProfilePage" id="mainModule517">
       <!-- <div class="HeroBasicWrapper Module" id="mainModule517_m1822"></div> -->
       <div class="DenzelReactBridge Module" id="mainModule517_m1918">
-        <div data-reactroot="" data-reactid="1" data-react-checksum="-540150576">
-          <div class="Module UserProfileHeader profileHeader  " data-reactid="2">
-            <div class="centeredWithinWrapper gridWidth headerSizer" data-reactid="3">
-              <div class="header emptyProfile" itemscope="" itemtype="https://schema.org/Person" data-reactid="4">
-                <div class="profileImage" data-reactid="5">
-                  <img alt="drive" itemprop="image" src="https://s.pinimg.com/images/user/default_280.png" data-reactid="6"/>
+        <div data-reactroot=""  data-react-checksum="-540150576">
+          <div class="Module UserProfileHeader profileHeader  " >
+            <div class="centeredWithinWrapper gridWidth headerSizer" >
+              <div class="header emptyProfile" itemscope="" itemtype="https://schema.org/Person" >
+                <div class="profileImage" >
+                  <% if @user.image.present? %>
+                    <%= image_tag @user.image, alt: @user.first_name, itemprop: "image" %>
+                  <% else %>
+                    <%= image_tag "default_280.png", alt: @user.first_name, itemprop: "image"%>
+                  <% end %>
                 </div>
-                <div class="fixedHeader" data-reactid="7">
-                  <div class="titleBar centeredWithinWrapper gridWidth" data-reactid="8">
-                    <div class="fixedHeaderNameAndImage _1lB54" data-reactid="9">
-                      <div class="fixedHeaderImage" data-reactid="10">
-                        <img alt="drive" src="https://s.pinimg.com/images/user/default_140.png" data-reactid="11"/>
+                <div class="fixedHeader" >
+                  <div class="titleBar centeredWithinWrapper gridWidth" >
+                    <div class="fixedHeaderNameAndImage _1lB54" >
+                      <div class="fixedHeaderImage" >
+                        <img alt="drive" src="https://s.pinimg.com/images/user/default_140.png" />
                       </div>
-                      <div class="fixedHeaderName" itemprop="name" data-reactid="12">drive</div>
+                      <div class="fixedHeaderName" itemprop="name" >
+                        <%= @user.first_name %> <%= @user.last_name %>
+                      </div>
                     </div>
-                    <div class="buttons" data-reactid="13">
-                      <div style="position:relative;display:inline-block;" data-reactid="14">
-                        <button class="Button DropdownButton Module btn rounded userProfileMenu react" type="button" data-reactid="15">
-                          <em data-reactid="16"></em>
-                          <span class="accessibilityText" data-reactid="17">ユーザーメニュー</span>
+                    <div class="buttons" >
+                      <div style="position:relative;display:inline-block;" >
+                        <button class="Button DropdownButton Module btn rounded userProfileMenu react" type="button" >
+                          <em ></em>
+                          <span class="accessibilityText" >ユーザーメニュー</span>
                         </button>
                       </div>
-                      <div style="float:left;" data-reactid="18">
-                        <button aria-label="プロフィールを編集" class="editProfile Button Module btn hasIcon rounded primary" type="button" data-reactid="19">
-                          <em data-reactid="20"></em>
-                          <span class="accessibilityText" data-reactid="21">プロフィールを編集</span>
-                        </button>
-                        <%= link_to edit_user_path(current_user), class: "Button Module btn rounded settingsCog" do %>
-                          <em></em>
-                          <span class="accessibilityText">アカウント設定</span>
-                        <% end %>
-                        <!-- <a class="Button Module btn rounded settingsCog" href="/settings" data-reactid="22">
-                          <em data-reactid="23"></em>
-                          <span class="accessibilityText" data-reactid="24">アカウント設定</span>
-                        </a> -->
-                      </div>
+                      <% if @user.id == current_user.id %>
+                        <div style="float:left;" >
+                          <button aria-label="プロフィールを編集" class="editProfile Button Module btn hasIcon rounded primary" type="button" >
+                            <em ></em>
+                            <span class="accessibilityText" >プロフィールを編集</span>
+                          </button>
+                          <%= link_to edit_user_path(current_user), class: "Button Module btn rounded settingsCog" do %>
+                            <em></em>
+                            <span class="accessibilityText">アカウント設定</span>
+                          <% end %>
+                          <!-- <a class="Button Module btn rounded settingsCog" href="/settings" >
+                            <em ></em>
+                            <span class="accessibilityText" >アカウント設定</span>
+                          </a> -->
+                        </div>
+                      <% else %>
+                        <div class="userFollowButtonWrapper">
+                          <div style="position:relative;">
+                            <div>
+                            <% if current_user.following_user? (@user) %>
+                              <button aria-label="フォローをやめる" class="dim followed FollowButton notNavigatable UserFollowButton Button Module btn hasText rounded" type="button">
+                                <span class="buttonText">フォローをやめる</span>
+                              </button>
+                            <% else %>
+                              <button aria-label="フォローする" class="FollowButton notNavigatable UserFollowButton Button Module btn hasText rounded primary" type="button">
+                                <span class="buttonText">フォローする</span>
+                              </button>
+                            <% end %>
+                            </div>
+                          </div>
+                        </div>
+                      <% end %>
                     </div>
                   </div>
                 </div>
-                <div class="profileInfo" data-reactid="25">
-                  <div class="aboutBar" data-reactid="26">
-                    <div class="about" data-reactid="27">
-                      <h1 class="name" data-reactid="28">
-                        <div class="nameInner" data-reactid="29">drive</div>
+                <div class="profileInfo" >
+                  <div class="aboutBar" >
+                    <div class="about" >
+                      <h1 class="name" >
+                        <div class="nameInner" >
+                          <%= @user.first_name %> <%= @user.last_name %>
+                        </div>
                       </h1>
-                      <div class="iconsLinksEtc" data-reactid="30">
-                        <ul data-reactid="31">
-                          <!-- react-text: 32 -->
-                          <!-- /react-text -->
-                          <!-- react-text: 33 -->
-                          <!-- /react-text -->
+                      <div class="iconsLinksEtc" >
+                        <ul >
+                          <% if @user.location.present? %>
+                            <li class="locationWrapper">
+                              <span class="location"></span>
+                              <%= @user.location %>
+                            </li>
+                          <% end %>
+                          <% if @user.location.present? && @user.website_url.present? %>
+                            <li>
+                              <span class="middot">·</span>
+                            </li>
+                          <% end %>
+                          <% if @user.website_url.present? %>
+                            <li class="websiteWrapper">
+                              <%= content_tag :a, @user.website_url, class: "website", href: @user.website_url, itemprop: "url", target: "_blank"%>
+                            </li>
+                          <% end %>
                         </ul>
                       </div>
-                      <!-- react-text: 34 -->
-                      <!-- /react-text -->
+                      <% if @user.about.present? %>
+                        <%= content_tag :p, @user.about, class: "aboutText", itemprop: "description" %>
+                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -68,43 +107,52 @@
         </div>
       </div>
       <div class="DenzelReactBridge Module" id="mainModule517_m2019">
-        <div class="Module UserInfoBar centeredWithinWrapper infoBar gridWidth" data-reactroot="" data-reactid="1" data-react-checksum="-964505706">
-          <div class="divider centeredWithinWrapper gridWidth" data-reactid="2">
-            <hr data-reactid="3"/>
+        <div class="Module UserInfoBar centeredWithinWrapper infoBar gridWidth" data-reactroot=""  data-react-checksum="-964505706">
+          <div class="divider centeredWithinWrapper gridWidth" >
+            <hr />
           </div>
-          <div class="tabs" data-reactid="4">
-            <ul data-reactid="5">
-              <li data-reactid="6">
-                <a class="active" href="/drivethruprm83/boards/" data-reactid="7">
-                  <span data-reactid="8">
-                    <span class='value'>0</span>
+          <div class="tabs" >
+            <ul >
+              <li >
+                <%= link_to boards_user_path, class: "active" do %>
+                <!-- <a class="active" href="/drivethruprm83/boards/" > -->
+                  <span >
+                    <span class='value'>
+                      <%= @user.boards.count %>
+                    </span>
                     <span class='label'>ボード </span>
                   </span>
-                </a>
+                <% end %>
               </li>
-              <li class="PinCount" data-reactid="9">
-                <a class="" href="/drivethruprm83/pins/" data-reactid="10">
-                  <span data-reactid="11">
-                    <span class='value'>0</span>
+              <li class="PinCount">
+                <%= link_to pins_user_path do %>
+                  <span >
+                    <span class='value'>
+                      <%= @user.pins.count %>
+                    </span>
                     <span class='label'>件のピン</span>
                   </span>
-                </a>
+                <% end %>
               </li>
-              <li data-reactid="12">
-                <a class="" href="/drivethruprm83/followers/" data-reactid="13">
-                  <span data-reactid="14">
-                    <span class='value '>0</span>
+              <li >
+                <%= link_to followers_user_path do %>
+                  <span >
+                    <span class='value '>
+                      <%= @user.followers.count %>
+                    </span>
                     <span class='label '>フォロワー</span>
                   </span>
-                </a>
+                <% end %>
               </li>
-              <li data-reactid="15">
-                <a class="" href="/drivethruprm83/following/" data-reactid="16">
-                  <span data-reactid="17">
-                    <span class='value '>5</span>
+              <li>
+                <%= link_to following_user_path do %>
+                  <span >
+                    <span class='value '>
+                      <%= @user.following.count %>
+                    </span>
                     <span class='label '>フォロー中</span>
                   </span>
-                </a>
+                <% end %>
               </li>
             </ul>
           </div>

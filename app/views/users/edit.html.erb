@@ -1,87 +1,87 @@
-<div class="appContent" data-reactid="37">
-  <div class="mainContainer" data-reactid="38">
-    <div data-reactid="39">
-      <div class="Nags" data-reactid="40"></div>
+<div class="appContent">
+  <div class="mainContainer">
+    <div>
+      <div class="Nags"></div>
     </div>
-    <div class="Module UserSettingsPage" data-reactid="41">
-      <div data-reactid="42"></div>
-      <div class="tocAndFormWrapper" data-reactid="43">
-        <ul class="toc" data-reactid="44">
-          <li role="button" tabindex="0" data-reactid="45" class="selected">
-            <a href="#accountBasics" data-reactid="46">アカウント情報</a>
+    <div class="Module UserSettingsPage" >
+      <div ></div>
+      <div class="tocAndFormWrapper" >
+        <ul class="toc" >
+          <li role="button" tabindex="0"  class="selected">
+            <a href="#accountBasics" >アカウント情報</a>
           </li>
-          <li role="button" tabindex="0" data-reactid="47">
-            <a href="#profile" data-reactid="48">プロフィール</a>
+          <li role="button" tabindex="0" >
+            <a href="#profile" >プロフィール</a>
           </li>
-          <li role="button" tabindex="0" data-reactid="49">
-            <a href="#notifications" data-reactid="50">お知らせ</a>
+          <li role="button" tabindex="0" >
+            <a href="#notifications" >お知らせ</a>
           </li>
-          <li role="button" tabindex="0" data-reactid="51">
-            <a href="#homefeedCustomization" data-reactid="52">ホームフィード</a>
+          <li role="button" tabindex="0" >
+            <a href="#homefeedCustomization" >ホームフィード</a>
           </li>
-          <li role="button" tabindex="0" data-reactid="53">
-            <a href="#socialNetworks" data-reactid="54">SNSアカウント</a>
+          <li role="button" tabindex="0" >
+            <a href="#socialNetworks" >SNSアカウント</a>
           </li>
-          <li role="button" tabindex="0" data-reactid="55">
-            <a href="#apps" data-reactid="56">アプリ</a>
+          <li role="button" tabindex="0" >
+            <a href="#apps" >アプリ</a>
           </li>
         </ul>
         <!-- react-empty: 57 -->
         <%= form_for @user, html: { class: "standardForm", novalidate: true, style: "height: 3485px;" } do |f| %>
-        <!-- <form class="standardForm" method="post" novalidate="" data-reactid="58" style="height: 3485px;"> -->
-          <ul data-reactid="59">
-            <li class="sectionTitle" id="accountBasics" data-reactid="60">
-              <h2 data-reactid="61">アカウント情報</h2>
+        <!-- <form class="standardForm" method="post" novalidate=""  style="height: 3485px;"> -->
+          <ul >
+            <li class="sectionTitle" id="accountBasics" >
+              <h2 >アカウント情報</h2>
             </li>
-            <li data-reactid="62">
-              <h3 data-reactid="63">
+            <li >
+              <h3 >
                 <%= f.label "メールアドレス", class: "settingLabel", for: "accountBasicsEmail" %>
-                <!-- <label class="settingLabel" for="accountBasicsEmail" data-reactid="64">メールアドレス</label> -->
+                <!-- <label class="settingLabel" for="accountBasicsEmail" >メールアドレス</label> -->
               </h3>
-              <div data-reactid="65">
+              <div >
                 <%= f.text_field :email, id: "accountBasicsEmail"%>
-                <!-- <input type="text" class="" id="accountBasicsEmail" name="email" value="drivethruprm83@yahoo.co.jp" data-reactid="66"> -->
+                <!-- <input type="text" class="" id="accountBasicsEmail" name="email" value="drivethruprm83@yahoo.co.jp" > -->
               </div>
             </li>
-            <li data-reactid="67">
-              <h3 data-reactid="68">
+            <li >
+              <h3 >
                 <%= f.label "パスワード", class: "settingLabel"%>
-                <!-- <label class="settingLabel" data-reactid="69">パスワード</label> -->
+                <!-- <label class="settingLabel" >パスワード</label> -->
               </h3>
-              <div data-reactid="70">
-                <button aria-label="パスワードを変更" class="changePasswordButton ShowModalButton Button Module hasText rounded borderless" type="button" data-reactid="71">
-                  <span class="buttonText" data-reactid="72">パスワードを変更</span>
+              <div >
+                <button aria-label="パスワードを変更" class="changePasswordButton ShowModalButton Button Module hasText rounded borderless" type="button" >
+                  <span class="buttonText" >パスワードを変更</span>
                 </button>
               </div>
             </li>
-            <li data-reactid="73">
-              <h3 data-reactid="74">
-                <label class="settingLabel" for="accountBasicsLanguage" data-reactid="75">言語</label>
+            <li >
+              <h3 >
+                <label class="settingLabel" for="accountBasicsLanguage" >言語</label>
               </h3>
-              <div data-reactid="76">
-                <div data-reactid="77">
-                  <select class="Module Select" id="accountBasicsLanguage" name="locale" data-reactid="78">
-                    <option value="id-ID" data-reactid="79">Bahasa Indonesia</option>
-                    <option value="ms-MY" data-reactid="80">Bahasa Malaysia</option>
-                    <option value="cs-CZ" data-reactid="81">&#268;e&#353;tina</option>
-                    <option value="da-DK" data-reactid="82">Dansk</option>
-                    <option value="de" data-reactid="83">Deutsch</option>
-                    <option value="en-AU" data-reactid="84">English (Australia)</option>
-                    <option value="en-IN" data-reactid="85">English (India)</option>
-                    <option value="en-GB" data-reactid="86">English (UK)</option>
-                    <option value="en-US" data-reactid="87">English (US)</option>
-                    <option value="es-419" data-reactid="88">Espa&#241;ol (Am&#233;ricas)</option>
-                    <option value="es-ES" data-reactid="89">Espa&#241;ol (Espa&#241;a)</option>
-                    <option value="fr" data-reactid="90">Fran&#231;ais</option>
-                    <option value="it" data-reactid="91">Italiano</option>
-                    <option value="hu-HU" data-reactid="92">Magyar</option>
-                    <option value="nl" data-reactid="93">Nederlands</option>
-                    <option value="nb-NO" data-reactid="94">Norsk bokm&#229;l</option>
-                    <option value="pl-PL" data-reactid="95">Polski</option>
-                    <option value="pt-BR" data-reactid="96">Portugu&#234;s (Brasil)</option>
-                    <option value="pt-PT" data-reactid="97">Portugu&#234;s (Europeu)</option>
-                    <option value="ro-RO" data-reactid="98">rom&#226;n&#259;</option>
-                    <option value="sk-SK" data-reactid="99">sloven&#269;ina</option>
+              <div >
+                <div >
+                  <select class="Module Select" id="accountBasicsLanguage" name="locale" >
+                    <option value="id-ID" >Bahasa Indonesia</option>
+                    <option value="ms-MY" >Bahasa Malaysia</option>
+                    <option value="cs-CZ" >&#268;e&#353;tina</option>
+                    <option value="da-DK" >Dansk</option>
+                    <option value="de" >Deutsch</option>
+                    <option value="en-AU" >English (Australia)</option>
+                    <option value="en-IN" >English (India)</option>
+                    <option value="en-GB" >English (UK)</option>
+                    <option value="en-US" >English (US)</option>
+                    <option value="es-419" >Espa&#241;ol (Am&#233;ricas)</option>
+                    <option value="es-ES" >Espa&#241;ol (Espa&#241;a)</option>
+                    <option value="fr" >Fran&#231;ais</option>
+                    <option value="it" >Italiano</option>
+                    <option value="hu-HU" >Magyar</option>
+                    <option value="nl" >Nederlands</option>
+                    <option value="nb-NO" >Norsk bokm&#229;l</option>
+                    <option value="pl-PL" >Polski</option>
+                    <option value="pt-BR" >Portugu&#234;s (Brasil)</option>
+                    <option value="pt-PT" >Portugu&#234;s (Europeu)</option>
+                    <option value="ro-RO" >rom&#226;n&#259;</option>
+                    <option value="sk-SK" >sloven&#269;ina</option>
                     <option value="fi-FI" data-reactid="100">suomi</option>
                     <option value="sv-SE" data-reactid="101">Svenska</option>
                     <option value="tl-PH" data-reactid="102">Tagalog</option>
@@ -488,7 +488,8 @@
               <div data-reactid="440">
                 <div data-reactid="441">
                   <button aria-label="アカウントを解除" class="deactivateAccountButton Button Module btn hasText rounded" type="button" data-reactid="442">
-                    <span class="buttonText" data-reactid="443">アカウントを解除</span>
+                    <!-- <span class="buttonText" data-reactid="443">アカウントを解除</span> -->
+                    <%= link_to "アカウントを解除", destroy_user_session_path, method: :delete, class: "buttonText" %>
                   </button>
                 </div>
               </div>
