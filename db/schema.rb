@@ -10,7 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118062125) do
+ActiveRecord::Schema.define(version: 20170202054759) do
+
+  create_table "boards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                      null: false
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_boards_on_user_id", using: :btree
+  end
+
+  create_table "boards_pins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "board_id"
+    t.integer  "pin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_boards_pins_on_board_id", using: :btree
+    t.index ["pin_id"], name: "index_boards_pins_on_pin_id", using: :btree
+  end
+
+  create_table "boards_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "board_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_boards_users_on_board_id", using: :btree
+    t.index ["user_id"], name: "index_boards_users_on_user_id", using: :btree
+  end
+
+  create_table "follow_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "follower_id"
+    t.integer  "following_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["follower_id", "following_id"], name: "index_follow_users_on_follower_id_and_following_id", unique: true, using: :btree
+    t.index ["follower_id"], name: "index_follow_users_on_follower_id", using: :btree
+    t.index ["following_id"], name: "index_follow_users_on_following_id", using: :btree
+  end
+
+  create_table "pins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "description", limit: 65535
+    t.string   "image",                     null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "board_id"
+    t.integer  "user_id"
+    t.index ["board_id"], name: "index_pins_on_board_id", using: :btree
+    t.index ["user_id"], name: "index_pins_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                                default: "", null: false
@@ -41,4 +89,11 @@ ActiveRecord::Schema.define(version: 20170118062125) do
     t.index ["user_name"], name: "index_users_on_user_name", unique: true, using: :btree
   end
 
+  add_foreign_key "boards", "users"
+  add_foreign_key "boards_pins", "boards"
+  add_foreign_key "boards_pins", "pins"
+  add_foreign_key "boards_users", "boards"
+  add_foreign_key "boards_users", "users"
+  add_foreign_key "pins", "boards"
+  add_foreign_key "pins", "users"
 end
