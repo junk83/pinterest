@@ -14,8 +14,12 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def cache_dir
+    "uploads/tmp/pin"
+  end
+
   # 画像は300pxにリサイズ
-  process :resize_to_limit => [300, 300]
+  process :resize_to_limit => [236, nil]
 
   # サムネイルを生成する設定
   version :thumb do
@@ -30,11 +34,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   # 保存形式をjpgとする
    process :convert => 'jpg'
 
-  # ファイル名をuser_idに変更
-  def filename
-    if original_filename.present?
-      "#{SecureRandom.uuid}" + '.jpg'
-    end
-  end
+   def filename
+     "#{secure_token}.#{file.extension}" if original_filename.present?
+   end
+
+   protected
+   def secure_token
+     var = :"@#{mounted_as}_secure_token"
+     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+   end
 
 end
