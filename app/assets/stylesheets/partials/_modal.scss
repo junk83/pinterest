@@ -1,3 +1,720 @@
+// ピンアップロードモーダル
+.Modal {
+  position: fixed;
+  top: 0;
+  z-index: 751;
+
+  .modalMask {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: #e2e4e4;
+    opacity: .9;
+    position: fixed;
+  }
+
+  .modalScroller {
+    overflow-y: scroll;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: fixed;
+  }
+
+  .modalContainer {
+    min-height: 0;
+    position: relative;
+    text-align: center;
+  }
+
+  &.absoluteCenter .modalScroller {
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+  }
+
+  .modalContent {
+    -webkit-transform: translateZ(0);
+    background: #fff;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+    display: inline-block;
+    margin: 20px auto;
+    opacity: 0;
+    position: relative;
+    text-align: left;
+  }
+
+  .modalContent, &.webNewContentNewRepin .modalContent {
+    border-radius: 8px;
+    box-shadow: none;
+  }
+
+  &.show .modalContent {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &.webNewContentNewRepin {
+    .modalContent {
+      background: transparent;
+    }
+
+    .closeModal {
+      display: none;
+    }
+  }
+
+  .formFooter {
+    .Button.rounded:not(.primary) {
+      background-image: none !important;
+      border: none !important;
+      border-radius: 4px !important;
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important;
+      padding: 10px 14px !important;
+      position: relative !important;
+      text-shadow: none !important;
+      background-color: #efefef !important;
+
+      .buttonText {
+        -webkit-font-smoothing: antialiased;
+
+        font-size: 14px;
+        letter-spacing: -0.15px;
+        line-height: 16px;
+        word-spacing: 0;
+
+        font-weight: bold;
+        color: #555 !important;
+      }
+    }
+
+    .Button.primary {
+      background-image: none !important;
+      border: none !important;
+      border-radius: 4px !important;
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important;
+      padding: 10px 14px !important;
+      position: relative !important;
+      text-shadow: none !important;
+
+      background-color: #bd081c !important;
+
+      .buttonText {
+        font-size: 14px;
+        letter-spacing: -0.15px;
+        line-height: 16px;
+        word-spacing: 0;
+        
+        color: #fff !important;
+      }
+    }
+  }
+
+}
+
+.Modal .modalMask, .Modal.webNewContentNewRepin .modalMask {
+  background-color: rgba(0,0,0,0.6);
+  opacity: 1;
+}
+
+.PinUploader {
+  width: 320px;
+}
+
+.ImageUploader {
+  background-color: #f3f3f3;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#f9f9f9));
+  background: -webkit-linear-gradient(#ededed, #f9f9f9);
+  background: linear-gradient(#ededed, #f9f9f9);
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+  padding: 15px 20px;
+  position: relative;
+
+  div.Button {
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .uploaderProgress {
+    overflow: hidden;
+    border-radius: 0 6px 6px 0;
+    box-shadow: 0 0 4px rgba(0,0,0,0.31) inset;
+    height: 31px;
+    position: relative;
+    top: -1px;
+
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #333;
+      display: block;
+      float: left;
+      font-size: 14px;
+      margin-left: 7px;
+      margin-top: 4px;
+      padding: 3px;
+    }
+  }
+}
+
+.TwoPaneModal {
+  display: flex;
+
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  max-height: 660px;
+  min-height: 490px;
+  width: 660px;
+
+  .twoPaneClose {
+    padding: 10px;
+    position: absolute;
+    z-index: 2;
+
+    padding: 10px;
+    right: 14px;
+    top: 18px;
+  }
+
+  .pane {
+    height: inherit;
+    overflow: hidden;
+
+    bottom: 0;
+    top: 0;
+    width: 50%;
+
+    &.right {
+      position: relative;
+    }
+  }
+
+  .left.pane {
+    border-radius: 6px 0 0 6px;
+  }
+
+  .right.pane {
+    background-color: #fff;
+    border-radius: 0 6px 6px 0;
+  }
+}
+
+// .BoardCreate {
+//   width: 600px;
+// }
+
+.PinCreate {
+  background: #d9d9d9;
+  border-radius: 6px;
+  position: relative;
+
+  height: 535px;
+  width: 660px;
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  &.TwoPaneModal .left.pane {
+    background: #fff;
+    border-right: 1px solid #efefef;
+  }
+
+  .pinContainer {
+    bottom: 0;
+    display: table;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 330px;
+
+    .pinModuleHolder {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+
+  .Pin {
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
+
+  .BoardCreate {
+    border-left: 1px solid #efefef;
+
+    background: #fff;
+    border-radius: 0 6px 6px 0;
+    bottom: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    form {
+      height: 100%;
+      position: relative;
+
+      &>ul>li {
+        border-top: 1px solid #efefef;
+        padding: 16px 25px 13px;
+      }
+    }
+
+    &.multiSelect form>ul>li {
+      padding: 10px;
+    }
+
+    h3 {
+      margin-bottom: 4px;
+    }
+
+    label {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: #c2c2c2;
+      font-size: 11px;
+      font-weight: normal;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    input, .TypeaheadField.userSelect input, textarea {
+      border: 0;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      font-size: 14px;
+      outline: none;
+      width: 100%;
+    }
+
+    input {
+      padding-bottom: 5px;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    .boardEditName {
+      color: #333;
+      font-size: 15px;
+    }
+
+    .formFooter {
+      background: transparent;
+      border-radius: 0 0 6px;
+      border-top: 1px solid #efefef;
+      bottom: 0;
+      left: 0;
+      padding: 25px;
+      position: absolute;
+      right: 0;
+
+      .formFooterButtons {
+        float: none;
+
+        .cancelButton {
+          float: left;
+        }
+
+        .saveBoardButton {
+          float: right;
+
+          &.disabled {
+            background-color: #efefef !important;
+          }
+        }
+      }
+
+      .btn {
+        margin-left: 0;
+        &.btn.disabled.disabled.Button.primary {
+          border: none !important;
+        }
+      }
+    }
+  }
+
+  .BoardCreate h1, .pinCreateTitle {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    clear: both;
+    color: #555;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 25px 25px 13px;
+  }
+
+  .titleContainer {
+    border-top-right-radius: 6px;
+    width: 330px;
+
+    .pinCreateTitle {
+    padding: 25px 25px 13px;
+    }
+  }
+
+  .createButton {
+    display: none;
+  }
+
+  .nameWrapper {
+    position: relative;
+  }
+
+  .searchFilterInputIcon {
+    width: 15px;
+    height: 15px;
+    background: url(webapp-common-main-1x.png) -295px -246px no-repeat;
+    margin-top: -7px;
+    position: absolute;
+    top: 50%;
+  }
+
+  .Input.name {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #f6f6f6;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-weight: bold;
+    padding: 13px;
+  }
+
+  .SelectList {
+    border-bottom-right-radius: 6px;
+  }
+
+  .sectionHeading {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #555;
+    font-size: 14px;
+    letter-spacing: -.22px;
+    padding: 10px 23px;
+  }
+
+  .Picker .item {
+    border-radius: 0;
+  }
+
+  .BoardPicker .BoardLabel {
+    width: 100%;
+  }
+
+  // .PinCreateBoardPicker {
+  //   // bottom: 0;
+  //   // left: 0;
+  //   // right: 0;
+  //   // top: 0;
+  //   // position: absolute;
+  // }
+
+  .BoardIcons {
+    height: auto;
+  }
+
+  .allBoards {
+    background: #fff;
+    border-bottom: 1px solid #efefef;
+  }
+
+  .Checkbox.fancyToggle {
+    background: #f8f8f8;
+    border: 1px solid #dfdfdf;
+    border-radius: 50px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 70px;
+
+    .slider {
+      background-image: none;
+      border-color: #dfdfdf;
+      border-radius: 50px;
+      bottom: -1px;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      height: auto;
+      left: -1px;
+      top: -1px;
+      width: 27px;
+    }
+  }
+}
+
+.BoardEditBase .boardEditDescription {
+  min-height: 58px;
+}
+
+.BoardEditBase.simple .descriptionWrapper, .BoardEditBase.simple .categoryWrapper, .BoardEditBase.simple .mapToggleWrapper {
+  display: none;
+}
+
+.formFieldMessage {
+  font-size: 13px;
+}
+
+.PinCreatePin {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+.PinCreateBoardPicker {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+
+  .boardsWrapper {
+    -webkit-transform: translateZ(0);
+    background: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    overflow-y: auto;
+
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+    bottom: 0;
+    position: relative;
+    right: 0;
+    top: 0;
+    width: 330px;
+
+    .nameWrapper {
+
+      .searchFilterInputIcon {
+        left: 36px;
+      }
+
+      input.name {
+        margin-left: 23px;
+        padding-left: 44px;
+        width: 284px;
+      }
+    }
+  }
+
+  .BoardPicker {
+    width: 100%;
+  }
+
+  .Picker {
+    .top {
+      border-bottom: 1px solid #f3f3f3;
+      margin-bottom: 0;
+      overflow: inherit;
+      padding-bottom: 15px;
+    }
+
+    .item {
+      &:hover {
+        background: #f7f7f7;
+        color: #555;
+
+        .repinBtn {
+          display: block;
+        }
+      }
+      padding: 7px 23px;
+    }
+  }
+
+  .nameAndIcons {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #555;
+    font-weight: bold;
+    letter-spacing: -.25px;
+  }
+}
+
+.BoardPicker {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  visibility: hidden;
+
+  .bottom {
+    padding: 7px 0;
+    width: 100%;
+
+    .createBoard {
+      padding: 7px 23px;
+    }
+  }
+
+  .SelectList {
+    overflow: auto;
+  }
+}
+
+.BoardLabel {
+  text-align: left;
+
+  &.pinCreate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 36px;
+
+    .repinBtn {
+      display: none;
+      float: right;
+      margin-left: 7px;
+      margin-top: 1px;
+      position: relative;
+      z-index: 1;
+
+      &.isBrioFlat {
+        margin-top: 0;
+      }
+    }
+
+    .boardImg {
+      border-radius: 3px;
+      float: left;
+      height: 36px;
+      margin-right: 10px;
+      vertical-align: middle;
+      width: 36px;
+
+      box-shadow: 0 0 1px rgba(0,0,0,0.25) inset;
+    }
+  }
+  .emptyBoardImg {
+    width: 34px;
+    height: 34px;
+    background: url(webapp-common-main-1x.png) -155px -97px no-repeat;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .nameAndIcons {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    .name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 80%;
+      width: auto;
+    }
+  }
+
+  .BoardIcons {
+    float: right;
+    max-width: 20%;
+  }
+}
+
+.BoardIcons {
+  display: inline-block;
+}
+
+.Picker {
+  .createButton {
+    float: right;
+  }
+
+  .nameWrapper {
+    overflow: hidden;
+    padding-right: 10px;
+  }
+
+  .selectionBody {
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+    padding-bottom: 7px;
+  }
+
+  .item {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 6px;
+    color: #555;
+    cursor: pointer;
+    padding: 6px 13px;
+  }
+}
+
+.PickerItemCreate.pinCreate {
+  color: #555;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: -.25px;
+  line-height: 35px;
+
+  .icon {
+    width: 36px;
+    height: 36px;
+    background: url(webapp-common-main-1x.png) 0px -176px no-repeat;
+    display: block;
+    float: left;
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+}
+
+.PinCreateShare {
+  bottom: -32px;
+  left: 0;
+  position: absolute;
+}
+
+// パスワード編集モーダル
 .Modal__Overlay {
   -webkit-box-align: center;
   align-items: center;
@@ -63,7 +780,7 @@
   .standardForm {
     background-color: #fff;
     border-radius: 6px;
-    // margin-bottom: 0;
+    margin-bottom: 0;
     width: auto;
 
     &>h1 {

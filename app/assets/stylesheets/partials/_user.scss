@@ -137,7 +137,7 @@
         em {
           width: 24px;
           height: 6px;
-          background: url(spritesheet.png) -209px -296px no-repeat;
+          background: url(webapp-common-above_the_fold-1x.png) -209px -296px no-repeat;
           display: inline-block;
           font: 0 / 0 serif;
           text-shadow: none;
@@ -160,7 +160,7 @@
         }
       }
       em {
-        background: url(spritesheet.png) -50px -310px no-repeat;
+        background: url(webapp-common-above_the_fold-1x.png) -50px -310px no-repeat;
         display: inline-block;
         font: 0 / 0 serif;
         text-shadow: none;
@@ -182,7 +182,7 @@
         em {
           width: 28px;
           height: 24px;
-          background: url(spritesheet.png) -221px -234px no-repeat;
+          background: url(webapp-common-above_the_fold-1x.png) -221px -234px no-repeat;
           display: inline-block;
           font: 0 / 0 serif;
           text-shadow: none;
@@ -191,7 +191,7 @@
         }
       }
       .Button {
-        // height: auto !important;
+        height: auto !important;
       }
     }
     .userProfileMenu {
@@ -244,6 +244,93 @@
         line-height: inherit;
         margin: 0;
         max-height: 40px;
+
+        .locationWrapper {
+          font-size: 14px;
+          letter-spacing: -0.15px;
+          line-height: 16px;
+          word-spacing: 0;
+
+          margin-bottom: 0px;
+
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 100%;
+
+          color: #555;
+          font-weight: bold;
+        }
+
+        ul li:first-child {
+          padding-left: 0;
+        }
+
+        .middot {
+          color: #fff;
+          font-size: 1px;
+          margin-left: 1px;
+          margin-right: 1px;
+          position: relative;
+
+          &::after {
+            font-size: 14px;
+            letter-spacing: -0.15px;
+            line-height: 16px;
+            word-spacing: 0;
+
+            color: #555;
+            content: "/";
+            font-weight: normal;
+          }
+        }
+
+        .websiteWrapper {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 100%;
+
+          a {
+            max-width: 100%;
+          }
+        }
+
+        .website {
+          font-size: 14px;
+          letter-spacing: -0.15px;
+          line-height: 16px;
+          word-spacing: 0;
+
+          margin-bottom: 0px;
+
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: #555;
+          font-weight: bold;
+          margin-top: 0;
+        }
+      }
+
+      li {
+        float: left;
+        padding: 0 2px;
+      }
+
+      .aboutText {
+        font-size: 14px;
+        letter-spacing: -0.15px;
+        line-height: 16px;
+        word-spacing: 0;
+
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #555;
+        margin: 0;
+        margin-bottom: 10px;
+        overflow: hidden;
+        padding: 0;
       }
     }
     .name {
@@ -271,6 +358,18 @@
         word-wrap: break-word;
       }
     }
+
+    .userFollowButtonWrapper, .userUnblockButtonWrapper {
+      float: right;
+    }
+
+    .UserFollowButton {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 32px;
+      max-width: 175px;
+    }
   }
   &::after{
     content: "";
@@ -281,6 +380,10 @@
     box-sizing: border-box;
     max-width: 744px;
     min-width: auto;
+  }
+
+  .userFollowButtonWrapper {
+    display: inline-block;
   }
 }
 

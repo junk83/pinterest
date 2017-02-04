@@ -81,6 +81,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
   outline: none;
   position: relative;
 
+  &.leftRounded {
+    border-radius: 6px 0 0 6px;
+  }
+
   &.logoHeader {
     &.leftRounded {
       border-radius: 6px 0 0 6px;
@@ -141,10 +145,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
       em {
         width: 16px;
         height: 16px;
-        background: url(spritesheet.png) -318px -372px no-repeat;
+        background: url(webapp-common-above_the_fold-1x.png) -318px -372px no-repeat;
       }
     }
   }
+
+  &.mediumLarge {
+    float: left;
+    font-size: 13px;
+    margin: -1px;
+    padding: 6px 12px 3px;
+  }
+
   &.btn {
     background: linear-gradient(#fff, #f0f0f0);
     border: 1px solid #ccc;
@@ -172,7 +184,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
             em {
               width: 25px;
               height: 25px;
-              background: url(spritesheet.png) -205px -260px no-repeat;
+              background: url(webapp-common-above_the_fold-1x.png) -205px -260px no-repeat;
             }
           }
         }
@@ -180,18 +192,50 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
     }
     &.primary, &.primaryOnHover:hover {
       -webkit-font-smoothing: antialiased;
+      background-image: linear-gradient(#e3262e, #ab171e);
+      background-color: #ab171e;
+      border-bottom-color: #820a0f;
+      border-left-color: #9a1015;
+      border-right-color: #9a1015;
+      border-top-color: #af151b;
       border-style: solid;
       border-width: 1px;
+      box-shadow: 0 1px 0 0 rgba(255,255,255,0.34);
       color: #fff;
+      text-shadow: 0 -1px rgba(0,0,0,0.11);
     }
     &.isBrioFlat{
+      background-color: #efefef;
+      background-image: none;
+      border: 0;
+      border-radius: 4px;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      color: #555;
+      height: 36px;
+      text-shadow: none;
       padding: 9px 12px;
+
+      &.primary {
+        background-color: #bd081c;
+        border: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        color: #efefef;
+        text-shadow: none;
+      }
     }
     &.rounded {
       border-radius: 3px;
     }
     &:hover {
       border-color: #ccc #c2c2c2 #b8b8b8;
+    }
+
+    &.dim {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: #777;
     }
   }
   &.borderless {
@@ -215,6 +259,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
     &:hover {
       background-color: #f5f5f5;
     }
+    &.active {
+      background-color: #e9e9e9;
+    }
   }
   &.addPinFooter {
     padding: 12.5px 13px !important;
@@ -223,14 +270,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
         em {
           width: 14px;
           height: 14px;
-          background: url(spritesheet.png) -405px -244px no-repeat;
+          background: url(webapp-common-above_the_fold-1x.png) -405px -244px no-repeat;
         }
       }
     }
     em {
       width: 14px;
       height: 14px;
-      background: url(spritesheet.png) -405px -244px no-repeat;
+      background: url(webapp-common-above_the_fold-1x.png) -405px -244px no-repeat;
     }
   }
   &.moreFooter {
@@ -240,14 +287,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
         em {
           width: 10px;
           height: 15px;
-          background: url(spritesheet.png) -405px -305px no-repeat;
+          background: url(webapp-common-above_the_fold-1x.png) -405px -305px no-repeat;
         }
       }
     }
     em {
       width: 10px;
       height: 15px;
-      background: url(spritesheet.png) -405px -305px no-repeat;
+      background: url(webapp-common-above_the_fold-1x.png) -405px -305px no-repeat;
     }
   }
   &.large {
@@ -368,6 +415,116 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
       }
     }
   }
+  &.addPinDropdown {
+    overflow: hidden;
+    border-bottom: 1px solid #d8d8d8;
+    display: block;
+    padding: 15px;
+    text-align: left;
+    width: 100%;
+
+    &.borderless {
+      padding: 15px;
+    }
+
+    em {
+      float: left;
+      margin-right: 9px;
+    }
+
+    &.addPinterestButton em {
+      width: 23px;
+      height: 24px;
+      background: url(webapp-common-above_the_fold-1x-0120.png) -226px -260px no-repeat;
+      float: left;
+      margin-top: 4px;
+    }
+
+    &.pinUpload em {
+      width: 24px;
+      height: 21px;
+      background: url(webapp-common-desktop-1x.png) -141px -342px no-repeat;
+    }
+
+    &.pinAddURL em {
+      width: 24px;
+      height: 22px;
+      background: url(webapp-common-desktop-1x.png) -334px -270px no-repeat;
+    }
+
+    span {
+      color: #999;
+      font-size: 14px;
+      position: relative;
+      top: 2px;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &:hover {
+      background: #f2f2f2;
+
+      span {
+        color: #444;
+      }
+    }
+  }
+
+  &.closeModal {
+    em {
+      width: 12px;
+      height: 12px;
+      background: url(webapp-common-main-1x.png) -261px -242px no-repeat;
+    }
+  }
+
+  &.pinCreateClose, &.twoPaneClose {
+    em {
+      width: 17px;
+      height: 16px;
+      background: url(webapp-common-desktop-1x.png) -358px -342px no-repeat;
+    }
+  }
+
+  &.editPinDescription em {
+    width: 14px;
+    height: 14px;
+    background: url(webapp-common-desktop-1x.png) -474px -72px no-repeat;
+  }
+
+  &.FollowButton, &.UserFollowButton {
+    background-image: none !important;
+    border: none !important;
+    border-radius: 4px !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    padding: 10px 14px !important;
+    position: relative !important;
+    text-shadow: none !important;
+    border: none !important;
+    background-color: #bd081c !important;
+
+    .buttonText {
+      -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+      letter-spacing: -0.15px;
+      line-height: 16px;
+      word-spacing: 0;
+      font-weight: bold;
+      color: #fff !important;
+    }
+  }
+
+  &.UserFollowButton.followed {
+    background-color: #efefef !important;
+
+    .buttonText {
+      color: #555 !important;
+    }
+  }
+
 }
 
 .PinLikeButton {
@@ -378,7 +535,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
         em {
           width: 16px;
           height: 14px;
-          background: url(spritesheet.png) -405px -192px no-repeat;
+          background: url(webapp-common-above_the_fold-1x.png) -405px -192px no-repeat;
           top: -3px;
         }
       }
@@ -458,7 +615,7 @@ img {
   .didItIconSmall {
     width: 10px;
     height: 8px;
-    background: url(spritesheet.png) -14px -394px no-repeat;
+    background: url(webapp-common-above_the_fold-1x.png) -14px -394px no-repeat;
     display: inline-block;
     font: 0 / 0 serif;
     text-shadow: none;
@@ -696,4 +853,44 @@ img {
 
 .flex {
   display: flex;
+}
+
+.Field {
+  cursor: text;
+  font-size: 13px;
+  position: relative;
+
+  .content{
+    box-sizing: border-box;
+    color: #333;
+    display: block;
+    margin: 0;
+  }
+}
+
+.PinCreate .Pin.summary .pinMeta .TextField {
+  font-size: 12px;
+  letter-spacing: -0.1px;
+  line-height: 14px;
+  word-spacing: 0;
+
+  margin-bottom: 12px;
+}
+
+.TextField .content {
+  border-radius: 3px;
+  min-height: 1em;
+  padding: 8px;
+  width: 100%;
+  word-wrap: break-word;
+
+  &.pinCreateDescription {
+    padding: 0;
+  }
+}
+
+.SelectList {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+  position: relative;
 }
