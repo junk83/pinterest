@@ -72,12 +72,18 @@ $(function() {
     $('.Modal__Overlay').css('display', 'none');
     // 背景の固定を解除する
     $('.UserSettingsPage').attr({style: ''});
+
+    $('.modalHasClose').remove();
   };
 
   // 実行
   $(document).on('click', 'a[href^="#"]', pageScroll);
   $(document).on('scroll', scrollMenu);
   $(document).on('click', '.changePasswordButton', modalOpen);
-  $(document).on('click', '.cancelButton', modalClose);
+
+  $(document).on('click', '.modalScroller, .cancelButton', modalClose);
+  $(document).on('click', '.modalModule', function(e){
+    e.stopPropagation();
+  });
 
 });
