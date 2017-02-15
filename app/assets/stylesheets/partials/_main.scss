@@ -116,6 +116,17 @@
           z-index: 3;
         }
       }
+
+      .pinMeta .pinDescription {
+        font-size: 12px;
+        letter-spacing: -0.1px;
+        line-height: 14px;
+        word-spacing: 0;
+
+        margin-bottom: 6px;
+
+        padding: 0;
+      }
     }
 
     .rightSideButtonsWrapper{
@@ -643,6 +654,18 @@
       border-radius: 6px;
       position: relative;
     }
+
+    .pinDescriptionInput {
+      display: none;
+    }
+
+    .editPinDescription {
+      cursor: pointer;
+      position: absolute;
+
+      bottom: 0;
+      right: -16px;
+    }
   }
   .pinImageWrapper {
     &::after {
@@ -818,6 +841,39 @@
   overflow-x: hidden;
   resize: none;
   width: 190px;
+
+  &:focus {
+    background: #fff;
+    border: 0;
+    outline: none;
+  }
+}
+
+.Pin.summary.cloned .pinDescription {
+  min-height: 17px;
+  overflow: hidden;
+}
+
+.Pin.summary.cloned.editingDescription {
+  p.pinDescription {
+    display: none;
+  }
+
+  .editPinDescription {
+    display: none;
+  }
+}
+
+.PinCreate .Pin.summary .pinMeta .pinDescription {
+  max-width: 165px;
+}
+
+.PinCreate .Pin .editPinDescription:hover ~ .pinDescription, .PinCreate .Pin .editPinDescription:hover ~ .addDescription {
+  background: #e3e9ed;
+}
+
+.Pin.summary.cloned .addDescription:hover, .Pin.summary.cloned .pinDescriptionInput:hover, .Pin.summary.cloned .pinDescription:hover {
+    background: #e3e9ed;
 }
 
 .Pin .TextField .pinDescriptionInput.content.autogrow, .Pin .TextField .pinDescriptionInput:focus.content.autogrow {

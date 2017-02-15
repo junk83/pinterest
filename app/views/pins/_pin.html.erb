@@ -69,7 +69,11 @@
             <a href="#" >
               <div class="Image Module creditImg user unknownImage">
                 <div class="heightContainer" >
-                  <%= image_tag pin.user.image %>
+                  <% if pin.user.image.present? %>
+                    <%= image_tag pin.user.image %>
+                  <% else %>
+                    <%= image_tag 'default_30.png'%>
+                  <% end %>
                 </div>
               </div>
               <div class="pinCreditNameTitleWrapper">

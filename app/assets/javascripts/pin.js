@@ -68,7 +68,7 @@ $(function() {
         '<div class="Module PinCreatePin">' +
           '<div class="pinContainer">' +
             '<div class="pinModuleHolder">' +
-              '<div class="Module Pin cloned editingDescription hideHoverUI pinActionBarStickyContainer summary">' +
+              '<div class="Module Pin cloned hideHoverUI pinActionBarStickyContainer summary">' +
                 '<div class="pinWrapper">' +
                   '<div class="bulkEditPinWrapper"></div>' +
                   '<div class="pinImageActionButtonWrapper">' +
@@ -105,7 +105,7 @@ $(function() {
                       '<span class="accessibilityText">説明を編集</span>' +
                     '</button>' +
                     '<div class="Field Module TextField">' +
-                      '<textarea maxlength="500" class="content autogrow            pinDescriptionInput pinCreateDescription" placeholder="このピンの説明を入力..."></textarea>' +
+                      '<textarea maxlength="500" class="content autogrow pinDescriptionInput pinCreateDescription" placeholder="このピンの説明を入力..."></textarea>' +
                     '</div>' +
                     '<p class="pinDescription"></p>' +
                   '</div>' +
@@ -207,6 +207,24 @@ $(function() {
     return html;
   };
 
+  var buildModal = function(){
+    var html =
+    '<div class="Modal Module modalHasClose webNewContentNewRepin absoluteCenter show">' +
+      '<div class="modalMask webNewContentNewRepin"></div>' +
+      '<div class="modalScroller">' +
+        '<div class="modalContainer webNewContentNewRepin">' +
+          '<span class="positionModuleCaret"></span>' +
+          '<div class="modalContent">' +
+            '<div class="modalModule">' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    $('.ModalManager').append(html);
+  };
+
   // キャッシュアップロード処理
   var cashUpload = function(){
     var form = $('.standardForm').get(0);
@@ -238,14 +256,17 @@ $(function() {
 
   // ピンの登録処理
   var pinCreate = function(){
-    var imagePath = $('.editingDescription img.pinImg').attr('src');
-    var imageUrl = imagePath.replace(/\/uploads\/tmp\/pin\//, "");
+    var imagePath = $('.cloned img.pinImg').attr('src');
+    // var path = imagePath.split('/');
+    // var imageUrl = path.pop();
+    var imageUrl = imagePath.replace(/\/uploads\/pin\/image\//, "");
+    imageUrl = imageUrl.replace(/\/uploads\/tmp\/pin\//, "");
     var description = $('.pinDescriptionInput').val();
     var boardId = $(this).find('#board_id').val();
     var formData = new FormData();
     formData.append('image_url', imageUrl);
     formData.append('description', description);
-    formData.append('bord_id', boardId);
+    // formData.append('bord_id', boardId);
 
     $.ajax({
       url: '/boards/' + boardId + '/pins.json',
@@ -265,6 +286,39 @@ $(function() {
     .fail(function() {
       console.log("error");
     });
+  };
+
+  // ピンの保存画面表示
+  var repin = function(){
+    // var form = $('.standardForm').get(0);
+    // var formData = new FormData(form);
+    var pinUiImage = $(this).parent().siblings('.pinHolder').find('.pinUiImage').clone();
+    var pinDescription = $(this).parents('.pinImageActionButtonWrapper').siblings('.pinMetaWrapper').find('.pinDescription').text();
+
+    $.ajax({
+      url: '/pins/upload.json',
+      type: 'GET',
+      dataType: 'json',
+    })
+    .done(function(data) {
+      buildModal();
+      // 新たなHTMLを描画
+      $('.modalModule').append(newPinHTML(data));
+      $('.left.pane .pinImg').remove();
+      $('.left.pane .fadeContainer').append(pinUiImage);
+      $('.left.pane .pinDescriptionInput').text(pinDescription);
+      $('.left.pane .pinDescription').text(pinDescription);
+    })
+    .fail(function() {
+      console.log("error");
+    });
+  };
+
+  // 説明文を編集可能にする
+  var editDescription = function(){
+    $('.pinActionBarStickyContainer').addClass('editingDescription');
+    $('.Field.Module.TextField').addClass('active');
+    $('.pinDescriptionInput').select();
   };
 
   // ピンアップロードメニュー選択時
@@ -287,4 +341,20 @@ $(function() {
   // ボードを選択した時にピンの登録処理を実行する
   $(document).on('click', 'li.item', pinCreate);
 
+  // 保存ボタン押下時にピンを保存する
+  $(document).on('click', '.repinSmall', repin);
+
+  // 編集ボタン押下時に説明文を編集可能にする
+  $(document).on('click', '.editPinDescription, .pinDescription', editDescription);
+
+  // 説明文を確定する
+  $(document).on('click', '.modalModule', function(e) {
+    if (!$.contains($(".editPinDescription")[0], e.target)) {
+      // クラス除去
+      $('.pinActionBarStickyContainer').removeClass('editingDescription');
+      $('.Field.Module.TextField').removeClass('active');
+      // 編集後の説明文を反映する
+      $('.left.pane .pinDescription').text($('.left.pane .pinDescriptionInput').val());
+    }
+  });
 });

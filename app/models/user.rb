@@ -18,6 +18,8 @@ class User < ApplicationRecord
   # followersの関連付け
   has_many :followers, through: :passive_follow_users
 
+  # has_many :follow_pins, through: :active_follow_users
+
   def self.find_for_oauth(auth)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user

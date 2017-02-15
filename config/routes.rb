@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: { registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
 
   devise_scope :user do
@@ -6,7 +7,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only:[:show, :edit, :update] do
-    resource :follow_users, only: [:create, :destroy]
     member do
       get :boards, :pins
       get :following, :followers
@@ -16,12 +16,19 @@ Rails.application.routes.draw do
     end
   end
 
-  post '/pins/upload', to: 'pins#upload'
+  resource :pins do
+    member do
+      get 'upload'
+      post 'upload'
+    end
+  end
+  # post '/pins/upload', to: 'pins#upload'
 
   resources :boards do
     resources :pins
   end
 
+  resource :follow_users, only: [:create, :destroy]
 
   root 'pins#index'
 

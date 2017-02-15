@@ -27,10 +27,12 @@
                     </div>
                     <div class="buttons" >
                       <div style="position:relative;display:inline-block;" >
-                        <button class="Button DropdownButton Module btn rounded userProfileMenu react" type="button" >
+                        <!-- <button class="Button DropdownButton Module btn rounded userProfileMenu react" type="button" > -->
+                        <%= link_to destroy_user_session_path, method: :delete, class: "Button DropdownButton Module btn rounded userProfileMenu react" do %>
                           <em ></em>
                           <span class="accessibilityText" >ユーザーメニュー</span>
-                        </button>
+                        <% end %>
+                        <!-- </button> -->
                       </div>
                       <% if @user.id == current_user.id %>
                         <div style="float:left;" >

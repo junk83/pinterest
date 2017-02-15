@@ -865,6 +865,10 @@ img {
     color: #333;
     display: block;
     margin: 0;
+
+    &:focus {
+      color: #333;
+    }
   }
 }
 
