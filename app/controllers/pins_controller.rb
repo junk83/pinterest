@@ -2,7 +2,8 @@ class PinsController < ApplicationController
   def index
     @pin = Pin.new
     follow_users = current_user.following.ids
-    @pins = Pin.includes([:board, :user]).where(user_id: follow_users).order('created_at DESC').limit(20)
+    # @pins = Pin.includes([:board, :user]).where(user_id: follow_users).order('created_at DESC').limit(20)
+    @recommend_pins = Pining.includes([:board, :user, :pin]).where(user_id: follow_users).order('created_at DESC').limit(20)
   end
 
   def pins
@@ -26,11 +27,16 @@ class PinsController < ApplicationController
   end
 
   def create
+    # 既に登録済みのピンであるか
     original_pin = Pin.where(image: create_params[:image_url]).first
-    @pin = Pin.new(description: create_params[:description], user_id: current_user.id, board_id: create_params[:board_id])
+    @pin = ''
+
     if original_pin.present?
-      @pin.image = original_pin.image.file
+      @pin = Pining.new(pin_id: original_pin.id, board_id: create_params[:board_id], user_id: current_user.id, description: create_params[:description])
     else
+      # pinオブジェクトを生成
+      @pin = Pin.new(pinings_attributes: [description: create_params[:description], user_id: current_user.id, board_id: create_params[:board_id]])
+      # キャッシュを復元
       @pin.image.retrieve_from_cache! create_params[:image_url]
     end
     if @pin.save!

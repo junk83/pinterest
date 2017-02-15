@@ -7,7 +7,8 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   has_many :boards
-  has_many :pins
+  # has_many :pins
+  has_many :pinings
 
   # 能動的関係(フォローする)に対して1対多の関連付け
   has_many :active_follow_users, class_name: "FollowUser", foreign_key: "follower_id", dependent: :destroy
