@@ -6,4 +6,5 @@ class Pining < ApplicationRecord
   def counts
     Pining.where(pin_id: self.pin_id).count
   end
+
 end

@@ -336,7 +336,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
       box-shadow: none !important;
     }
   }
-  &.editProfile {
+  &.editProfile, &.boardEditButton, &.boardSettingsButton {
     border-radius: 4px !important;
     box-shadow: none !important;
     position: relative !important;
@@ -494,6 +494,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
     background: url(webapp-common-desktop-1x.png) -474px -72px no-repeat;
   }
 
+  &.editPin.isBrioFlat em {
+    width: 16px;
+    height: 16px;
+    background: url(webapp-common-above_the_fold-1x-2.png) -376px -291px no-repeat;
+    top: -1px;
+  }
+
   &.FollowButton, &.UserFollowButton {
     background-image: none !important;
     border: none !important;
@@ -522,6 +529,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 
     .buttonText {
       color: #555 !important;
+    }
+  }
+
+  &.didIt {
+    margin-right: 4px;
+
+    em {
+      width: 17px;
+      height: 13px;
+      background: url(webapp-common-above_the_fold-1x-2.png) -290px -325px no-repeat;
     }
   }
 
@@ -870,6 +887,10 @@ img {
       color: #333;
     }
   }
+}
+
+.mr1 {
+  margin-right: 8px;
 }
 
 .PinCreate .Pin.summary .pinMeta .TextField {

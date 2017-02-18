@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   before_action :get_user
+  layout 'profile', except: :edit
 
   def show
-    @user = User.find(params[:id])
+    @boards = Board.includes([:pinings, :pins]).where(user_id: params[:id])
   end
 
   def edit
@@ -28,10 +29,27 @@ class UsersController < ApplicationController
     end
   end
 
+  def boards
+    redirect_to action: :show
+  end
+
+  def pins
+    @pinings = Pining.includes([:pin, :board]).where(user_id: params[:id])
+  end
+
+  def followers
+    @followers = @user.followers
+  end
+
+  def following
+    @followings = @user.following
+  end
+
   private
 
   def get_user
-    @user = User.find(current_user)
+    # @user = User.find(current_user)
+    @user = User.find(params[:id])
   end
 
   def user_params

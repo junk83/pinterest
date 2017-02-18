@@ -43,10 +43,19 @@
       padding: 24px 12px;
       width: 236px;
     }
+    &.fixedHeightLayout>.item {
+      margin: 0;
+      padding: 24px 12px;
+      width: 236px;
+    }
   }
 
   &.animated .item {
     transition: transform .2s ease-out;
+  }
+
+  &.fixedHeightLayout>.item {
+    float: left;
   }
 
 }
@@ -607,8 +616,24 @@
           }
         }
       }
+
       button {
         z-index: 3;
+      }
+
+      &>.creditItem {
+        .creditName {
+          font-weight: normal;
+        }
+
+        .creditTitle {
+          font-weight: bold;
+        }
+        
+        .creditName, .creditTitle {
+          color: #b5b5b5;
+          max-width: 160px;
+        }
       }
     }
     .pinCreditWrapper {

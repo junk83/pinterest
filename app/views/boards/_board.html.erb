@@ -1,0 +1,53 @@
+<div class="_3wC7P m0">
+  <div draggable="true">
+    <div class="item">
+      <div class="Board Module boardCoverImage">
+        <%= link_to board_path(board.id), class: "boardLinkWrapper" do %>
+        <!-- <a class="boardLinkWrapper" href="/drivethruprm/test/"> -->
+          <div class="boardName">
+            <div class="BoardIcons Module pinCreate"></div>
+            <div class="name" style="padding: 2px 0px;">
+              <%= board.name %>
+            </div>
+            <div class="boardPinCount">
+              <div class="Module PinCount">
+                <span>
+                  <span class="value">
+                    <%= board.pinings.count %>
+                  </span>
+                  <span class="label">件のピン</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="boardImagesWrapper">
+            <div class="boardCoverWrapper">
+              <span class="hoverMask" style="z-index: 0;"></span>
+              <%= image_tag board.pinings.first.pin.image , alt: "#{board.name}" ,class: "boardCover" if board.pinings.first %>
+              <!-- <img alt="test" class="boardCover" src="https://s-media-cache-ak0.pinimg.com/216x146/b8/39/06/b839065248d91d583bb98cd922ceee27.jpg"> -->
+            </div>
+            <ul class="boardThumbs">
+              <li>
+                <span class="hoverMask" style="z-index: 0;"></span>
+                <%= image_tag board.pinings.second.pin.image_url(:thumb), class: "thumb" if board.pinings.second %>
+                <!-- <img class="thumb" alt="" src="https://s-media-cache-ak0.pinimg.com/150x150/ab/b5/79/abb5798925ec65a46eb3bcc57719b2db.jpg"> -->
+              </li>
+              <li>
+                <span class="hoverMask" style="z-index: 0;"></span>
+                <%= image_tag board.pinings.third.pin.image_url(:thumb), class: "thumb" if board.pinings.third %>
+                <!-- <img class="thumb" alt="" src="https://s-media-cache-ak0.pinimg.com/150x150/ee/57/76/ee5776b4d5f753f23a7ab2f4a20a3186.jpg"> -->
+              </li>
+              <li>
+                <span class="hoverMask" style="z-index: 0;"></span>
+                <%= image_tag board.pinings.fourth.pin.image_url(:thumb), class: "thumb" if board.pinings.fourth %>
+                <!-- <img class="thumb" alt="" src="https://s-media-cache-ak0.pinimg.com/150x150/7e/2f/38/7e2f3897b382d1967fd291c2699a27a2.jpg"> -->
+              </li>
+            </ul>
+          </div>
+        <% end %>
+        <!-- </a> -->
+        <button class="_3VBU6 bg-light-gray dark-gray _3Af9R pointer _1qeB_ text-md _19Vl4 _2LBXb antialiased bold border-box no-border col-12 text-lg" type="button">編集</button>
+      </div>
+    </div>
+  </div>
+</div>

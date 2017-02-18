@@ -4,6 +4,10 @@ class BoardsController < ApplicationController
 
   end
 
+  def show
+    @board = Board.includes([:user, :pinings, :pins]).find(params[:id])
+  end
+
   def boards
   end
 

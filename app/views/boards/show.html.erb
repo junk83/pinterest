@@ -1,0 +1,129 @@
+<div class="appContent" role="main">
+  <div class="mainContainer">
+    <div class="boardPageContentWrapper ">
+      <div class="transformWrapper boardPageContent">
+        <div class="BoardHeader Module gridWidth">
+          <div class="BoardInfoBar Module boardHeaderBackground">
+            <div class="infoBarWrapper gridWidth centeredWithinWrapper">
+              <div class="infoBarWrapperAuto">
+                <h2 class="smallBoardName" style="opacity: 0; transform: translate(0px, 66px); transition: transform 300ms ease-out;">
+                  <%= @board.name %>
+                </h2>
+                <% if @board.user_id == current_user.id %>
+                  <button class="Button Module ShowModalButton boardEditButton btn hasIcon rounded" type="button">
+                    <em></em>
+                    <span class="accessibilityText">ボードを編集</span>
+                  </button>
+                  <button class="Button DropdownButton Module boardSettingsButton btn hasIcon rounded" type="button">
+                    <em></em>
+                    <span class="accessibilityText">ボードメニュー</span>
+                  </button>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="boardHeaderWrapper centeredWithinWrapper">
+            <div class="BoardInvite Module hidden"></div>
+            <h1 class="boardName">
+              <%= @board.name %>
+            </h1>
+            <div class="belowBoardNameContainer">
+              <div class="belowBoardContainerLeft">
+                <% if @board.pinings.present? %>
+                  <p class="bold-value pinCount">
+                    <span class="value">
+                      <%= @board.pinings.count %>
+                    </span>
+                    <span class="label">ピン</span>
+                  </p>
+                <% end %>
+                <!-- <p class="bold-value followerCount">
+                  <button class="Button Module ShowModalButton borderless followerCount hasIcon hasText" type="button">
+                    <em></em>
+                    <span class="buttonText">
+                      <span class="value">1</span>
+                      <span class="label">フォロワー</span>
+                    </span>
+                  </button>
+                </p> -->
+                <p class="description">
+                  <%= @board.description %>
+                </p>
+              </div>
+              <div class="bottomBoardRightContainer">
+                <div class="boardCollaboratorsContainer">
+                  <% if @board.user_id == current_user.id %>
+                    <div class="mr1 addCollaboratorsContainer">
+                      <button class="Button Module ShowModalButton boardAddCollaboratorsButton borderless primary" type="button">
+                        <div class="Label Module visuallyHidden">招待 </div>
+                      </button>
+                    </div>
+                  <% end %>
+                  <div class="Module User inline medium thumbUserInfo">
+                    <%= link_to user_path(@board.user_id), class: "profileSource" do %>
+                    <!-- <a class="profileSource" href="/drivethruprm/" data-element-type="64"> -->
+                      <div class="thumbImageWrapper">
+                        <% if @board.user.image.present? %>
+                          <%= image_tag @board.user.image_url(:thumb), alt: @board.user.first_name, title: "#{@board.user.first_name}からの他のピン" %>
+                        <% else %>
+                          <%= image_tag "default_75.png", alt: @board.user.first_name, title: "#{@board.user.first_name}からの他のピン" %>
+                        <% end %>
+                        <!-- <img src="https://s-media-cache-ak0.pinimg.com/avatars/drivethruprm_1486022031_75.jpg" alt="drive" title="drive からの他のピン"> -->
+                      </div>
+                    <!-- </a> -->
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% if @board.pinings.present? %>
+          <div class="Grid Module hasFooter">
+            <div class="GridItems Module animated centeredWithinWrapper denzelPrimeEnabled padItems variableHeightLayout" style="height: 4394px;">
+              <% if @board.user_id == current_user.id %>
+                <div class="item activeItem ui-draggable ui-draggable-disabled ui-state-disabled" aria-disabled="true" style="top: 0px; left: 0px; transition: none; visibility: visible;">
+                  <a class="AddPinRep ModalTrigger Module" data-element-type="450" href="#">
+                    <i></i>
+                    <span>ピンを保存する</span>
+                  </a>
+                </div>
+                <%= render partial: "pins/pining", collection: @board.pinings, locals: { pining: @board.pinings } %>
+              <% else %>
+                <%= render partial: "pins/recommend_pin", collection: @board.pinings, locals: { recommend_pin: @board.pinings } %>
+              <% end %>
+            </div>
+          </div>
+        <% else %>
+          <div class="EmptyBoard">
+            <div class="DenzelReactBridge Module">
+              <div data-reactroot="" class="emptyBoardWrapper">
+                <div></div>
+                <div class="centeredWithinWrapper emptyBoard" style="width: 992px;">
+                  <div class="emptyPinWrapper pinHeightTall">
+                    <p class="emptyPinTip">
+                      <% if @board.user_id == current_user.id %>
+                        ピンしたアイテムはここに保存されます。
+                      <% else %>
+                        このボードにはまだピンがありません。
+                      <% end %>
+                    </p>
+                  </div>
+                  <div class="emptyPinWrapper pinHeightShort">
+                    <p class="emptyPinTip"></p>
+                  </div>
+                  <div class="emptyPinWrapper pinHeightTall">
+                    <p class="emptyPinTip"></p>
+                  </div>
+                  <div class="emptyPinWrapper pinHeightShort">
+                    <p class="emptyPinTip"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

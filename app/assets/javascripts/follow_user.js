@@ -2,7 +2,14 @@ $(function() {
 
   // ユーザーフォロー処理
   var follow = function(){
+    // ユーザー画面のurlからuser_idを取得
     var user_id = location.href.match(/\d+$/);
+
+    // フォロー、フォロワー画面表示時はuser_idをリンクから取得
+    if(location.href.match(/following$/) || location.href.match(/followers$/)){
+      user_id = $(".userWrapper").attr('href').match(/\d+$/);
+    }
+
     var formData = new FormData();
 
     // フォロー済みか否かで処理を分ける
@@ -25,13 +32,13 @@ $(function() {
     })
     .done(function(data) {
       if(method == 'POST'){
-        $('.buttonText').text('フォローをやめる');
-        $('.FollowButton').attr({'aria-label': 'フォローをやめる'});
-        $('.FollowButton').addClass('dim followed');
+        $('.selected .buttonText').text('フォローをやめる');
+        $('.FollowButton.selected').attr({'aria-label': 'フォローをやめる'});
+        $('.FollowButton.selected').addClass('dim followed');
       }else{
-        $('.buttonText').text('フォローする');
-        $('.FollowButton').attr({'aria-label': 'フォローする'});
-        $('.FollowButton').removeClass('dim followed');
+        $('.selected .buttonText').text('フォローする');
+        $('.FollowButton.selected').attr({'aria-label': 'フォローする'});
+        $('.FollowButton.selected').removeClass('dim followed');
       }
     })
     .fail(function() {
@@ -43,5 +50,15 @@ $(function() {
   // フォローボタンが押された場合
   $(document).on('click', '.UserFollowButton', follow);
 
+  // ボタンをhoverしたときにselectedクラスを付与し、
+  // hoverが外れたらselectedクラスを削除する
+  $(document).find('.UserFollowButton').on({
+    'mouseenter':function(){
+      $(this).addClass('selected');
+    },
+    'mouseleave':function(){
+      $(this).removeClass('selected');
+    }
+  });
 
 });

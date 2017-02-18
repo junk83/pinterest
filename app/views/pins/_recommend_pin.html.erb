@@ -60,31 +60,44 @@
         </div>
       </div>
       <div class="pinCredits">
-        <div class="pinCreditWrapper " >
-          <button class="Button DropdownButton Module borderless hasIcon hidePinInfo" type="button">
-            <em></em>
-            <span class="accessibilityText">詳細</span>
-          </button>
-          <div class="creditItem " >
-            <a href="#" >
-              <div class="Image Module creditImg user unknownImage">
-                <div class="heightContainer" >
-                  <% if recommend_pin.user.image.present? %>
-                    <%= image_tag recommend_pin.user.image %>
-                  <% else %>
-                    <%= image_tag 'default_30.png'%>
-                  <% end %>
-                </div>
+        <% if controller.controller_name == "boards" %>
+          <div class="creditItem ">
+            <div class="pinCreditNameTitleWrapper">
+              <div class="creditName">保存したユーザー：</div>
+              <div class="creditTitle">
+                <%= recommend_pin.user.first_name %> <%= recommend_pin.user.last_name %>
               </div>
-              <div class="pinCreditNameTitleWrapper">
-                <div class="creditName">
-                  <%= recommend_pin.user.first_name %> <%= recommend_pin.user.last_name %>
-                </div>
-                <div class="creditTitle"><%= recommend_pin.board.name %></div>
-              </div>
-            </a>
+            </div>
           </div>
-        </div>
+        <% else %>
+          <div class="pinCreditWrapper " >
+            <button class="Button DropdownButton Module borderless hasIcon hidePinInfo" type="button">
+              <em></em>
+              <span class="accessibilityText">詳細</span>
+            </button>
+            <div class="creditItem " >
+              <%= link_to board_path(recommend_pin.board_id) do %>
+              <!-- <a href="#" > -->
+                <div class="Image Module creditImg user unknownImage">
+                  <div class="heightContainer" >
+                    <% if recommend_pin.user.image.present? %>
+                      <%= image_tag recommend_pin.user.image %>
+                    <% else %>
+                      <%= image_tag 'default_30.png'%>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="pinCreditNameTitleWrapper">
+                  <div class="creditName">
+                    <%= recommend_pin.user.first_name %> <%= recommend_pin.user.last_name %>
+                  </div>
+                  <div class="creditTitle"><%= recommend_pin.board.name %></div>
+                </div>
+              <!-- </a> -->
+              <% end %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

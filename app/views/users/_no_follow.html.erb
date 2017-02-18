@@ -1,0 +1,13 @@
+<div class="EmptyStateCard EmptyStateCardProfileFollowing Module">
+  <section class="centerContent">
+    <div class="icon"></div>
+  </section>
+  <header class="text"></header>
+  <footer class="text">
+    <% if @user.id == current_user.id %>
+      ホームフィードに新しいピンを表示するには、お好きな「トピック」「ボード」「ユーザー」を選択し、フォローしてください。
+    <% else %>
+      <%= @user.first_name %>さんはまだ誰もフォローしていません。
+    <% end %>
+  </footer>
+</div>
