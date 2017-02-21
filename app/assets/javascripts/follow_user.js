@@ -52,7 +52,7 @@ $(function() {
 
   // ボタンをhoverしたときにselectedクラスを付与し、
   // hoverが外れたらselectedクラスを削除する
-  $(document).find('.UserFollowButton').on({
+  $(document).find('.UserFollowButton, .editBoardButton').on({
     'mouseenter':function(){
       $(this).addClass('selected');
     },

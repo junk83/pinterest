@@ -73,7 +73,7 @@ $(function() {
     // 背景の固定を解除する
     $('.UserSettingsPage').attr({style: ''});
 
-    $('.modalHasClose').remove();
+    $(body).find('.modalHasClose').filter(":last").remove();
   };
 
   // 実行
