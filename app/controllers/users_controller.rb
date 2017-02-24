@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def pins
-    @pinings = Pining.includes([:pin, :board]).where(user_id: params[:id])
+    @pinings = Pining.includes([:pin, :board]).where(user_id: params[:id]).order('id DESC')
   end
 
   def followers

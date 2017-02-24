@@ -27,6 +27,7 @@ class PinsController < ApplicationController
   end
 
   def create
+    @board = Board.find(create_params[:board_id])
     # 既に登録済みのピンであるか
     original_pin = Pin.where(image: create_params[:image_url]).first
     @pin = ''
@@ -40,7 +41,12 @@ class PinsController < ApplicationController
       @pin.image.retrieve_from_cache! create_params[:image_url]
     end
     if @pin.save!
-      render json: { status: 200 }
+      # ピンの保存数
+      repin = @pin.pinings.count
+      # ボードのイメージ画像
+      board_image = @board.pins.first.image_url(:thumb)
+      # jsonで返す
+      render json: { board: @board, pin: @pin , repin: repin, board_image: board_image }
     else
     end
   end

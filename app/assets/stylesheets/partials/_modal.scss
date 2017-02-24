@@ -536,7 +536,7 @@
     }
 
     .item {
-      &:hover {
+      &:hover, &.selected {
         background: #f7f7f7;
         color: #555;
 
@@ -823,6 +823,10 @@
     height: 12px;
     background: url(webapp-common-main-1x.png) -261px -242px no-repeat;
   }
+}
+
+.noScroll{
+  overflow: hidden;
 }
 
 .ReactModal {
@@ -1121,5 +1125,59 @@
 
   p {
     margin: 0;
+  }
+}
+
+.AddPin {
+  .addPinForm {
+    width: 320px;
+  }
+
+  .addPinContent {
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+  }
+
+  .addPinButton.borderless {
+    background: #f0f0f0;
+    border-top: 1px solid #c4c4c4;
+    float: left;
+    height: 210px;
+    width: 50%;
+
+    &:hover{
+      background: #fafafa;
+    }
+
+    &.addPinUpload {
+      border-left: 1px solid #c4c4c4;
+    }
+  }
+}
+
+.Button.addPinButton {
+  em {
+    display: block;
+    margin: 0 auto;
+  }
+
+  &.addPinURL em {
+    width: 84px;
+    height: 84px;
+    background: url(webapp-common-main-1x.png) -129px 0 no-repeat;
+    margin-bottom: 36px;
+  }
+
+  &.addPinUpload em {
+    width: 72px;
+    height: 77px;
+    background: url(webapp-common-main-1x.png) 0 -97px no-repeat;
+    margin-bottom: 43px;
+  }
+
+  span {
+    color: #333;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
   }
 }

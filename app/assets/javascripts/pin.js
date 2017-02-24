@@ -33,6 +33,7 @@ $(function() {
       '</div>' +
     '</div>';
 
+    $('.modalHasClose').remove();
     $('.ModalManager').append(html);
   };
 
@@ -186,20 +187,22 @@ $(function() {
     return html;
   };
 
-  var successHTML = function(){
+  var successHTML = function(data){
     var html =
    '<div class="Module PinCreateSuccess noBody inModal">' +
       '<div class="standardForm" data-component-type="6">' +
         '<h1>' +
-          '<a href="/drivethruprm/test/">test</a>に<em>アップロードしました</em>' +
+          '<em>' + data.board.name + 'にアップロードしました</em>' +
           '<div class="BoardIcons Module pinCreate"></div>' +
         '</h1>' +
         '<div class="Module PinCreateSuccessBoard"></div>' +
         '<div class="formFooter">' +
           '<div class="formFooterButtons">' +
-            '<button class="Button Module NavigateButton btn hasText primary rounded seeItNow small" type="button">' +
-              '<span class="buttonText">今すぐ見る</span>' +
-            '</button>' +
+            '<a href="/boards/' + data.board.id + '/">' +
+              '<button class="Button Module NavigateButton btn hasText primary rounded seeItNow small" type="button">' +
+                '<span class="buttonText">今すぐ見る</span>' +
+              '</button>' +
+            '</a>' +
           '</div>' +
         '</div>' +
       '</div>' +
@@ -224,6 +227,132 @@ $(function() {
 
     $('.ModalManager').append(html);
   };
+
+  // 保存元選択画面生成
+  var pinAddHTML = function(){
+    var html =
+    '<div class="Modal Module modalHasClose absoluteCenter show">' +
+      '<div class="modalMask show"></div>' +
+      '<div class="modalScroller">' +
+        '<div class="modalContainer show">' +
+          '<span class="positionModuleCaret"></span>' +
+          '<div class="modalContent">' +
+            '<div class="modalModule">' +
+              '<div class="AddPin Module inModal" data-component-type="7">' +
+                '<form class="standardForm addPinForm">' +
+                  '<h1>保存元：</h1>' +
+                  '<div class="addPinContent">' +
+                    '<button class="Button Module addPinButton addPinURL borderless hasIcon hasText" data-element-type="452" type="button">' +
+                      '<em></em>' +
+                      '<span class="buttonText">ウェブ </span>' +
+                    '</button>' +
+                    '<button class="Button Module addPinButton addPinUpload borderless hasIcon hasText" data-element-type="451" type="button">' +
+                      '<em></em>' +
+                      '<span class="buttonText">お使いのデバイス </span>' +
+                    '</button>' +
+                  '</div>' +
+                '</form>' +
+              '</div>' +
+            '</div>' +
+            '<button class="Button Module borderless cancelButton closeModal inModal  hasIcon show" type="button">' +
+              '<em></em>' +
+              '<span class="accessibilityText">閉じる</span>' +
+            '</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    return html;
+  };
+
+  function pinHTML(data){
+    var description = (data.pin.description !== undefined) ? data.pin.description : "";
+
+    var html =
+    '<div class="item">' +
+      '<div class="Module Pin pinActionBarStickyContainer pinWithSocialCounts summary">' +
+        '<div class="pinWrapper">' +
+          '<div class="bulkEditPinWrapper"></div>' +
+          '<div class="pinImageActionButtonWrapper">' +
+            '<div class="leftSideButtonsWrapper">' +
+              '<button class="Button Module ShowModalButton btn hasIcon hasText isBrioFlat primary primaryOnHover repinSmall rounded" type="button">' +
+                '<em></em>' +
+                '<span class="buttonText">保存 </span>' +
+              '</button>' +
+            '</div>' +
+            '<div class="rightSideButtonsWrapper didItWrapper">' +
+              '<button class="Button DropdownButton Module btn didIt isBrioFlat medium rounded square Button Module btn hasIcon rounded" type="button">' +
+                '<em></em>' +
+                '<span class="accessibilityText">試してみた！</span>' +
+              '</button>' +
+              '<button class="Button Module ShowModalButton btn editPin hasIcon isBrioFlat rounded" type="button">' +
+                '<em></em>' +
+                '<span class="accessibilityText">編集</span>' +
+              '</button>' +
+            '</div>' +
+            '<div class="pinHolder">' +
+              '<a href="#" class="pinImageWrapper draggable" style="background: #c7e5f8;" >' +
+                '<div class="pinDomain">dummy</div>' +
+                '<div class="fadeContainer">' +
+                  '<div class="hoverMask"></div>' +
+                  '<div class="Image Module pinUiImage" style="width: 236px">' +
+                    '<div class="heightContainer" style="padding-bottom: 100%;">' +
+                      '<img class="pinImg fullBleed loaded fade" src="' + data.pin.image.url + '">' +
+                    '</div>' +
+                  '</div>' +
+                '</div>' +
+              '</a>' +
+            '</div>' +
+          '</div>' +
+          '<div class="pinMetaWrapper">' +
+            '<div class="pinMeta ">' +
+              '<p class="pinDescription">' + description + '</p>' +
+            '</div>' +
+            '<div class="pinDpSocialCounts">' +
+              '<div class="Module SocialIconsCounts">' +
+                '<div class="pinSocialMeta">' +
+                    '<em class="repinIconSmall"></em>' +
+                    '<em class="socialMetaCount repinCountSmall">' +
+                      '<span class="visuallyHidden">保存回数：</span>' + data.repin +
+                    '</em>' +
+                  '</a>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="pinCredits">' +
+            // '<% if controller.controller_name == "users" %>' +
+              '<a href="/boards/' +  data.board.id + '">' +
+                '<div class="pinCreditWrapper ">' +
+                  '<div class="creditItem ">' +
+                    '<div class="Image Module creditImg unknownImage">' +
+                      '<div class="heightContainer" >' +
+                        '<img src="' + data.board_image + '">' +
+                      '</div>' +
+                    '</div>' +
+                    '<div class="pinCreditNameTitleWrapper">' +
+                      '<div class="creditName">保存先ボード：</div>' +
+                      '<div class="creditTitle">' + data.board.name + '</div>' +
+                    '</div>' +
+                  '</div>' +
+                '</div>' +
+            // '<% elsif controller.controller_name == "boards" %>' +
+            //   '<div class="creditItem ">' +
+            //     '<div class="pinCreditNameTitleWrapper">' +
+            //       '<div class="creditName">保存したユーザー：</div>' +
+            //       '<div class="creditTitle">' +
+            //         '<%= pining.user.first_name %> <%= pining.user.last_name %>' +
+            //       '</div>' +
+            //     '</div>' +
+            //   '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    return html;
+  }
 
   // キャッシュアップロード処理
   var cashUpload = function(){
@@ -278,10 +407,17 @@ $(function() {
     })
     .done(function(data) {
       $('.TwoPaneModal').remove();
-      $('.modalModule').append(successHTML);
+      $('.modalModule').append(successHTML(data));
+      $('.activeItem').after(pinHTML(data));
+
       setTimeout(function(){
         $('.modalHasClose').fadeOut();
+        $('body').removeClass('noScroll');
+        gridLayout();
       }, 2000);
+
+
+      // location.reload();
     })
     .fail(function() {
       console.log("error");
@@ -321,8 +457,16 @@ $(function() {
     $('.pinDescriptionInput').select();
   };
 
+  // 保存元選択画面を表示
+  var pinAdd = function(){
+    $('body').addClass('noScroll');
+    $('.ModalManager').append(pinAddHTML);
+
+  };
+
+
   // ピンアップロードメニュー選択時
-  $(document).on('click', '.pinUpload', pinUploadHTML);
+  $(document).on('click', '.pinUpload, .addPinUpload', pinUploadHTML);
 
   // ピンのキャッシュにアップロード
   $(document).on('change', 'input[type="file"]', cashUpload);
@@ -356,5 +500,11 @@ $(function() {
       // 編集後の説明文を反映する
       $('.left.pane .pinDescription').text($('.left.pane .pinDescriptionInput').val());
     }
+  });
+
+  // ボード一覧画面で「ピンを保存する」ボタンが押された場合
+  $(document).on('click', '.AddPinRep', function(e){
+    e.preventDefault();
+    pinAdd();
   });
 });

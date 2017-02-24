@@ -1,4 +1,4 @@
-$(function() {
+// $(function() {
   var gridLayout = function(){
     // 画像読み込み完了後に実行
     // $(window).on('load', function() {
@@ -140,12 +140,12 @@ $(function() {
       pushItemArray(pos.x, pos.y, item.data('size'), item.outerHeight());
     }
   // };
-
+$(function() {
   $(window).on('load', function(){
     var url = location.href;
-    if(url == "http://localhost:3000/" || url == "http://52.68.15.9/"){
+    // if(url == "http://localhost:3000/" || url == "http://52.68.15.9/"){
       gridLayout();
-    }
+    // }
   });
 
 });

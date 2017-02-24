@@ -16,7 +16,6 @@ $(function() {
             '</h3>' +
             '<div>' +
               '<input id="boardEditName" class="boardEditName hasError" name="name" type="text" autofocus="" placeholder="例：「行きたい場所」「レシピ集」" value="">' +
-              '<p class="formFieldMessage formErrorMessage">ボードの名前は必須事項です。</p>' +
             '</div>' +
           '</li>' +
           '<li class="secretToggleWrapper">' +
@@ -35,10 +34,10 @@ $(function() {
         '</ul>' +
         '<div class="formFooter">' +
           '<div class="formFooterButtons">' +
-            '<button class=" Button Module btn cancelButton hasText rounded" type="button">' +
+            '<button class=" Button Module btn cancelButton hasText rounded closePane" type="button">' +
               '<span class="buttonText">キャンセル </span>' +
             '</button>' +
-            '<button class="Button Module btn hasText primary rounded saveBoardButton " type="submit" >' +
+            '<button class="Button Module btn hasText primary rounded saveBoardButton disabled" disabled="" type="submit" >' +
               '<span class="buttonText">作成 </span>' +
             '</button>' +
           '</div>' +
@@ -376,6 +375,27 @@ $(function() {
     return html;
   }
 
+  // 新規ボードの要素生成
+  function itemHTML(data){
+    var html =
+    '<li class="item selected">' +
+      '<div class="BoardLabel Module pinCreate">' +
+        '<button class="Button Module btn hasIcon hasText isBrioFlat primary primaryOnHover repinSmall repinBtn rounded" type="button">' +
+          '<em></em>' +
+          '<span class="buttonText">保存</span>' +
+        '</button>' +
+        '<div class="boardImg emptyBoardImg"></div>' +
+        '<span class="nameAndIcons">' +
+          '<div class="BoardIcons Module pinCreate"></div>' +
+          '<span class="name">' + data.name + '</span>' +
+          '<input id="board_id" type="hidden" value="' + data.id + '">' +
+        '</span>' +
+      '</div>' +
+    '</li>';
+
+    return html;
+  }
+
   // 新規ボード作成画面生成(ピンアップロード画面にて)
   var boardNew = function(){
     $('.right.pane').append(boardNewHTML).hide().fadeIn(1000);
@@ -412,6 +432,15 @@ $(function() {
       // ボード一覧画面の場合はボード詳細画面に遷移させる
       if(flag === '1') {
         window.location.href = "/boards/" + data.id;
+      }else{
+        // 作成したボードをリストに追加
+        $('.allBoards .sectionItems').append(itemHTML(data));
+        // 一番下にスクロール
+        $('.SelectList').scrollTop($('.SelectList')[0].scrollHeight);
+        // 作成したボードを選択
+        setTimeout(function(){
+          $('.allBoards .sectionItems li.item:last').trigger('click');
+        }, 1000);
       }
     })
     .fail(function() {
@@ -517,9 +546,17 @@ $(function() {
 
   // 「キャンセル」ボタンが押された場合
   $(document).on('click', '.cancelButton', function(){
-    $('.BoardCreate').remove();
-    $('body').removeClass('ReactModal__Body--open');
-    $('body').find('.ReactModalPortal').filter(":last").remove();
+    // ピンアップロード時の新規ボード作成のキャンセル
+    if($(this).hasClass('closePane')){
+      $('.BoardCreate.BoardEditBase.Module.multiSelect.pinCreate.simple').fadeOut('fast', function(){
+        $(this).remove();
+      });
+    }else{
+      $('.BoardCreate').remove();
+      $('body').removeClass('ReactModal__Body--open noScroll');
+      $('body').find('.ReactModalPortal').filter(":last").remove();
+      $('.modalHasClose').remove();
+    }
   });
 
   // ボード名の入力チェック
