@@ -75,6 +75,8 @@
   }
 
   .formFooter {
+    background: #fff;
+
     .Button.rounded:not(.primary) {
       background-image: none !important;
       border: none !important;
@@ -586,6 +588,10 @@
 .BoardLabel {
   text-align: left;
 
+  &.compact {
+    font-size: 13px;
+  }
+
   &.pinCreate {
     white-space: nowrap;
     overflow: hidden;
@@ -779,7 +785,7 @@
     width: auto;
 
     &>h1 {
-      // border-bottom: 1px solid #e7e7e7;
+      border-bottom: 1px solid #e7e7e7;
       color: #333;
       font-size: 20px;
       margin: 0;
@@ -1179,5 +1185,179 @@
     color: #333;
     font-weight: bold;
     text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  }
+}
+
+.PinEdit {
+  max-width: 675px;
+
+  .PinForm .standardForm>ul {
+    overflow: visible;
+    margin-right: 170px;
+  }
+
+}
+
+.PinForm {
+  .PinPreview {
+    position: relative;
+    overflow: hidden;
+    background: #f7f7f7;
+    border: 1px solid #b1b1b1;
+    border-radius: 3px;
+    float: right;
+    height: 147px;
+    margin: 15px 15px 0 0;
+    position: relative;
+    width: 147px;
+    margin-right: 20px;
+
+    &::after {
+      border-radius: 0;
+      -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.33) inset;
+      box-shadow: 0 0 2px rgba(0,0,0,0.33) inset;
+      content: " ";
+      height: 149px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 149px;
+    }
+
+    img {
+      bottom: 0;
+      display: block;
+      left: 0;
+      margin: auto;
+      max-height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: auto;
+    }
+  }
+
+  .standardForm>ul {
+    width: 500px;
+  }
+
+  .BoardPickerDropdownButton {
+    width: 100%;
+  }
+}
+
+.PlaceSelector {
+  .placeFieldWrapper {
+    position: relative;
+  }
+
+  .searchIcon {
+    width: 16px;
+    height: 17px;
+    background: url(webapp-common-main-1x.png) -295px -190px no-repeat;
+    display: inline-block;
+    left: 10px;
+    position: absolute;
+    top: 10px;
+    vertical-align: middle;
+    z-index: 49;
+  }
+
+  .addPlaceToPinForm {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 0;
+    position: relative;
+    width: 100%;
+
+    .field {
+      padding: 9px 30px;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+
+.Dropdown2 {
+  -webkit-transform: translateZ(0);
+  background: #fbfbfb;
+  border: 1px solid #b6b6b6;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+  display: none;
+  margin-left: -6px;
+  position: absolute;
+  top: 23px;
+  z-index: 752;
+
+  &.visible {
+    display: block;
+  }
+}
+
+.BoardPicker {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  visibility: hidden;
+
+  &.inPopover {
+    padding: 8px;
+    visibility: visible;
+  }
+
+  .SelectList {
+    overflow: auto;
+  }
+
+  &.inPopover .SelectList {
+    max-height: 300px;
+    width: 300px;
+
+    .sectionHeading {
+      background: #f0f0f0;
+      border-radius: 3px;
+      font-weight: bold;
+    }
+  }
+}
+
+.Picker {
+  .top {
+    overflow: hidden;
+    margin-bottom: 9px;
+  }
+
+  .nameWrapper {
+    overflow: hidden;
+    padding-right: 10px;
+  }
+
+  .name {
+    width: 100%;
+  }
+
+  .selectionBody {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+    padding-bottom: 7px;
   }
 }

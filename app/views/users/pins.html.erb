@@ -1,11 +1,13 @@
 <div class="Grid Module hasFooter">
   <div class="GridItems Module animated centeredWithinWrapper denzelPrimeEnabled padItems variableHeightLayout" style="height: 4394px;">
-    <div class="item activeItem ui-draggable ui-draggable-disabled ui-state-disabled" aria-disabled="true" style="top: 0px; left: 0px; transition: none; visibility: visible;">
-      <a class="AddPinRep ModalTrigger Module" data-element-type="450" href="#">
-        <i></i>
-        <span>ピンを保存する</span>
-      </a>
-    </div>
+    <% if @user.id == current_user.id %>
+      <div class="item activeItem ui-draggable ui-draggable-disabled ui-state-disabled" aria-disabled="true" style="top: 0px; left: 0px; transition: none; visibility: visible;">
+        <a class="AddPinRep ModalTrigger Module" data-element-type="450" href="#">
+          <i></i>
+          <span>ピンを保存する</span>
+        </a>
+      </div>
+    <% end %>
     <%= render partial: "pins/pining", collection: @pinings %>
   </div>
 </div>

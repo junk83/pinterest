@@ -39,3 +39,28 @@
     -moz-osx-font-smoothing: grayscale;
     font-weight: bold;
 }
+
+.Button>.downArrow {
+  width: 7px;
+  height: 6px;
+  background: url(webapp-common-main-1x.png) -315px -97px no-repeat;
+  display: inline-block;
+  float: right;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.BoardInfoBar .Button.boardEditButton:not(.disabled):focus::after, .BoardInfoBar .Button.boardEditButton:not(.disabled):hover::after {
+    border-radius: 50% !important;
+    height: 48px !important;
+    left: -5px !important;
+    top: -2px !important;
+    width: 48px !important;
+}
+
+.BoardInfoBar .Button.boardSettingsButton:not(.disabled).active::after, .BoardInfoBar .Button.boardSettingsButton:not(.disabled):focus::after, .BoardInfoBar .Button.boardSettingsButton:not(.disabled):hover::after {
+    border-radius: 50% !important;
+    height: 48px !important;
+    top: -5px !important;
+    width: 48px !important;
+}

@@ -359,7 +359,7 @@ $(function() {
                 '<button aria-label="キャンセル" class="cancelButton Button Module btn hasText rounded" type="button">' +
                   '<span class="buttonText">キャンセル</span>' +
                 '</button>' +
-                '<button aria-label="ボードを削除" class="confirm Button Module btn hasText rounded primary" type="button">' +
+                '<button aria-label="ボードを削除" class="confirm Button Module btn hasText rounded primary boardDelete" type="button">' +
                   '<span class="buttonText">ボードを削除</span>' +
                 '</button>' +
               '</div>' +
@@ -474,7 +474,13 @@ $(function() {
 
   // ボード編集画面
   var boardEdit = function(){
-    var board_path = $('.selected').siblings('.boardLinkWrapper').attr('href');
+    var board_path;
+    if(location.pathname.match(/boards/)){
+      board_path = location.pathname.match(/\/boards\/\d+/)[0];
+    }else{
+      board_path = $('.selected').siblings('.boardLinkWrapper').attr('href');
+    }
+
     board_id = board_path.replace(/\/boards\//, "");
 
     $.ajax({
@@ -526,7 +532,7 @@ $(function() {
       contentType: false
     })
     .done(function(data) {
-      window.location.href = "/users/" + data.id;
+      location.reload();
     })
     .fail(function() {
       console.log("error");
@@ -563,13 +569,13 @@ $(function() {
   $(document).on('keyup', '.boardEditName', nameValid);
 
   // 「編集」ボタンが押された場合
-  $(document).on('click', '.editBoardButton', boardEdit);
+  $(document).on('click', '.editBoardButton, .boardEditButton', boardEdit);
 
   // ボード編集画面で「ボード削除」ボタンが押された場合
   $(document).on('click', '.deleteBoardButton', boardDeleteConfirm);
 
   // ボード削除確認画面で「ボード削除」ボタンが押された場合
-  $(document).on('click', '.confirm.Button', boardDelete);
+  $(document).on('click', '.confirm.Button.boardDelete', boardDelete);
 
   // ボード編集画面で「保存」ボタンが押された場合
   $(document).on('click', '.updateBoardButton', boardUpdate);

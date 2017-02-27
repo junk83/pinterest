@@ -919,4 +919,30 @@ img {
   -webkit-overflow-scrolling: touch;
   overflow-y: scroll;
   position: relative;
+
+  &.compact {
+    .sectionHeading {
+      background: #fff6c4;
+      border-radius: 6px;
+      color: #615e4b;
+      margin-bottom: 3px;
+      padding: 6px 13px;
+    }
+
+    .item {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border-radius: 3px;
+      color: #333;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 6px 13px;
+
+      &:hover {
+        background-color: #bd081c;
+        color: #fff;
+      }
+    }
+  }
 }

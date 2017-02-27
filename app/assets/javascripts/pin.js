@@ -144,26 +144,6 @@ $(function() {
               '</div>' +
               '<div class="Module SelectList pinCreate" tabindex="0" style="height: 411px;">' +
                 '<div class="sections">' +
-                  // '<ul class="section recentBoards">' +
-                  //   '<li class="sectionHeading">' +
-                  //     '<div class="Label Module">人気のボード</div>' +
-                  //   '</li>' +
-                  //   '<ul class="sectionItems">' +
-                  //     '<li class="item">' +
-                  //       '<div class="BoardLabel Module pinCreate">' +
-                  //         '<button class="Button Module btn hasIcon hasText isBrioFlat primary primaryOnHover repinSmall repinBtn rounded" type="button">' +
-                  //           '<em></em>' +
-                  //           '<span class="buttonText">保存</span>' +
-                  //         '</button>' +
-                  //         '<div class="boardImg" style="background-image:url(https://s-media-cache-ak0.pinimg.com/200x150/90/0f/96/900f96adce55f6141d2d9b8b08f68467.jpg)"></div>' +
-                  //           '<span class="nameAndIcons">' +
-                  //           '<div class="BoardIcons Module pinCreate"></div>' +
-                  //           '<span class="name">test</span>' +
-                  //         '</span>' +
-                  //       '</div>' +
-                  //     '</li>' +
-                  //   '</ul>' +
-                  // '</ul>' +
                   '<ul class="section allBoards">' +
                     '<li class="sectionHeading">' +
                       '<div class="Label Module">すべてのボード</div>' +
@@ -266,8 +246,11 @@ $(function() {
     return html;
   };
 
+  // 追加したピンの生成
   function pinHTML(data){
     var description = (data.pin.description !== undefined) ? data.pin.description : "";
+
+    var credit = creditHTML(data);
 
     var html =
     '<div class="item">' +
@@ -289,6 +272,7 @@ $(function() {
               '<button class="Button Module ShowModalButton btn editPin hasIcon isBrioFlat rounded" type="button">' +
                 '<em></em>' +
                 '<span class="accessibilityText">編集</span>' +
+                '<input value="' + data.pining_id + '" type="hidden" name="pining[id]" id="pining_id">' +
               '</button>' +
             '</div>' +
             '<div class="pinHolder">' +
@@ -322,34 +306,46 @@ $(function() {
             '</div>' +
           '</div>' +
           '<div class="pinCredits">' +
-            // '<% if controller.controller_name == "users" %>' +
-              '<a href="/boards/' +  data.board.id + '">' +
-                '<div class="pinCreditWrapper ">' +
-                  '<div class="creditItem ">' +
-                    '<div class="Image Module creditImg unknownImage">' +
-                      '<div class="heightContainer" >' +
-                        '<img src="' + data.board_image + '">' +
-                      '</div>' +
-                    '</div>' +
-                    '<div class="pinCreditNameTitleWrapper">' +
-                      '<div class="creditName">保存先ボード：</div>' +
-                      '<div class="creditTitle">' + data.board.name + '</div>' +
-                    '</div>' +
-                  '</div>' +
-                '</div>' +
-            // '<% elsif controller.controller_name == "boards" %>' +
-            //   '<div class="creditItem ">' +
-            //     '<div class="pinCreditNameTitleWrapper">' +
-            //       '<div class="creditName">保存したユーザー：</div>' +
-            //       '<div class="creditTitle">' +
-            //         '<%= pining.user.first_name %> <%= pining.user.last_name %>' +
-            //       '</div>' +
-            //     '</div>' +
-            //   '</div>' +
+            credit +
           '</div>' +
         '</div>' +
       '</div>' +
     '</div>';
+
+
+
+    return html;
+  }
+
+  function creditHTML(data){
+    var html;
+    if(location.pathname.match(/users/)){
+      html =
+      '<a href="/boards/' +  data.board.id + '">' +
+        '<div class="pinCreditWrapper ">' +
+          '<div class="creditItem ">' +
+            '<div class="Image Module creditImg unknownImage">' +
+              '<div class="heightContainer" >' +
+                '<img src="' + data.board_image + '">' +
+              '</div>' +
+            '</div>' +
+            '<div class="pinCreditNameTitleWrapper">' +
+              '<div class="creditName">保存先ボード：</div>' +
+              '<div class="creditTitle">' + data.board.name + '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+    }else{
+      html =
+      '<div class="creditItem ">' +
+        '<div class="pinCreditNameTitleWrapper">' +
+          '<div class="creditName">保存したユーザー：</div>' +
+            '<div class="creditTitle">' +
+              data.user.first_name + ' '+ data.user.last_name +
+             '</div>' +
+           '</div>' +
+        '</div>';
+    }
 
     return html;
   }
@@ -408,7 +404,14 @@ $(function() {
     .done(function(data) {
       $('.TwoPaneModal').remove();
       $('.modalModule').append(successHTML(data));
-      $('.activeItem').after(pinHTML(data));
+
+      // ユーザーのボード一覧画面のidを正規表現にかける
+      regexp = new RegExp('/users/' + data.user.id + '/pins', 'g');
+      // 表示中のボードにピンを追加した場合とログイン中のユーザページでピンを追加した場合はピンを画面に表示する
+      if(boardId == location.pathname.match(/\d+$/) ||
+         location.pathname.match(regexp) ){
+        $('.activeItem').after(pinHTML(data));
+      }
 
       setTimeout(function(){
         $('.modalHasClose').fadeOut();
@@ -465,6 +468,9 @@ $(function() {
   };
 
 
+
+
+
   // ピンアップロードメニュー選択時
   $(document).on('click', '.pinUpload, .addPinUpload', pinUploadHTML);
 
@@ -483,7 +489,7 @@ $(function() {
   });
 
   // ボードを選択した時にピンの登録処理を実行する
-  $(document).on('click', 'li.item', pinCreate);
+  $(document).on('click', '.pinCreate li.item', pinCreate);
 
   // 保存ボタン押下時にピンを保存する
   $(document).on('click', '.repinSmall', repin);
@@ -492,15 +498,15 @@ $(function() {
   $(document).on('click', '.editPinDescription, .pinDescription', editDescription);
 
   // 説明文を確定する
-  $(document).on('click', '.modalModule', function(e) {
-    if (!$.contains($(".editPinDescription")[0], e.target)) {
-      // クラス除去
-      $('.pinActionBarStickyContainer').removeClass('editingDescription');
-      $('.Field.Module.TextField').removeClass('active');
-      // 編集後の説明文を反映する
-      $('.left.pane .pinDescription').text($('.left.pane .pinDescriptionInput').val());
-    }
-  });
+  // $(document).on('click', '.modalModule', function(e) {
+  //   if (!$.contains($(".editPinDescription")[0], e.target)) {
+  //     // クラス除去
+  //     $('.pinActionBarStickyContainer').removeClass('editingDescription');
+  //     $('.Field.Module.TextField').removeClass('active');
+  //     // 編集後の説明文を反映する
+  //     $('.left.pane .pinDescription').text($('.left.pane .pinDescriptionInput').val());
+  //   }
+  // });
 
   // ボード一覧画面で「ピンを保存する」ボタンが押された場合
   $(document).on('click', '.AddPinRep', function(e){

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       post 'upload'
     end
   end
+  resources :pinings, only:[:edit, :update, :destroy]
   # post '/pins/upload', to: 'pins#upload'
 
   resources :boards do

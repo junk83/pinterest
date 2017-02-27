@@ -916,6 +916,10 @@
   }
 }
 
+.standardForm>ul>li:first-child, .standardForm .formSection>li:first-child {
+  border: 0;
+}
+
 .formInlineCheckedSet {
   li {
     display: inline-block;
