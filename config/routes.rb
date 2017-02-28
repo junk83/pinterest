@@ -8,11 +8,12 @@ Rails.application.routes.draw do
 
   resources :users, only:[:show, :edit, :update] do
     member do
-      get :boards, :pins
-      get :following, :followers
+      # get :boards, :pins
+      get :pins, :following, :followers
     end
     collection do
       patch 'update_password'
+      get :search
     end
   end
 

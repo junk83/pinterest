@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :get_user
+  before_action :get_user, except: :search
   layout 'profile', except: :edit
 
   def show
@@ -43,6 +43,12 @@ class UsersController < ApplicationController
 
   def following
     @followings = @user.following
+  end
+
+  def search
+    name = "%#{params[:keyword]}%"
+    users = User.where('first_name LIKE ? or last_name LIKE ? and not id = ?', name, name, current_user.id).limit 5
+    render json: users
   end
 
   private

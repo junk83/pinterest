@@ -52,13 +52,15 @@ $(function() {
 
   // ボタンをhoverしたときにselectedクラスを付与し、
   // hoverが外れたらselectedクラスを削除する
-  $(document).find('.UserFollowButton, .editBoardButton').on({
-    'mouseenter':function(){
-      $(this).addClass('selected');
-    },
-    'mouseleave':function(){
-      $(this).removeClass('selected');
-    }
+  $(document).on('ready turbolinks:load',function() {
+    $(document).find('.UserFollowButton, .editBoardButton').on({
+      'mouseenter':function(){
+        $(this).addClass('selected');
+      },
+      'mouseleave':function(){
+        $(this).removeClass('selected');
+      }
+    });
   });
 
 });

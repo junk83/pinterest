@@ -479,13 +479,15 @@ $(function() {
 
   // ボードをhoverしたときにselectedクラスを付与し、
   // hoverが外れたらselectedクラスを削除する
-  $(document).find('.sectionItems').on({
-    'mouseenter':function(){
-      $(this).children('.item').addClass('selected');
-    },
-    'mouseleave':function(){
-      $(this).children('.item').removeClass('selected');
-    }
+  $(document).on('ready turbolinks:load',function() {
+    $(document).find('.sectionItems').on({
+      'mouseenter':function(){
+        $(this).children('.item').addClass('selected');
+      },
+      'mouseleave':function(){
+        $(this).children('.item').removeClass('selected');
+      }
+    });
   });
 
   // ボードを選択した時にピンの登録処理を実行する

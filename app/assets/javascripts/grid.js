@@ -1,7 +1,7 @@
 // $(function() {
   var gridLayout = function(){
     // 画像読み込み完了後に実行
-    // $(window).on('load', function() {
+    $(window).on('load', function() {
       elements = $('.ItemItems');
       winObject = $(window);
 
@@ -25,7 +25,7 @@
             applyPinterestItem();
         }
       });
-    // });
+    });
   };
 
     var itemArray = [], // ※補足2
@@ -141,11 +141,17 @@
     }
   // };
 $(function() {
-  $(window).on('load', function(){
+  // $(window).on('load', function(){
+  $(document).on('ready turbolinks:load', function(){
     // var url = location.href;
     // if(url == "http://localhost:3000/" || url == "http://52.68.15.9/"){
-      // gridLayout();
-    // }
+    if(location.pathname == '/' ||
+       location.pathname.match(/^\/users\/\d+\/pins/) ||
+       location.pathname.match(/^\/boards\/\d+/)){
+      if($('.item').length){
+        gridLayout();
+      }
+     }
   });
 
 });

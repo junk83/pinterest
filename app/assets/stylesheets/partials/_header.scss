@@ -1,3 +1,13 @@
+.App .typeaheadOverlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 500;
+}
+
 .AppBase {
   margin-top: -1px;
   min-width: 320px;
@@ -52,6 +62,14 @@
         order: 99999;
       }
     }
+  }
+
+  .TypeaheadField .Typeahead {
+    margin: 40px 0 0;
+    padding-top: 0;
+    position: absolute;
+    top: 0;
+    z-index: 669;
   }
 }
 
@@ -330,6 +348,152 @@
     z-index: 3;
   }
 }
+
+.Typeahead {
+  background: #fff;
+  border-radius: 6px;
+  display: none;
+  left: 0;
+  right: 0;
+  -webkit-transition: opacity .25s linear;
+  transition: opacity .25s linear;
+  z-index: -1;
+
+  &.open {
+    -webkit-animation: fadeIn .2s ease-out;
+    animation: fadeIn .2s ease-out;
+    display: block;
+    opacity: 1;
+  }
+
+  &.typeaheadWithTitles {
+    padding-bottom: 5px;
+
+    li a {
+      color: #4a4a4a;
+      font-size: 16px;
+      padding: 6px 15px;
+
+      &:hover {
+        color: #4a4a4a;
+      }
+
+      &.titleItem {
+        color: #999;
+        font-size: 10px;
+        line-height: 12px;
+        margin-top: 5px;
+
+        .typeaheadName {
+          font-size: 11px;
+          letter-spacing: -0.05px;
+          line-height: 12px;
+          word-spacing: 0;
+
+          color: #555;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+
+  li {
+    overflow: hidden;
+    color: #777;
+    display: block;
+    font-size: 12px;
+    position: relative;
+
+    &:first-child {
+      padding-top: 10px !important;
+    }
+
+    a {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-family: "Helvetica", "\30D2\30E9\30AE\30CE\89D2\30B4 Pro W3", "Hiragino Kaku Gothic Pro", "\30E1\30A4\30EA\30AA", "Meiryo", "\FF2D\FF33 \FF30\30B4\30B7\30C3\30AF", sans-serif;
+      font-weight: bold;
+      color: #777;
+      cursor: pointer;
+      display: block;
+      padding: 9px 14px;
+
+      overflow: hidden;
+      padding: 6px 10px;
+      white-space: nowrap;
+
+      &:hover {
+        background: rgb(241, 241, 241);
+      }
+    }
+
+    .user .typeaheadName, .board .typeaheadName {
+      .label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .sublabel {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .typeaheadName .subLabel {
+      color: #999;
+      font-size: 10px;
+      font-weight: normal;
+    }
+  }
+
+  .typeaheadName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+  }
+
+  .typeaheadImg {
+    position: relative;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 38px;
+
+    &::after{
+      border-radius: 2px;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.9) inset;
+      content: " ";
+      height: 38px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 38px;
+    }
+
+    img {
+      border-radius: 2px;
+      height: 38px;
+      width: 38px;
+    }
+  }
+
+  .board {
+    .typeaheadImg {
+      &::after {
+        border-radius: none;
+        box-shadow: none;
+      }
+      img {
+        border-radius: 6px;
+      }
+    }
+  }
+}
+
 
 .TokenizedInput{
   &.guided{
