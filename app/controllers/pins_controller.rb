@@ -2,8 +2,8 @@ class PinsController < ApplicationController
   def index
     @pin = Pin.new
     follow_users = current_user.following.ids
-    # @pins = Pin.includes([:board, :user]).where(user_id: follow_users).order('created_at DESC').limit(20)
-    @recommend_pins = Pining.includes([:board, :user, :pin]).where(user_id: follow_users).order('created_at DESC').limit(20)
+    # @recommend_pins = Pin.all.includes([:board, :user]).order('created_at DESC')
+    @recommend_pins = Pining.includes([:board, :user, :pin]).where(user_id: follow_users).order('created_at DESC').page(params[:page]).per(10)
   end
 
   def upload

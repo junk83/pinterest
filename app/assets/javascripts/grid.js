@@ -1,7 +1,7 @@
 // $(function() {
   var gridLayout = function(){
     // 画像読み込み完了後に実行
-    $(window).on('load', function() {
+    // $(window).on('load', function() {
       elements = $('.ItemItems');
       winObject = $(window);
 
@@ -25,7 +25,7 @@
             applyPinterestItem();
         }
       });
-    });
+    // });
   };
 
     var itemArray = [], // ※補足2
@@ -149,7 +149,9 @@ $(function() {
        location.pathname.match(/^\/users\/\d+\/pins/) ||
        location.pathname.match(/^\/boards\/\d+/)){
       if($('.item').length){
-        gridLayout();
+        $(window).on('load', function(){
+          gridLayout();
+        });
       }
      }
   });
