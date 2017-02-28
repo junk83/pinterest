@@ -46,9 +46,30 @@ class UsersController < ApplicationController
   end
 
   def search
+    # 検索文字列を前方一致検索
     name = "%#{params[:keyword]}%"
-    users = User.where('first_name LIKE ? or last_name LIKE ? and not id = ?', name, name, current_user.id).limit 5
-    render json: users
+    users = User.where('first_name LIKE ? or last_name LIKE ?', name, name).limit 5
+
+    user_list = []
+
+    users.each do |user|
+
+      # ユーザー画像がない場合はデフォルトの画像を設定する
+      user_image = ActionController::Base.helpers.asset_path("default_30.png")
+      if user.image_url(:thumb).present?
+        user_image = user.image_url(:thumb)
+      end
+
+      user_list << {
+                     id: user.id,
+                     image: user_image,
+                     first_name: user.first_name,
+                     last_name: user.last_name,
+                     user_name: user.user_name
+                   }
+    end
+
+    render json: user_list
   end
 
   private

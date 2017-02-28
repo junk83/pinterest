@@ -28,6 +28,9 @@ Rails.application.routes.draw do
 
   resources :boards do
     resources :pins
+    collection do
+      get :search
+    end
   end
 
   resource :follow_users, only: [:create, :destroy]
