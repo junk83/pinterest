@@ -355,7 +355,7 @@
       position: relative;
       &.collapsed {
         overflow: hidden;
-        max-height: 800px;
+        max-height: 400px;
       }
       &::after {
         border-bottom: 1px solid rgba(0,0,0,0.1);
@@ -629,7 +629,7 @@
         .creditTitle {
           font-weight: bold;
         }
-        
+
         .creditName, .creditTitle {
           color: #b5b5b5;
           max-width: 160px;

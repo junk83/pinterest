@@ -76,7 +76,7 @@
               <span class="accessibilityText">詳細</span>
             </button>
             <div class="creditItem " >
-              <%= link_to board_path(recommend_pin.board_id) do %>
+              <%= link_to board_path(recommend_pin.board_id), data: { turbolinks: false } do %>
               <!-- <a href="#" > -->
                 <div class="Image Module creditImg user unknownImage">
                   <div class="heightContainer" >

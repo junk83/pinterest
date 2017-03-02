@@ -2,7 +2,7 @@
   <div draggable="true">
     <div class="item">
       <div class="Board Module boardCoverImage">
-        <%= link_to board_path(board.id), class: "boardLinkWrapper" do %>
+        <%= link_to board_path(board.id), class: "boardLinkWrapper", data: { turbolinks: false } do %>
         <!-- <a class="boardLinkWrapper" href="/drivethruprm/test/"> -->
           <div class="boardName">
             <div class="BoardIcons Module pinCreate"></div>

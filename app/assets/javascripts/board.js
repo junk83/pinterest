@@ -564,7 +564,7 @@ $(function() {
     }else{
       $('.BoardCreate').remove();
       $('body').removeClass('ReactModal__Body--open noScroll');
-      $('body').find('.ReactModalPortal').filter(":last").remove();
+      $('body').find('.ReactModalPortal').remove();
       $('.modalHasClose').remove();
     }
     // ユーザー編集画面の場合はユーザー詳細画面へ遷移

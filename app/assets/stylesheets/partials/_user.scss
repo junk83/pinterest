@@ -202,7 +202,7 @@
             &::after {
               border-radius: 50% !important;
               height: 48px !important;
-              left: -5px !important;
+              left: 0px !important;
               top: -3px !important;
               width: 48px !important;
             }
@@ -216,6 +216,7 @@
           font: 0 / 0 serif;
           text-shadow: none;
           color: transparent;
+          top: 2px;
         }
       }
       .editProfile {
@@ -248,7 +249,7 @@
         &:hover::after {
           border-radius: 50% !important;
           height: 48px !important;
-          left: -10px !important;
+          left: 3px !important;
           top: -3px !important;
           width: 48px !important;
         }

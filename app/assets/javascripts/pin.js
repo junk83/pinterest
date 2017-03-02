@@ -90,7 +90,7 @@ $(function() {
                     '</button>' +
                   '</div>' +
                   '<div class="pinHolder">' +
-                   '<div class="pinImageWrapper draggable" data-element-type="35">' +
+                   '<div class="pinImageWrapper collapsed draggable" data-element-type="35">' +
                      '<div class="fadeContainer">' +
                        '<div class="hoverMask"></div>' +
                        '<img class="pinImg noFade" alt="" src="/uploads/tmp/pin/' + data.cash + '">' +

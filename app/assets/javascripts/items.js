@@ -88,7 +88,7 @@ $(function() {
     return html;
   }
 
-  $(document).on('turbolinks:load', function(){
+  $(window).on('load', function(){
     if(location.pathname == '/'){
       var page = 1;
       var flag = false;

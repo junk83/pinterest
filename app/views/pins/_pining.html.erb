@@ -53,7 +53,7 @@
       </div>
       <div class="pinCredits">
         <% if controller.controller_name == "users" %>
-          <%= link_to board_path(pining.board.id) do %>
+          <%= link_to board_path(pining.board.id), data: { turbolinks: false } do %>
             <div class="pinCreditWrapper ">
               <div class="creditItem ">
                 <div class="Image Module creditImg unknownImage">

@@ -39,28 +39,16 @@
                             </div>
                           </div>
                           <div class="buttons" >
-                            <div style="position:relative;display:inline-block;" >
-                              <!-- <button class="Button DropdownButton Module btn rounded userProfileMenu react" type="button" > -->
-                              <%= link_to destroy_user_session_path, method: :delete, class: "Button DropdownButton Module btn rounded userProfileMenu react" do %>
-                                <em ></em>
-                                <span class="accessibilityText" >ユーザーメニュー</span>
-                              <% end %>
-                              <!-- </button> -->
-                            </div>
                             <% if @user.id == current_user.id %>
                               <div style="float:left;" >
-                                <button aria-label="プロフィールを編集" class="editProfile Button Module btn hasIcon rounded primary" type="button" >
-                                  <em ></em>
-                                  <span class="accessibilityText" >プロフィールを編集</span>
-                                </button>
                                 <%= link_to edit_user_path(current_user), class: "Button Module btn rounded settingsCog" do %>
                                   <em></em>
                                   <span class="accessibilityText">アカウント設定</span>
                                 <% end %>
-                                <!-- <a class="Button Module btn rounded settingsCog" href="/settings" >
+                                <%= link_to destroy_user_session_path, method: :delete, class: "Button DropdownButton Module btn rounded userProfileMenu react" do %>
                                   <em ></em>
-                                  <span class="accessibilityText" >アカウント設定</span>
-                                </a> -->
+                                  <span class="accessibilityText" >ユーザーメニュー</span>
+                                <% end %>
                               </div>
                             <% else %>
                               <div class="userFollowButtonWrapper">
