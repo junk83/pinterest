@@ -2,7 +2,7 @@
   var gridLayout = function(){
     // 画像読み込み完了後に実行
     // $(window).on('load', function() {
-      elements = $('.ItemItems');
+      elements = $('.GridItems');
       winObject = $(window);
 
       setCol();
@@ -11,7 +11,7 @@
 
       winObject.unbind('resize').resize(function() {
         var containerWidth;
-        var winWidth = winObject.width(); //- offsetX * 2;
+        var winWidth = winObject.width() - offsetX * 2;
         if(winWidth < colWidth * numOfCol) {
             setCol();
             containerWidth =  colWidth * (numOfCol - 1);
@@ -28,11 +28,11 @@
     // });
   };
 
-    var itemArray = [], // ※補足2
+    var itemArray = [],
         colWidth,
         offsetX = 0,
         offsetY = 0,
-        numOfCol = 4,
+        numOfCol = 0,
         elements,
         winObject;
 
@@ -57,7 +57,8 @@
     // カラムの数とwidthを設定する
     function setCol() {
       colWidth = $('.item').outerWidth() + offsetX * 2;
-      numOfCol = Math.floor((winObject.width() - offsetX * 2) / colWidth);
+      // numOfCol = Math.floor((winObject.width() - offsetX * 2) / colWidth);
+      numOfCol = Math.floor(($('.GridItems').width() - offsetX * 2) / colWidth);
     }
 
     // itemArrayに新しいitemを追加
@@ -141,8 +142,7 @@
     }
   // };
 $(function() {
-  // $(window).on('load', function(){
-  $(document).on('ready turbolinks:load', function(){
+  $(window).on('turbolinks:load', function(){
     if(location.pathname == '/' ||
        location.pathname.match(/^\/users\/\d+\/pins/) ||
        location.pathname.match(/^\/boards\/\d+/)){

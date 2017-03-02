@@ -2,7 +2,7 @@
   <div class="headerContainer centeredWithinWrapper">
     <div class="rightHeaderContent">
       <div class="Module RightHeader" data-component-type="8">
-        <%= link_to user_path(current_user), class: "userProfile UserNavigateButton merged" do %>
+        <%= link_to user_path(current_user), class: "userProfile UserNavigateButton merged", data: { turbolinks: false } do %>
         <!-- <button class="Module UserNavigateButton merged" data-element-type="40"> -->
           <div class="usernameLink">
             <div class="Image Module profileImage unknownImage">

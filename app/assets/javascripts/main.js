@@ -36,10 +36,12 @@ $(function() {
 
   // 「+」ボタン押下
   $(document).on('click', function(e){
-    if(flag === 0 && $.contains($('.addButtonWrapper')[0], e.target)){
-      addPinOpen();
-    }else if(!$(e.target).closest('.addPinDropdown').length){
-      addPinClose();
+    if(location.pathname == '/'){
+      if(flag === 0 && $.contains($('.addButtonWrapper')[0], e.target)){
+        addPinOpen();
+      }else if(!$(e.target).closest('.addPinDropdown').length){
+        addPinClose();
+      }
     }
   });
 
