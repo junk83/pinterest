@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pinterest</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="App AppBase Module full" data-component-type="17">
+      <%= render partial: "layouts/header" if current_user %>
+      <div class="appContent" role="main">
+        <div class="mainContainer">
+          <!-- <div class="Module Nags" id="nags416"></div> -->
+          <div class="Module UserProfilePage" id="mainModule517">
+            <!-- <div class="HeroBasicWrapper Module" id="mainModule517_m1822"></div> -->
+            <div class="DenzelReactBridge Module" id="mainModule517_m1918">
+              <div data-reactroot=""  data-react-checksum="-540150576">
+                <div class="Module UserProfileHeader profileHeader  " >
+                  <div class="centeredWithinWrapper gridWidth headerSizer" >
+                    <div class="header emptyProfile" itemscope="" itemtype="https://schema.org/Person" >
+                      <div class="profileImage" >
+                        <% if @user.image.present? %>
+                          <%= image_tag @user.image, alt: @user.first_name, itemprop: "image" %>
+                        <% else %>
+                          <%= image_tag "default_280.png", alt: @user.first_name, itemprop: "image"%>
+                        <% end %>
+                      </div>
+                      <div class="fixedHeader" >
+                        <div class="titleBar centeredWithinWrapper gridWidth" >
+                          <div class="fixedHeaderNameAndImage _1lB54" >
+                            <div class="fixedHeaderImage" >
+                              <img alt="drive" src="https://s.pinimg.com/images/user/default_140.png" />
+                            </div>
+                            <div class="fixedHeaderName" itemprop="name" >
+                              <%= @user.first_name %> <%= @user.last_name %>
+                            </div>
+                          </div>
+                          <div class="buttons" >
+                            <% if @user.id == current_user.id %>
+                              <div style="float:left;" >
+                                <%= link_to edit_user_path(current_user), class: "Button Module btn rounded settingsCog" do %>
+                                  <em></em>
+                                  <span class="accessibilityText">アカウント設定</span>
+                                <% end %>
+                                <%= link_to destroy_user_session_path, method: :delete, class: "Button DropdownButton Module btn rounded userProfileMenu react" do %>
+                                  <em ></em>
+                                  <span class="accessibilityText" >ユーザーメニュー</span>
+                                <% end %>
+                              </div>
+                            <% else %>
+                              <div class="userFollowButtonWrapper">
+                                <div style="position:relative;">
+                                  <div>
+                                  <% if current_user.following_user? (@user) %>
+                                    <button aria-label="フォローをやめる" class="dim followed FollowButton notNavigatable UserFollowButton Button Module btn hasText rounded" type="button">
+                                      <span class="buttonText">フォローをやめる</span>
+                                    </button>
+                                  <% else %>
+                                    <button aria-label="フォローする" class="FollowButton notNavigatable UserFollowButton Button Module btn hasText rounded primary" type="button">
+                                      <span class="buttonText">フォローする</span>
+                                    </button>
+                                  <% end %>
+                                  </div>
+                                </div>
+                              </div>
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="profileInfo" >
+                        <div class="aboutBar" >
+                          <div class="about" >
+                            <h1 class="name" >
+                              <div class="nameInner" >
+                                <%= @user.first_name %> <%= @user.last_name %>
+                              </div>
+                            </h1>
+                            <div class="iconsLinksEtc" >
+                              <ul >
+                                <% if @user.location.present? %>
+                                  <li class="locationWrapper">
+                                    <span class="location"></span>
+                                    <%= @user.location %>
+                                  </li>
+                                <% end %>
+                                <% if @user.location.present? && @user.website_url.present? %>
+                                  <li>
+                                    <span class="middot">·</span>
+                                  </li>
+                                <% end %>
+                                <% if @user.website_url.present? %>
+                                  <li class="websiteWrapper">
+                                    <%= content_tag :a, @user.website_url, class: "website", href: @user.website_url, itemprop: "url", target: "_blank"%>
+                                  </li>
+                                <% end %>
+                              </ul>
+                            </div>
+                            <% if @user.about.present? %>
+                              <%= content_tag :p, @user.about, class: "aboutText", itemprop: "description" %>
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="DenzelReactBridge Module" id="mainModule517_m2019">
+              <div class="Module UserInfoBar centeredWithinWrapper infoBar gridWidth" data-reactroot=""  data-react-checksum="-964505706">
+                <div class="divider centeredWithinWrapper gridWidth" >
+                  <hr />
+                </div>
+                <div class="tabs" >
+                  <ul >
+                    <li >
+                      <%= link_to user_path do %>
+                        <span >
+                          <span class='value'>
+                            <%= @user.boards.count %>
+                          </span>
+                          <span class='label'>ボード </span>
+                        </span>
+                      <% end %>
+                    </li>
+                    <li class="PinCount">
+                      <%= link_to pins_user_path, data:{ turbolinks: false } do %>
+                        <span >
+                          <span class='value'>
+                            <%= @user.pinings.count %>
+                          </span>
+                          <span class='label'>件のピン</span>
+                        </span>
+                      <% end %>
+                    </li>
+                    <li >
+                      <%= link_to followers_user_path do %>
+                        <span >
+                          <span class='value '>
+                            <%= @user.followers.count %>
+                          </span>
+                          <span class='label '>フォロワー</span>
+                        </span>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to following_user_path do %>
+                        <span >
+                          <span class='value '>
+                            <%= @user.following.count %>
+                          </span>
+                          <span class='label '>フォロー中</span>
+                        </span>
+                      <% end %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="Module UserProfileContent">
+              <%= yield %>
+            </div>
+          </div>
+          <div class="appendedContainer"></div>
+        </div>
+      </div>
+      <div class="ModalManager Module">
+      </div>
+    </div>
+  </body>
+</html>

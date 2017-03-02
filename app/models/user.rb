@@ -7,7 +7,8 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   has_many :boards
-  has_many :pins
+  # has_many :pins
+  has_many :pinings
 
   # 能動的関係(フォローする)に対して1対多の関連付け
   has_many :active_follow_users, class_name: "FollowUser", foreign_key: "follower_id", dependent: :destroy
@@ -17,6 +18,8 @@ class User < ApplicationRecord
   has_many :following, through: :active_follow_users
   # followersの関連付け
   has_many :followers, through: :passive_follow_users
+
+  # has_many :follow_pins, through: :active_follow_users
 
   def self.find_for_oauth(auth)
     user = User.where(provider: auth.provider, uid: auth.uid).first

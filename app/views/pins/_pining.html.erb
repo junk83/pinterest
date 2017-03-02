@@ -1,0 +1,84 @@
+<div class="item">
+  <div class="Module Pin pinActionBarStickyContainer pinWithSocialCounts summary">
+    <div class="pinWrapper">
+      <div class="bulkEditPinWrapper"></div>
+      <div class="pinImageActionButtonWrapper">
+        <div class='leftSideButtonsWrapper'>
+          <button class="Button Module ShowModalButton btn hasIcon hasText isBrioFlat primary primaryOnHover repinSmall rounded" type="button">
+            <em></em>
+            <span class="buttonText">保存 </span>
+          </button>
+        </div>
+        <div class="rightSideButtonsWrapper didItWrapper">
+          <button class="Button DropdownButton Module btn didIt isBrioFlat medium rounded square Button Module btn hasIcon rounded" type="button">
+            <em></em>
+            <span class="accessibilityText">試してみた！</span>
+          </button>
+          <button class="Button Module ShowModalButton btn editPin hasIcon isBrioFlat rounded" type="button">
+            <em></em>
+            <span class="accessibilityText">編集</span>
+            <%= hidden_field :pining, :id, value: pining.id %>
+          </button>
+        </div>
+        <div class="pinHolder">
+          <a href="#" class="pinImageWrapper draggable" style="background: #c7e5f8;" >
+            <div class='pinDomain'>dummy</div>
+            <div class="fadeContainer">
+              <div class="hoverMask"></div>
+              <div class="Image Module pinUiImage" style="width: 236px">
+                <div class="heightContainer">
+                  <%= image_tag pining.pin.image, class: "pinImg fullBleed loaded fade" %>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="pinMetaWrapper">
+        <div class="pinMeta ">
+          <p class="pinDescription"><%= pining.description %></p>
+        </div>
+        <div class="pinDpSocialCounts">
+          <div class="Module SocialIconsCounts">
+            <div class="pinSocialMeta">
+              <!-- <a class="socialItem" href="/pin/312718767861518373/activity/"> -->
+                <em class="repinIconSmall"></em>
+                <em class="socialMetaCount repinCountSmall">
+                  <span class="visuallyHidden">保存回数：</span><%= pining.counts %>
+                </em>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pinCredits">
+        <% if controller.controller_name == "users" %>
+          <%= link_to board_path(pining.board.id), data: { turbolinks: false } do %>
+            <div class="pinCreditWrapper ">
+              <div class="creditItem ">
+                <div class="Image Module creditImg unknownImage">
+                  <div class="heightContainer" >
+                    <%= image_tag pining.board.pins.first.image_url(:thumb) %>
+                  </div>
+                </div>
+                <div class="pinCreditNameTitleWrapper">
+                  <div class="creditName">保存先ボード：</div>
+                  <div class="creditTitle"><%= pining.board.name %></div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% elsif controller.controller_name == "boards" %>
+          <div class="creditItem ">
+            <div class="pinCreditNameTitleWrapper">
+              <div class="creditName">保存したユーザー：</div>
+              <div class="creditTitle">
+                <%= pining.user.first_name %> <%= pining.user.last_name %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -391,7 +391,9 @@
                     </ul>
                   </fieldset>
                 </div>
-                <%= f.text_field :gender, class: "customGender", placeholder: "性別を入力" %>
+                <% if @user.gender != "male" && @user.gender != "female" %>
+                  <%= f.text_field :gender, class: "customGender", placeholder: "性別を入力" %>
+                <% end %>
                 <!-- <input type="text" class="customGender" name="custom_gender" placeholder="性別を入力" value="" data-reactid="386"> -->
               </div>
             </li>
@@ -413,7 +415,7 @@
                           </div>
                           <div data-reactid="401">
                             <span class="exclude_from_search" data-reactid="402">検索エンジン（例：Google）でプロフィールを非表示にします。
-                              <a href="https://www.pinterest.com/_/_/help/entries/21051553" target="_blank">詳細</a>
+                              <a href="#" target="_blank">詳細</a>
                             </span>
                           </div>
                         </label>
@@ -442,7 +444,7 @@
                             </div>
                             <div data-reactid="418">
                               <span class="personalize_from_offsite_browsing" data-reactid="419">ピナーがアクセスするサイトを元に、表示するおすすめや広告を改善しています。
-                                <a href="https://www.pinterest.com/_/_/help/articles/personalization-and-data" target="_blank">詳細</a>
+                                <a href="#" target="_blank">詳細</a>
                               </span>
                             </div>
                           </label>
@@ -457,7 +459,7 @@
                             </div>
                             <div data-reactid="427">
                               <span class="ads_customize_from_conversion" data-reactid="428">Pinterest のパートナーからの利用情報を元にピナーに表示するおすすめや広告を改善しています。
-                                <a href="https://www.pinterest.com/_/_/help/articles/personalization-and-data#info-ad" target="_blank">詳細</a>
+                                <a href="#" target="_blank">詳細</a>
                               </span>
                             </div>
                           </label>
@@ -529,10 +531,12 @@
                     <% end %>
                     <!-- <img alt="プロフィール写真" class="profileImage" src="https://s-media-cache-ak0.pinimg.com/avatars/drivethruprm83_1484208313_75.jpg" data-reactid="461"> -->
                   </div>
-                  <%= f.file_field :image , class: "changePhoto Button Module btn hasText rounded" %>
-                  <!-- <button aria-label="写真を変更" class="changePhoto Button Module btn hasText rounded" type="button" data-reactid="462">
+                  <!-- <%= f.file_field :image , class: "changePhoto Button Module btn hasText rounded" %> -->
+                  <button aria-label="写真を変更" class="changePhoto Button Module btn hasText rounded" type="file" data-reactid="462">
                     <span class="buttonText" data-reactid="463">写真を変更</span>
-                  </button> -->
+                    <%= f.file_field :image , style: "position: absolute; right: 0px; top: 0px;  margin: 0px; padding: 0px; cursor: pointer; opacity: 0; width: 88px; height: 100%;" %>
+                  </button>
+
                 </div>
               </div>
             </li>
@@ -595,13 +599,13 @@
                 <div class="_2UEuS _2t4gs _2KmW_ _1h4d6 _1g8Us _32TBK" data-reactid="494">ギャラリー</div>
                 <div class="showcaseEditTextWrapper" data-reactid="495">
                   <span class="_2UEuS _2t4gs _3GBV8 _1h4d6 _1g8Us" data-reactid="496">プロフィールの一番上にとっておきのアイデアを表示します。 </span>
-                  <a class="inline-block showHelpCenterLink" href="https://www.pinterest.com/_/_/help/articles/showcase" data-reactid="497">
+                  <a class="inline-block showHelpCenterLink" href="#" data-reactid="497">
                     <div class="_2UEuS _2t4gs _3GBV8 _1h4d6 _1g8Us _32TBK" data-reactid="498">詳細</div>
                   </a>
                 </div>
               </div>
               <div class="col-3" data-reactid="499">
-                <a class="inline-block pull-right" href="/showcase/settings/" data-reactid="500">
+                <a class="inline-block pull-right" href="#" data-reactid="500">
                   <button aria-label="編集" class="Button Module btn hasText rounded" type="button" data-reactid="501">
                     <span class="buttonText" data-reactid="502">編集</span>
                   </button>
@@ -720,7 +724,7 @@
                             </div>
                             <div data-reactid="575">
                               <span class="pfy_preference" data-reactid="576">ホームフィードに「おすすめのピン」を表示する &#8226;
-                                <a href="https://www.pinterest.com/_/_/help/articles/picked-for-you-pins" target="_blank">詳細</a>
+                                <a href="#" target="_blank">詳細</a>
                               </span>
                             </div>
                           </label>
@@ -737,7 +741,7 @@
               <h2 data-reactid="579">SNSアカウント</h2>
             </li>
             <div class="socialNetworkHeadingDetails" data-reactid="580">
-              <a class="external" href="https://www.pinterest.com/_/_/help/articles/share-pins-facebook-or-twitter/?source=settings_page" data-reactid="581">詳細</a>
+              <a class="external" href="#" data-reactid="581">詳細</a>
             </div>
             <li class="socialHeader" data-reactid="582">
               <h4 data-reactid="583">
@@ -996,12 +1000,12 @@
           </ul>
           <div class="formFooter" style="position:fixed;" data-reactid="734">
             <div class="formFooterButtons" data-reactid="735">
-              <button aria-label="キャンセル" class="formFooterButton cancelButton NavigateButton Button Module btn hasText rounded" type="button" data-reactid="736">
+              <button aria-label="キャンセル" class="formFooterButton cancelButton NavigateButton Button Module btn hasText rounded redirect" type="button" data-reactid="736">
                 <span class="buttonText" data-reactid="737">キャンセル</span>
               </button>
-              <button aria-label="設定を保存" class="formFooterButton confirmButton Button Module btn hasText rounded primary" type="button" data-reactid="738">
-                <%= f.submit "設定を保存", class: "buttonText" %>
-                <!-- <span class="buttonText" data-reactid="739">設定を保存</span> -->
+              <button aria-label="設定を保存" class="formFooterButton confirmButton Button Module btn hasText rounded primary" type="submit" data-reactid="738">
+                <!-- <%= f.submit "設定を保存", class: "buttonText" %> -->
+                <span class="buttonText" data-reactid="739">設定を保存</span>
               </button>
             </div>
           </div>
@@ -1055,7 +1059,7 @@
         </ul>
         <div class="formFooter" style="border-top-left-radius: 0px; border-top-right-radius: 0px; box-shadow: none;">
           <div class="formFooterButtons">
-            <button aria-label="キャンセル" class="Button Module btn hasText rounded" type="button">
+            <button aria-label="キャンセル" class="Button Module btn hasText rounded cancelButton" type="button">
               <span class="buttonText">キャンセル</span>
             </button>
             <%= f.submit "パスワードの変更", class: "Button Module btn hasText rounded" %>

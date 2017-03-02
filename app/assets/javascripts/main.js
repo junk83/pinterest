@@ -11,7 +11,7 @@ $(function() {
     $('.addPinFooter').addClass('active');
     // 「+」ボタンの位置を取得し、メニューの表示位置を指定する
     var position = $('.addPinFooter').offset();
-    $('.PositionModule').css({ left: position.left - 232, top: position.top - 151 });
+    $('.PositionModule').css({ left: position.left - 232, top: $(window).height() - 285 });
     // メニュー表示フラグを1にする
     flag = 1;
   };
@@ -34,12 +34,14 @@ $(function() {
      $('.PinUploader').remove();
   };
 
-  // 実行
+  // 「+」ボタン押下
   $(document).on('click', function(e){
-    if(flag === 0 && $.contains($('.addButtonWrapper')[0], e.target)){
-      addPinOpen();
-    }else if(!$(e.target).closest('.addPinDropdown').length){
-      addPinClose();
+    if(location.pathname == '/'){
+      if(flag === 0 && $.contains($('.addButtonWrapper')[0], e.target)){
+        addPinOpen();
+      }else if(!$(e.target).closest('.addPinDropdown').length){
+        addPinClose();
+      }
     }
   });
 

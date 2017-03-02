@@ -150,13 +150,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
     }
   }
 
-  &.mediumLarge {
-    float: left;
-    font-size: 13px;
-    margin: -1px;
-    padding: 6px 12px 3px;
-  }
-
   &.btn {
     background: linear-gradient(#fff, #f0f0f0);
     border: 1px solid #ccc;
@@ -238,6 +231,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
       color: #777;
     }
   }
+
+  &.mediumLarge {
+    float: left;
+    font-size: 13px;
+    margin: -1px;
+    padding: 6px 12px 3px;
+  }
+
   &.borderless {
     background-color: transparent;
     border: 0;
@@ -336,7 +337,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
       box-shadow: none !important;
     }
   }
-  &.editProfile {
+  &.editProfile, &.boardEditButton, &.boardSettingsButton {
     border-radius: 4px !important;
     box-shadow: none !important;
     position: relative !important;
@@ -494,6 +495,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
     background: url(webapp-common-desktop-1x.png) -474px -72px no-repeat;
   }
 
+  &.editPin.isBrioFlat em {
+    width: 16px;
+    height: 16px;
+    background: url(webapp-common-above_the_fold-1x-2.png) -376px -291px no-repeat;
+    top: -1px;
+  }
+
   &.FollowButton, &.UserFollowButton {
     background-image: none !important;
     border: none !important;
@@ -522,6 +530,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 
     .buttonText {
       color: #555 !important;
+    }
+  }
+
+  &.didIt {
+    margin-right: 4px;
+
+    em {
+      width: 17px;
+      height: 13px;
+      background: url(webapp-common-above_the_fold-1x-2.png) -290px -325px no-repeat;
     }
   }
 
@@ -865,7 +883,15 @@ img {
     color: #333;
     display: block;
     margin: 0;
+
+    &:focus {
+      color: #333;
+    }
   }
+}
+
+.mr1 {
+  margin-right: 8px;
 }
 
 .PinCreate .Pin.summary .pinMeta .TextField {
@@ -893,4 +919,30 @@ img {
   -webkit-overflow-scrolling: touch;
   overflow-y: scroll;
   position: relative;
+
+  &.compact {
+    .sectionHeading {
+      background: #fff6c4;
+      border-radius: 6px;
+      color: #615e4b;
+      margin-bottom: 3px;
+      padding: 6px 13px;
+    }
+
+    .item {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border-radius: 3px;
+      color: #333;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 6px 13px;
+
+      &:hover {
+        background-color: #bd081c;
+        color: #fff;
+      }
+    }
+  }
 }

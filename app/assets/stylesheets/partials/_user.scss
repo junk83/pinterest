@@ -3,6 +3,80 @@
   z-index: 103;
   margin: 62px 0 0;
   margin-top: 74px;
+
+  .userBoards {
+    overflow-y: auto;
+
+    .GridItems.padItems>.item, .UserProfilePage .UserProfileFollowingGrid .GridItems.padItems>.item {
+      margin: 0;
+      padding: 24px 12px;
+      width: 236px;
+    }
+  }
+
+  .BoardCreateRep, .AddPinRep {
+    background: transparent;
+    border-radius: 8px;
+    color: #b5b5b5;
+    width: 236px;
+
+    height: 324px !important;
+
+    i {
+      background: none;
+      border: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+
+      &::before {
+        width: 40px;
+        height: 40px;
+        background: url(webapp-common-above_the_fold-1x.png) -124px -110px no-repeat;
+        display: inline-block;
+        font: 0 / 0 serif;
+        text-shadow: none;
+        color: transparent;
+        content: " ";
+      }
+    }
+
+    &:after {
+      background: rgba(0,0,0,0.05);
+      border-radius: 8px;
+      content: " " !important;
+      height: 100%;
+      left: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      -webkit-transform: scale(0.96);
+      -ms-transform: scale(0.96);
+      transform: scale(0.96);
+      width: 100%;
+      z-index: 3;
+      margin: -10px;
+      padding: 10px;
+    }
+  }
+  .Board {
+    float: left;
+
+    .boardCover {
+      clear: both;
+    }
+  }
+
+  .UserProfileContent {
+    .User.gridItem {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+
+    .User .hoverMask {
+      display: none;
+    }
+  }
 }
 
 .UserProfileHeader {
@@ -128,7 +202,7 @@
             &::after {
               border-radius: 50% !important;
               height: 48px !important;
-              left: -5px !important;
+              left: 0px !important;
               top: -3px !important;
               width: 48px !important;
             }
@@ -142,6 +216,7 @@
           font: 0 / 0 serif;
           text-shadow: none;
           color: transparent;
+          top: 2px;
         }
       }
       .editProfile {
@@ -174,7 +249,7 @@
         &:hover::after {
           border-radius: 50% !important;
           height: 48px !important;
-          left: -10px !important;
+          left: 3px !important;
           top: -3px !important;
           width: 48px !important;
         }
@@ -842,6 +917,10 @@
   }
 }
 
+.standardForm>ul>li:first-child, .standardForm .formSection>li:first-child {
+  border: 0;
+}
+
 .formInlineCheckedSet {
   li {
     display: inline-block;
@@ -1135,4 +1214,217 @@
   .btn.Button {
     margin-left: 8px;
   }
+}
+
+.User {
+  &.gridItem {
+    border-radius: 6px;
+
+    position: relative;
+
+    background: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    cursor: pointer;
+    margin: -10px;
+    padding: 10px;
+    width: 236px;
+
+    &::before {
+      background: rgba(0,0,0,0.05);
+      border-radius: 8px;
+      content: " " !important;
+      height: 100%;
+      left: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      -webkit-transform: scale(0.96);
+      -ms-transform: scale(0.96);
+      transform: scale(0.96);
+      width: 100%;
+      z-index: 3;
+    }
+
+    .userThumbs {
+      overflow: hidden;
+
+      margin-bottom: 0;
+    }
+
+    .username {
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+
+      font-size: 16px;
+      letter-spacing: -0.2px;
+      line-height: 18px;
+      word-spacing: 0;
+
+      padding-bottom: 12px;
+      padding-top: 12px;
+
+      margin-bottom: 0;
+      height: 20px;
+    }
+
+    &:not(.userWrapperDisableHover):hover::before {
+      animation: tapAnimation 0.25s cubic-bezier(0.31, 1, 0.34, 1) forwards;
+    }
+  }
+
+  .userWrapper {
+    display: block;
+    padding: 10px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+
+    padding: 0;
+  }
+
+  .focusThumbContainer {
+    position: relative;
+    background: #eee;
+    height: 106px;
+    float: left;
+    width: 106px;
+
+    background: none;
+    height: 236px;
+    margin-right: 0;
+    width: 236px;
+
+    img {
+      border-radius: 50%;
+      height: 236px;
+      width: 236px;
+    }
+
+    &::after {
+      border-radius: 3px;
+      -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.33) inset;
+      box-shadow: 0 0 2px rgba(0,0,0,0.33) inset;
+      content: " ";
+      height: 106px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 106px;
+
+      background: rgba(0,0,0,0.02);
+      border-radius: 50%;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      height: 236px;
+      width: 236px;
+    }
+  }
+
+  .hoverMask {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transition: background 0.04s linear;
+    transition: background 0.04s linear;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.33) inset;
+    box-shadow: 0 0 2px rgba(0,0,0,0.33) inset;
+    z-index: 100;
+  }
+
+  .userFocusImage {
+    display: block;
+    height: 106px;
+    width: 106px;
+    float: left;
+    margin: 0 3px 3px 0;
+
+    margin: 0;
+  }
+
+  h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #333;
+    height: 18px;
+    font-weight: bold;
+  }
+
+  .Button.gridItem {
+    bottom: auto;
+    width: 236px;
+  }
+
+  &.inline {
+    display: inline-block;
+    margin: 0 2px;
+    vertical-align: middle;
+  }
+
+  &.thumbUserInfo {
+    overflow: hidden;
+    position: relative;
+
+    .thumbImageWrapper {
+      float: left;
+    }
+  }
+
+  &.profileSource {
+    display: block;
+  }
+
+  &.medium .thumbImageWrapper {
+    position: relative;
+
+    img {
+      border-radius: 50%;
+    }
+
+  }
+}
+
+.EmptyStateCard {
+  color: #333;
+  margin: 25px auto 0;
+  text-align: center;
+  width: 390px;
+
+  .icon {
+    margin: 0 auto 10px;
+  }
+
+  header {
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+
+  footer {
+    margin-bottom: 10px;
+  }
+
+  .text {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+.EmptyStateCardProfileFollowing .icon {
+  background: url(empty_following-1x.png) no-repeat;
+  background-size: contain;
+  height: 142px;
+  width: 124px;
+}
+
+.EmptyStateCardProfileFollowers .icon {
+  background: url(empty_followers-1x.png) no-repeat;
+  background-size: contain;
+  height: 142px;
+  width: 124px;
 }

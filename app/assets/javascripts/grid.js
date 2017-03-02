@@ -1,8 +1,8 @@
-$(function() {
+// $(function() {
   var gridLayout = function(){
     // 画像読み込み完了後に実行
     // $(window).on('load', function() {
-      elements = $('.ItemItems');
+      elements = $('.GridItems');
       winObject = $(window);
 
       setCol();
@@ -11,7 +11,7 @@ $(function() {
 
       winObject.unbind('resize').resize(function() {
         var containerWidth;
-        var winWidth = winObject.width(); //- offsetX * 2;
+        var winWidth = winObject.width() - offsetX * 2;
         if(winWidth < colWidth * numOfCol) {
             setCol();
             containerWidth =  colWidth * (numOfCol - 1);
@@ -28,11 +28,11 @@ $(function() {
     // });
   };
 
-    var itemArray = [], // ※補足2
+    var itemArray = [],
         colWidth,
         offsetX = 0,
         offsetY = 0,
-        numOfCol = 4,
+        numOfCol = 0,
         elements,
         winObject;
 
@@ -57,7 +57,8 @@ $(function() {
     // カラムの数とwidthを設定する
     function setCol() {
       colWidth = $('.item').outerWidth() + offsetX * 2;
-      numOfCol = Math.floor((winObject.width() - offsetX * 2) / colWidth);
+      // numOfCol = Math.floor((winObject.width() - offsetX * 2) / colWidth);
+      numOfCol = Math.floor(($('.GridItems').width() - offsetX * 2) / colWidth);
     }
 
     // itemArrayに新しいitemを追加
@@ -140,12 +141,17 @@ $(function() {
       pushItemArray(pos.x, pos.y, item.data('size'), item.outerHeight());
     }
   // };
-
-  $(window).on('load', function(){
-    var url = location.href;
-    if(url == "http://localhost:3000/" || url == "http://52.68.15.9/"){
-      gridLayout();
-    }
+$(function() {
+  $(window).on('turbolinks:load', function(){
+    if(location.pathname == '/' ||
+       location.pathname.match(/^\/users\/\d+\/pins/) ||
+       location.pathname.match(/^\/boards\/\d+/)){
+      if($('.item').length){
+        $(window).on('load', function(){
+          gridLayout();
+        });
+      }
+     }
   });
 
 });

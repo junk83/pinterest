@@ -75,6 +75,8 @@
   }
 
   .formFooter {
+    background: #fff;
+
     .Button.rounded:not(.primary) {
       background-image: none !important;
       border: none !important;
@@ -116,17 +118,12 @@
         letter-spacing: -0.15px;
         line-height: 16px;
         word-spacing: 0;
-        
+
         color: #fff !important;
       }
     }
   }
 
-}
-
-.Modal .modalMask, .Modal.webNewContentNewRepin .modalMask {
-  background-color: rgba(0,0,0,0.6);
-  opacity: 1;
 }
 
 .PinUploader {
@@ -541,7 +538,7 @@
     }
 
     .item {
-      &:hover {
+      &:hover, &.selected {
         background: #f7f7f7;
         color: #555;
 
@@ -590,6 +587,10 @@
 
 .BoardLabel {
   text-align: left;
+
+  &.compact {
+    font-size: 13px;
+  }
 
   &.pinCreate {
     white-space: nowrap;
@@ -784,7 +785,7 @@
     width: auto;
 
     &>h1 {
-      // border-bottom: 1px solid #e7e7e7;
+      border-bottom: 1px solid #e7e7e7;
       color: #333;
       font-size: 20px;
       margin: 0;
@@ -827,5 +828,536 @@
     width: 12px;
     height: 12px;
     background: url(webapp-common-main-1x.png) -261px -242px no-repeat;
+  }
+}
+
+.noScroll{
+  overflow: hidden;
+}
+
+.ReactModal {
+  &__Body--open {
+    overflow: hidden;
+  }
+  &__Overlay {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: rgba(226,228,228,0.9);
+    bottom: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    left: 0;
+    overflow-y: scroll;
+    padding: 20px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 751;
+  }
+
+  &__Content {
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+    margin: auto;
+    max-height: 100%;
+    position: relative;
+
+    .formFooter {
+      background: #fff;
+
+      .Button.primary {
+        background-image: none !important;
+        border: none !important;
+        border-radius: 4px !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        padding: 10px 14px !important;
+        position: relative !important;
+        text-shadow: none !important;
+        background-color: #bd081c !important;
+        border: none !important;
+
+        .buttonText {
+          font-size: 14px;
+          letter-spacing: -0.15px;
+          line-height: 16px;
+          word-spacing: 0;
+
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          font-weight: bold;
+
+          color: #fff !important;
+        }
+      }
+
+      .Button.rounded:not(.primary) {
+        background-image: none !important;
+        border: none !important;
+        border-radius: 4px !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        padding: 10px 14px !important;
+        position: relative !important;
+        text-shadow: none !important;
+        background-color: #efefef !important;
+
+        .buttonText {
+          font-size: 14px;
+          letter-spacing: -0.15px;
+          line-height: 16px;
+          word-spacing: 0;
+
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          font-weight: bold;
+
+          color: #555 !important;
+        }
+      }
+
+      .btn.btn.disabled.disabled.Button.primary .buttonText {
+        color: #b5b5b5 !important;
+      }
+    }
+  }
+}
+
+.BoardCreate {
+  width: 600px;
+}
+
+.BoardEditBase {
+  .standardForm h1 {
+    font-weight: normal;
+    position: relative;
+    padding-right: 42px;
+  }
+
+  .learnMore {
+    max-width: 331px
+  }
+
+  a.learnAboutBoardInvites {
+    display: block;
+    float: none;
+    margin: 3px 0;
+  }
+
+  .userSelect.TypeaheadField {
+    input {
+      width: 100%;
+    }
+
+    .userSelect.Typeahead {
+      -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,0.25);
+      box-shadow: 0 1px 5px 0 rgba(0,0,0,0.25);
+      margin: 0 0 3px 2px;
+    }
+  }
+
+  .boardEditCollaborators {
+    overflow-y: auto;
+    margin-right: -11px;
+    max-height: 160px;
+  }
+}
+
+.standardForm .learnMore {
+  font-size: 11px;
+}
+
+.Modal .modalMask, .Modal.webNewContentNewRepin .modalMask, .ReactModal__Overlay {
+  background-color: rgba(0,0,0,0.6);
+  opacity: 1;
+}
+
+.BoardEdit {
+  max-width: 600px;
+  min-width: 600px;
+
+  .User {
+    padding: 4px 0;
+    width: auto;
+  }
+}
+
+.BoardInviteForm {
+  margin-bottom: 8px;
+
+  .inviteWrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+
+  .fillWidth {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin-right: 10px;
+  }
+
+  .TypeaheadField {
+    position: relative;
+    width: 100%;
+    z-index: 100;
+  }
+}
+
+.formFooter {
+  border-radius: 0 0 6px 6px;
+  border-top: 1px solid #dadada;
+  clear: both;
+  padding: 10px 20px;
+
+  .formFooterDelete {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .formFooterButtons {
+    float: right;
+  }
+}
+
+.Typeahead {
+  background: #fff;
+  border-radius: 6px;
+  display: none;
+  left: 0;
+  right: 0;
+  -webkit-transition: opacity .25s linear;
+  transition: opacity .25s linear;
+  z-index: -1;
+
+  &.userSelect {
+    background: #fff;
+    border-radius: 0 0 6px 6px;
+    border-top: 1px solid #ccc;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin: 0;
+    position: absolute;
+    text-align: left;
+  }
+}
+
+.User {
+  &.small {
+    line-height: 30px;
+
+    .thumbImageWrapper {
+      position: relative;
+      height: 30px;
+      width: 30px;
+
+      img {
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        vertical-align: top;
+      }
+    }
+  }
+
+  &.thumb {
+    overflow: hidden;
+    position: relative;
+
+    .thumbImageWrapper, .User.thumb .profileSourceAttributionContent, .User.thumbUserInfo .thumbImageWrapper, .User.thumbUserInfo .profileSourceAttributionContent {
+      float: left;
+    }
+
+    &.hasText .thumbImageWrapper {
+      margin-right: 8px;
+    }
+
+    &.small .subtitle {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 11px;
+      line-height: 14px;
+      margin-bottom: 1px;
+      margin-top: 1px;
+      line-height: 14px;
+    }
+  }
+
+  .profileSource {
+    display: block;
+  }
+}
+
+.boardCollaboratorsWrapper .BoardInviteForm .inviteButton {
+  background-image: none !important;
+  border: none !important;
+  border-radius: 4px !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  padding: 10px 14px !important;
+  position: relative !important;
+  text-shadow: none !important;
+}
+
+.ConfirmDialog {
+  width: 380px;
+
+  .standardForm>h1 {
+  border-bottom: 1px solid #e7e7e7;
+    padding-right: 50px;
+    white-space: normal;
+  }
+
+  .body {
+    color: #555;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 21px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.AddPin {
+  .addPinForm {
+    width: 320px;
+  }
+
+  .addPinContent {
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+  }
+
+  .addPinButton.borderless {
+    background: #f0f0f0;
+    border-top: 1px solid #c4c4c4;
+    float: left;
+    height: 210px;
+    width: 50%;
+
+    &:hover{
+      background: #fafafa;
+    }
+
+    &.addPinUpload {
+      border-left: 1px solid #c4c4c4;
+    }
+  }
+}
+
+.Button.addPinButton {
+  em {
+    display: block;
+    margin: 0 auto;
+  }
+
+  &.addPinURL em {
+    width: 84px;
+    height: 84px;
+    background: url(webapp-common-main-1x.png) -129px 0 no-repeat;
+    margin-bottom: 36px;
+  }
+
+  &.addPinUpload em {
+    width: 72px;
+    height: 77px;
+    background: url(webapp-common-main-1x.png) 0 -97px no-repeat;
+    margin-bottom: 43px;
+  }
+
+  span {
+    color: #333;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  }
+}
+
+.PinEdit {
+  max-width: 675px;
+
+  .PinForm .standardForm>ul {
+    overflow: visible;
+    margin-right: 170px;
+  }
+
+}
+
+.PinForm {
+  .PinPreview {
+    position: relative;
+    overflow: hidden;
+    background: #f7f7f7;
+    border: 1px solid #b1b1b1;
+    border-radius: 3px;
+    float: right;
+    height: 147px;
+    margin: 15px 15px 0 0;
+    position: relative;
+    width: 147px;
+    margin-right: 20px;
+
+    &::after {
+      border-radius: 0;
+      -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.33) inset;
+      box-shadow: 0 0 2px rgba(0,0,0,0.33) inset;
+      content: " ";
+      height: 149px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 149px;
+    }
+
+    img {
+      bottom: 0;
+      display: block;
+      left: 0;
+      margin: auto;
+      max-height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: auto;
+    }
+  }
+
+  .standardForm>ul {
+    width: 500px;
+  }
+
+  .BoardPickerDropdownButton {
+    width: 100%;
+  }
+}
+
+.PlaceSelector {
+  .placeFieldWrapper {
+    position: relative;
+  }
+
+  .searchIcon {
+    width: 16px;
+    height: 17px;
+    background: url(webapp-common-main-1x.png) -295px -190px no-repeat;
+    display: inline-block;
+    left: 10px;
+    position: absolute;
+    top: 10px;
+    vertical-align: middle;
+    z-index: 49;
+  }
+
+  .addPlaceToPinForm {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: 0;
+    position: relative;
+    width: 100%;
+
+    .field {
+      padding: 9px 30px;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+
+.Dropdown2 {
+  -webkit-transform: translateZ(0);
+  background: #fbfbfb;
+  border: 1px solid #b6b6b6;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+  display: none;
+  margin-left: -6px;
+  position: absolute;
+  top: 23px;
+  z-index: 752;
+
+  &.visible {
+    display: block;
+  }
+}
+
+.BoardPicker {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  visibility: hidden;
+
+  &.inPopover {
+    padding: 8px;
+    visibility: visible;
+  }
+
+  .SelectList {
+    overflow: auto;
+  }
+
+  &.inPopover .SelectList {
+    max-height: 300px;
+    width: 300px;
+
+    .sectionHeading {
+      background: #f0f0f0;
+      border-radius: 3px;
+      font-weight: bold;
+    }
+  }
+}
+
+.Picker {
+  .top {
+    overflow: hidden;
+    margin-bottom: 9px;
+  }
+
+  .nameWrapper {
+    overflow: hidden;
+    padding-right: 10px;
+  }
+
+  .name {
+    width: 100%;
+  }
+
+  .selectionBody {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -webkit-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+    padding-bottom: 7px;
   }
 }

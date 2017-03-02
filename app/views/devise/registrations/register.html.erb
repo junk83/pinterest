@@ -609,27 +609,22 @@
                   <div>
                     <div style="margin-bottom: 10px;"><%= @user.email %></div>
                     <%= form_for(@user, url: registration_path(resource_name), html: { novalidate: true, id: "new_user_commit" }, style: "margin: 0px auto; width: 268px; position: relative;") do |f| %>
-                    <!-- <form method="post" novalidate="" style="margin: 0px auto; width: 268px; position: relative;"> -->
                       <%= f.hidden_field :email, value: @user.email %>
                       <%= f.hidden_field :password, value: @user.password %>
                       <%= f.hidden_field :user_name, value: @user.user_name %>
                       <fieldset style="position: relative; width: 75%; float: left;">
                         <%= f.text_field :first_name,  autocomplete: "on", placeholder: "ユーザー名", required: true, style: "background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;" %>
-                        <!-- <input type="text" autocomplete="on" name="full_name" placeholder="ユーザー名" value="" style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;"> -->
                       </fieldset>
                       <fieldset style="position: relative; width: 22%; float: right;">
                         <%= f.number_field :age, autocomplete: "on", placeholder: "年齢", maxlength: "2", style: "background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;" %>
-                        <!-- <input type="text" autocomplete="on" name="age" placeholder="年齢" style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: none; position: relative; -webkit-font-smoothing: antialiased; border-radius: 3px; font-weight: bold; padding: 10px; box-sizing: border-box; width: 100%; color: rgb(51, 51, 51); font-size: 14px;"> -->
                       </fieldset>
                       <fieldset>
                         <label class="Gender__tooltip" style="-webkit-font-smoothing: antialiased; margin: 0px 10px 0px 0px; display: inline-block; font-size: 16px; font-weight: bold; cursor: pointer; padding: 15px 0px;">
                           <%= f.radio_button :gender,  "male", style: "height: auto; padding: 10px; margin-right: 8px; font-size: 12px;" %>
-                          <!-- <input type="radio" name="gender" value="male" style="height: auto; padding: 10px; margin-right: 8px; font-size: 12px;"> -->
                           <span style="vertical-align: middle; text-align: center; color: rgb(0, 0, 0);">男性</span>
                         </label>
                         <label class="Gender__tooltip" style="-webkit-font-smoothing: antialiased; margin: 0px 10px 0px 0px; display: inline-block; font-size: 16px; font-weight: bold; cursor: pointer; padding: 15px 0px;">
                           <%= f.radio_button :gender, "female", style: "height: auto; padding: 10px; margin-right: 8px; font-size: 12px;" %>
-                          <!-- <input type="radio" name="gender" value="female" style="height: auto; padding: 10px; margin-right: 8px; font-size: 12px;"> -->
                           <span style="vertical-align: middle; text-align: center; color: rgb(0, 0, 0);">女性</span>
                         </label>
                         <div style="display: inline-block; position: relative;">
@@ -637,13 +632,8 @@
                         </div>
                       </fieldset>
                       <%= f.submit "登録", class: "red comeOnInButton", style: "border: 0px; height: 36px; display: inline-block; border-radius: 4px; -webkit-font-smoothing: antialiased; padding: 0px 18px; font-size: 15px; font-weight: bold; outline: none; position: relative; box-shadow: none; cursor: pointer; margin-top: 10px; vertical-align: middle; text-align: center; background-color: rgb(189, 8, 28); color: rgb(255, 255, 255); width: 100%;" %>
-                      <!-- <button class="red comeOnInButton" type="submit" style="border: 0px; height: 36px; display: inline-block; border-radius: 4px; -webkit-font-smoothing: antialiased; padding: 0px 18px; font-size: 15px; font-weight: bold; outline: none; position: relative; box-shadow: none; cursor: pointer; margin-top: 10px; vertical-align: middle; text-align: center; background-color: rgb(189, 8, 28); color: rgb(255, 255, 255); width: 100%;">
-                        <div>登録</div>
-                      </button> -->
-                      <%= f.submit "戻る", name: 'back', style: "-webkit-font-smoothing: antialiased; color: rgb(0, 0, 0); font-size: 14px; font-weight: 600; margin-top: 15px; cursor: pointer;" %>
+                      <%= f.submit "戻る", name: 'back', style: "-webkit-font-smoothing: antialiased; color: rgb(0, 0, 0); font-size: 14px; font-weight: 600; margin-top: 15px; cursor: pointer; background: none;border: none;" %>
                     <% end %>
-                    <!-- </form> -->
-                    <!-- <div role="button" tabindex="0" style="-webkit-font-smoothing: antialiased; color: rgb(0, 0, 0); font-size: 14px; font-weight: 600; margin-top: 15px; padding-bottom: 15px; cursor: pointer;">戻る</div> -->
                     <div style="border-bottom: 1px solid rgba(0, 0, 0, 0.4); margin: 5px auto; width: 40%; box-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px; opacity: 0.4;"></div>
                     <a href="#" target="_blank" style="-webkit-font-smoothing: antialiased; color: rgb(51, 51, 51); margin: 22px 0px 0px; font-weight: bold; text-decoration: none; font-size: 16px; display: block; width: 100%; text-align: center;">法人として続行</a>
                   </div>

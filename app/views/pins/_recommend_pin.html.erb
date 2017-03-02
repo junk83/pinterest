@@ -1,0 +1,104 @@
+<div class="item">
+  <div class="Module Pin pinActionBarStickyContainer pinWithSocialCounts summary">
+    <div class="pinWrapper">
+      <div class="bulkEditPinWrapper"></div>
+      <div class="pinImageActionButtonWrapper">
+        <div class='leftSideButtonsWrapper'>
+          <button class="Button Module ShowModalButton btn hasIcon hasText isBrioFlat primary primaryOnHover repinSmall rounded" type="button">
+            <em></em>
+            <span class="buttonText">保存 </span>
+          </button>
+        </div>
+        <div class="rightSideButtonsWrapper ">
+          <button class="Button DropdownButton Module btn hasIcon isBrioFlat rounded sendSmall sendPinGrid" type="button">
+            <em></em>
+            <span class="accessibilityText">送信</span>
+          </button>
+          <button class="Button LikeButton Module PinLikeButton btn hasIcon isBrioFlat likeSmall rounded" type="button">
+            <em></em>
+            <span class="accessibilityText">いいね！</span>
+          </button>
+        </div>
+        <!-- <a class="Button Module NavigateButton borderless hasIcon hasText pinNavLink navLinkOverlay" href="#" rel="nofollow" type="button">
+          <em></em>
+          <span class="buttonText">
+            <strong>dummy</strong>で詳細を見る
+          </span>
+        </a> -->
+        <div class="pinHolder">
+          <a href="#" class="pinImageWrapper draggable" style="background: #c7e5f8;" >
+            <div class='pinDomain'>dummy</div>
+            <div class="fadeContainer">
+              <div class="pinImageDim">
+                <div class="dimOverlay"></div>
+                <div class="dimGradient"></div>
+              </div>
+              <div class="Image Module pinUiImage" style="width: 236px">
+                <div class="heightContainer">
+                  <%= image_tag recommend_pin.pin.image, class: "pinImg fullBleed" %>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="pinMetaWrapper">
+        <div class="pinMeta ">
+          <p class="pinDescription"><%= recommend_pin.description %></p>
+        </div>
+        <div class="pinDpSocialCounts">
+          <div class="Module SocialIconsCounts">
+            <div class="pinSocialMeta">
+              <!-- <a class="socialItem" href="/pin/312718767861518373/activity/"> -->
+                <em class="repinIconSmall"></em>
+                <em class="socialMetaCount repinCountSmall">
+                  <span class="visuallyHidden">保存回数：</span><%= recommend_pin.counts %>
+                </em>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pinCredits">
+        <% if controller.controller_name == "boards" %>
+          <div class="creditItem ">
+            <div class="pinCreditNameTitleWrapper">
+              <div class="creditName">保存したユーザー：</div>
+              <div class="creditTitle">
+                <%= recommend_pin.user.first_name %> <%= recommend_pin.user.last_name %>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="pinCreditWrapper " >
+            <button class="Button DropdownButton Module borderless hasIcon hidePinInfo" type="button">
+              <em></em>
+              <span class="accessibilityText">詳細</span>
+            </button>
+            <div class="creditItem " >
+              <%= link_to board_path(recommend_pin.board_id), data: { turbolinks: false } do %>
+              <!-- <a href="#" > -->
+                <div class="Image Module creditImg user unknownImage">
+                  <div class="heightContainer" >
+                    <% if recommend_pin.user.image.present? %>
+                      <%= image_tag recommend_pin.user.image %>
+                    <% else %>
+                      <%= image_tag 'default_30.png'%>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="pinCreditNameTitleWrapper">
+                  <div class="creditName">
+                    <%= recommend_pin.user.first_name %> <%= recommend_pin.user.last_name %>
+                  </div>
+                  <div class="creditTitle"><%= recommend_pin.board.name %></div>
+                </div>
+              <!-- </a> -->
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

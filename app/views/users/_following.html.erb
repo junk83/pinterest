@@ -1,0 +1,23 @@
+<div class="item ui-draggable ui-draggable-disabled ui-state-disabled" aria-disabled="true">
+  <div class="Module User draggable gridItem">
+    <%= link_to user_path(following.id), class: "userWrapper", title: "#{following.first_name}からの他のピン" do %>
+    <!-- <a href="/erikatonosu/" class="userWrapper" data-element-type="64" title="Erika Tonosu からの他のピン"> -->
+      <div class="userThumbs">
+        <span class="focusThumbContainer">
+          <span class="hoverMask"></span>
+          <% if following.image.present? %>
+            <%= image_tag following.image, class: "userFocusImage", alt: following.first_name %>
+          <% else %>
+            <%= image_tag "default_280.png", alt: following.first_name, class: "userFocusImage" %>
+          <% end %>
+          <!-- <img src="https://s-media-cache-ak0.pinimg.com/avatars/erikatonosu_1429420460_280.jpg" class="userFocusImage" data-load-state="pending" alt="Erika Tonosu"> -->
+        </span>
+      </div>
+      <h3 class="username"><%= following.first_name %> <%= following.last_name %> </h3>
+    <% end %>
+    <!-- </a> -->
+    <button class="Button FollowButton Module UserFollowButton btn dim followed gridItem hasText notNavigatable rounded" type="button">
+      <span class="buttonText">フォローをやめる </span>
+    </button>
+  </div>
+</div>

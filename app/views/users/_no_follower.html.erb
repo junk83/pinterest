@@ -1,0 +1,13 @@
+<div class="EmptyStateCard EmptyStateCardProfileFollowers Module">
+  <section class="centerContent">
+    <div class="icon"></div>
+  </section>
+  <header class="text"></header>
+  <footer class="text">
+    <% if @user.id == current_user.id %>
+      皆に Pinterest をすすめてみませんか？
+    <% else %>
+      <%= @user.first_name %>さんにはまだフォロワーがいません。
+    <% end %>
+  </footer>
+</div>
