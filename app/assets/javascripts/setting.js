@@ -232,9 +232,9 @@ $(function() {
   // パスワード変更処理
   var updatePass = function(){
     var formData = new FormData();
-    formData.append("current_password", $('.oldPass').val());
-    formData.append("password", $(".changePass").val());
-    formData.append("password_confirmation", $(".confPass").val());
+    formData.append("user[current_password]", $('.oldPass').val());
+    formData.append("user[password]", $(".changePass").val());
+    formData.append("user[password_confirmation]", $(".confPass").val());
 
 
     $.ajax({
