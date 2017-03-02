@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get :pins, :following, :followers
     end
     collection do
-      patch 'update_password'
+      put :update_password
       get :search
     end
   end

@@ -557,12 +557,21 @@ $(function() {
       $('.BoardCreate.BoardEditBase.Module.multiSelect.pinCreate.simple').fadeOut('fast', function(){
         $(this).remove();
       });
+    }else if($(this).hasClass('redirect')){
+      // ユーザー編集のキャンセルはユーザー詳細画面へ遷移させる
+      var url = $('.UserNavigateButton').attr('href');
+      window.location.href = url;
     }else{
       $('.BoardCreate').remove();
       $('body').removeClass('ReactModal__Body--open noScroll');
       $('body').find('.ReactModalPortal').filter(":last").remove();
       $('.modalHasClose').remove();
     }
+    // ユーザー編集画面の場合はユーザー詳細画面へ遷移
+    // if(location.pathname.match(/\/users\/\d+\/edit/)){
+    //   var url = $('.UserNavigateButton').attr('href');
+    //   window.location.href = url;
+    // }
   });
 
   // ボード名の入力チェック

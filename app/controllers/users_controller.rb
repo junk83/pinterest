@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :get_user, except: :search
+  before_action :get_user, except: [:update_password, :search]
   layout 'profile', except: :edit
 
   def show
@@ -21,11 +21,16 @@ class UsersController < ApplicationController
   end
 
   def update_password
+    @user = User.find(current_user.id)
     if @user.update_with_password(user_params)
-      sign_in(@user, bypass: true)
-      redirect_to user_path(@user)
+      # sign_in(@user, bypass: true)
+      bypass_sign_in(@user)
+
+      render json: { status: '200' }
+      # redirect_to user_path(@user)
     else
-      render :edit
+      render json: { status: '400', error_message: '現在のパスワードに入力ミスがありました。再度お試しください。'}
+      # render :edit
     end
   end
 
@@ -80,6 +85,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :user_name, :gender, :image, :about, :location, :website_url, :current_password, :password, :password_confirmation)
+    params.permit(:email, :first_name, :last_name, :user_name, :gender, :image, :about, :location, :website_url, :current_password, :password, :password_confirmation)
   end
 end
