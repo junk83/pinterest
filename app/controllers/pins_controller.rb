@@ -7,7 +7,7 @@ class PinsController < ApplicationController
 
 
     # 自分以外の全部のピンを表示(暫定の仕様)
-    @recommend_pins = Pining.where.not(user_id: current_user.id).includes([:board, :user, :pin ]).order('created_at DESC').page(params[:page]).per(50)
+    @recommend_pins = Pining.where.not(user_id: current_user.id).includes([:board, :user, :pin ]).order('created_at DESC').page(params[:page]).per(20)
 
     respond_to do |format|
       format.html
