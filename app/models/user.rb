@@ -22,7 +22,11 @@ class User < ApplicationRecord
   # has_many :follow_pins, through: :active_follow_users
 
   def fullname
-    self.first_name + ' ' + self.last_name
+    if !self.last_name.nil?
+      self.first_name + ' ' + self.last_name
+    else
+      self.first_name
+    end
   end
 
   def self.find_for_oauth(auth)
