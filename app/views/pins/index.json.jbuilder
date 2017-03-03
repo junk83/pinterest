@@ -7,6 +7,5 @@ json.pins do |json|
     json.user_image recommend_pin.user.image_url
     json.user_name recommend_pin.user.fullname
     json.board_name recommend_pin.board.name
-    json.id recommend_pin.id
   end
 end
