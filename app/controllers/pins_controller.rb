@@ -1,13 +1,19 @@
 class PinsController < ApplicationController
   def index
-    @pin = Pin.new
+    # @pin = Pin.new
     # 通常の仕様
     # follow_users = current_user.following.ids
     # @recommend_pins = Pining.includes([:board, :user, :pin]).where(user_id: follow_users).order('created_at DESC').page(params[:page]).per(10)
 
 
     # 自分以外の全部のピンを表示(暫定の仕様)
-    @recommend_pins = Pining.where.not(user_id: current_user.id).includes([:board, :user, :pin ]).order('created_at DESC').page(params[:page]).per(10)
+    @recommend_pins = Pining.where.not(user_id: current_user.id).includes([:board, :user, :pin ]).order('created_at DESC').page(params[:page]).per(50)
+
+    respond_to do |format|
+      format.html
+      format.json { render 'index', formats: 'json', handlers: 'jbuilder' }
+    end
+
   end
 
   def upload

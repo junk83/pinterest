@@ -382,10 +382,14 @@ $(function() {
   // ピンの登録処理
   var pinCreate = function(){
     var imagePath = $('.cloned img.pinImg').attr('src');
+    var imageUrl = imagePath.split('/').pop();
+    if(imagePath.match(/^\/uploads\/tmp\/pin/)){
+      imageUrl = imagePath.replace(/\/uploads\/tmp\/pin\//, "");
+    }
     // var path = imagePath.split('/');
     // var imageUrl = path.pop();
-    var imageUrl = imagePath.replace(/\/uploads\/pin\/image\//, "");
-    imageUrl = imageUrl.replace(/\/uploads\/tmp\/pin\//, "");
+     //imagePath.replace(/\/uploads\/pin\/image\//, "");
+    // imageUrl = imageUrl.replace(/\/uploads\/tmp\/pin\//, "");
     var description = $('.pinDescriptionInput').val();
     var boardId = $(this).find('#board_id').val();
     var formData = new FormData();

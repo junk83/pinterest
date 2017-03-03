@@ -22,7 +22,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   # def cache_dir
-  #   "/uploads/tmp/pin"
+  #   "/public/uploads/tmp/pin"
   # end
 
   # 画像は300pxにリサイズ

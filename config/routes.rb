@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   # post '/pins/upload', to: 'pins#upload'
 
   resources :boards do
-    # resources :pins
+    resources :pins
     collection do
       get :search
     end
