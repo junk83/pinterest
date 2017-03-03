@@ -21,6 +21,10 @@ class User < ApplicationRecord
 
   # has_many :follow_pins, through: :active_follow_users
 
+  def fullname
+    self.first_name + ' ' + self.last_name
+  end
+
   def self.find_for_oauth(auth)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
