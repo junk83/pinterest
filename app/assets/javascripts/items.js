@@ -112,7 +112,7 @@ $(function() {
                 });
                 flag = false;
                 gridLayout();
-              }).fail(function(xhr, status, error){
+              }).fail(function(){
                 console.log("エラー");
               });
 
