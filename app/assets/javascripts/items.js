@@ -107,6 +107,7 @@ $(function() {
                 dataType: "json",
                 data: {"page": page}
               }).done(function(data){
+                console.log(data);
                 $.each(data.pins, function(i, pin){
                   $('.GridItems').append(pinHTML(data.pins));
                 });
