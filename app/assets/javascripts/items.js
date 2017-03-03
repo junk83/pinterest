@@ -107,8 +107,8 @@ $(function() {
                 dataType: "json",
                 data: {"page": page}
               }).done(function(data){
-                $.each(data['pins'], function(i, pin){
-                  $('.GridItems').append(pinHTML(data['pins']));
+                $.each(data.pins, function(i, pin){
+                  $('.GridItems').append(pinHTML(data.pins));
                 });
                 flag = false;
                 gridLayout();
