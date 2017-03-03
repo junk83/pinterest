@@ -1,12 +1,12 @@
 $(function() {
   // 追加したピンの生成
-  function pinHTML(pins){
+  function pinHTML(pin){
     // var description = (data.pin.description !== undefined) ? data.pin.description : "";
     //
     // var credit = creditHTML(data);
 
     var html;
-    $.each(pins, function(index, pin)  {
+    // $.each(pins, function(index, pin)  {
       html =
       '<div class="item">' +
         '<div class="Module Pin pinActionBarStickyContainer pinWithSocialCounts summary">' +
@@ -83,7 +83,7 @@ $(function() {
           '</div>' +
         '</div>' +
       '</div>';
-    });
+    // });
 
     return html;
   }
