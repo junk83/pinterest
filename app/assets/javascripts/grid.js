@@ -144,6 +144,7 @@
 $(function() {
   $(window).on('turbolinks:load', function(){
     if(location.pathname == '/' ||
+       location.pathname.match(/^\/pins\/find/) ||
        location.pathname.match(/^\/users\/\d+\/pins/) ||
        location.pathname.match(/^\/boards\/\d+/)){
       if($('.item').length){
