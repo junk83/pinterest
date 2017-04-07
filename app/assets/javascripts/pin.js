@@ -246,6 +246,74 @@ $(function() {
     return html;
   };
 
+  // ウェブサイトから保存画面生成
+  function addPinURL(){
+    var html =
+    '<div class="Modal Module modalHasClose absoluteCenter show">' +
+      '<div class="modalMask show"></div>' +
+      '<div class="modalScroller">' +
+        '<div class="modalContainer show">' +
+          '<span class="positionModuleCaret"></span>' +
+          '<div class="modalContent">' +
+            '<div class="modalModule">' +
+              '<div class="AddPinURL Module inModal">' +
+                '<form class="standardForm">' +
+                  '<h1>ウェブサイトから保存</h1>' +
+                  '<div class="installBookmarklet">' +
+                    '<p>ヒント：<a href="/" class="pinmarkletLink">Pinterest のブラウザボタンをインストール</a>すると、<br>リンクをすばやく保存できます。                </p>' +
+                  '</div>' +
+                  '<div class="findPins">' +
+                    '<button class="Button Module btn hasText primary rounded disabled" type="submit" disabled="">' +
+                      '<span class="buttonText">次へ </span>' +
+                    '</button>' +
+                    '<div class="findPinsField">' +
+                      '<input name="url" type="text" placeholder="http://..." autofocus="">' +
+                    '</div>' +
+                  '</div>' +
+                '</form>' +
+              '</div>' +
+            '</div>' +
+            '<button class="Button Module borderless cancelButton closeModal inModal  hasIcon show" type="button">' +
+              '<em></em>' +
+              '<span class="accessibilityText">閉じる</span>' +
+            '</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    $('.modalHasClose').remove();
+    $('.ModalManager').append(html);
+  }
+
+  // urlのバリデーション
+  function urlValid(){
+    var url = $.trim($(this).val());
+
+    // エラー表示を除去
+    $(this).removeClass('hasError');
+    $(this).closest('div').find('.formFieldMessage').remove();
+    // 次へボタンの無効化
+    $('.findPins button').addClass('disabled');
+    $('.findPins button').attr('disabled');
+    $('.findPins button').removeClass('primary');
+
+    if(url.length === 0){
+      // urlが空の場合
+      $(this).addClass('hasError');
+      $(this).closest('div').append('<p class="formFieldMessage formErrorMessage">リンクを追加してください。</p>');
+    }else if(!url.match(/^[a-zA-Z0-9][-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]*\.[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+$/)){
+      // urlの形式でない場合
+      $(this).addClass('hasError');
+      $(this).closest('div').append('<p class="formFieldMessage formErrorMessage">URLが無効です。</p>');
+    }else{
+      // 次へボタンの有効化
+      $('.findPins button').removeClass('disabled');
+      $('.findPins button').removeAttr('disabled');
+      $('.findPins button').addClass('primary');
+    }
+  }
+
   // 追加したピンの生成
   function pinHTML(data){
     var description = (data.pin.description !== undefined) ? data.pin.description : "";
@@ -385,6 +453,8 @@ $(function() {
     var imageUrl = imagePath.split('/').pop();
     if(imagePath.match(/^\/uploads\/tmp\/pin/)){
       imageUrl = imagePath.replace(/\/uploads\/tmp\/pin\//, "");
+    } else if(imagePath.match(/^http/)){
+      imageUrl = imagePath;
     }
     // var path = imagePath.split('/');
     // var imageUrl = path.pop();
@@ -518,5 +588,32 @@ $(function() {
   $(document).on('click', '.AddPinRep', function(e){
     e.preventDefault();
     pinAdd();
+  });
+
+  // ウェブサイトから保存を選択時
+  $(document).on('click', '.pinAddURL, .addPinURL', addPinURL);
+
+  // urlのバリデーション
+  $(document).on('keyup', '.findPinsField input', urlValid);
+
+  // urlアップロードで次へボタンを押下
+  $(document).on('click', '.findPins button', function(e){
+    e.preventDefault();
+    var url = $('.findPinsField input').val();
+
+    $.ajax({
+      url: '/pins/find',
+      type: 'get',
+      dataType: 'json',
+      data: {
+        url: url
+      }
+    })
+    .done(function(data) {
+      console.log(data);
+    })
+    .fail(function() {
+      console.log("error");
+    });
   });
 });

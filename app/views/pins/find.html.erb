@@ -1,0 +1,121 @@
+
+
+
+  <div class="appContent" role="main">
+    <div class="mainContainer">
+      <!-- <div class="Module Nags">
+
+      </div> -->
+      <div class="HomePage Module">
+        <div class="AuthHomePageWrapper Module">
+          <div class="AuthHomePage Module">
+            <h3 class="sectionTitle centeredWithinWrapper">
+              画像を選択してピンを作成
+            </h3>
+            <div class="Grid Module hasFooter">
+              <div class="GridItems Module animated centeredWithinWrapper denzelPrimeEnabled padItems variableHeightLayout">
+                <% @images.each do |image| %>
+                  <%= render partial: "upload_pin", locals: { image: image } unless image.nil? %>
+                <% end %>
+
+               </div>
+               <div class="GridFooter Module centeredWithinWrapper showGridLoading" style="display: block;">
+                 <div class="gridError" style="display: none;">
+                   <button class="Button btn rounded large">
+                     <span>エラーが発生しました。</span> 再度お試しください。
+                   </button>
+                 </div>
+                 <div class="gridLoadingWrapper">
+                   <hr>
+                   <div class="gridLoading">
+                     <span class="gridFooterLogoIcon"></span>
+                     <!-- <span class="gridFooterSpinner"></span> -->
+                   </div>
+                 </div>
+               </div>
+               <div class="seeMoreButtonWrapper">
+               </div>
+             </div>
+           </div>
+        </div>
+      </div>
+    </div>
+    <div class="appendedContainer">
+
+    </div>
+  </div>
+
+  <div class="ActiveConversations Module">
+  </div>
+  <div class="Module Toasts">
+  </div>
+  <div class="footerButtonsWrapper">
+    <div class="FooterButtons Module visible show">
+      <div class="buttonInoutWrapper addButtonWrapper">
+        <button class="Button DropdownButton Module addPinFooter footerIcon borderless hasIcon" data-element-type="18" type="button">
+          <em></em>
+          <span class="accessibilityText">ピンを保存する</span>
+        </button>
+      </div>
+      <div class="buttonInoutWrapper helpButtonWrapper">
+        <button class="Button DropdownButton Module borderless hasIcon moreFooter footerIcon" data-element-type="245" type="button">
+          <em></em>
+          <span class="accessibilityText">もっと見る</span>
+        </button>
+      </div>
+      <div class="buttonInoutWrapper privacyPolicyWrapper">
+        <a class="nonEuPrivacyPolicy" href="#">プライバシー</a>
+      </div>
+    </div>
+  </div>
+  <div class="Module NagBase NagNoScript">
+    <noscript>
+      <div class="centeredWithinWrapper">
+            <div class="message">Pinterest を使うには<a href="http://enable-javascript.com/" rel="nofollow"> JavaScript をオンにしてください。</a></div>
+      </div>
+      <style>
+        .NagBase {
+          display: none;
+        }
+      </style>
+    </noscript>
+  </div>
+  <div class="ModalManager Module">
+
+
+
+      </div>
+    </div>
+
+  </div>
+<!-- </div> -->
+<!-- <div class="Module Dropdown PositionModule positionModuleFixed">
+  <span class="positionModuleCaret"></span>
+  <div class="Module UserEducationGuideDropdown" data-component-type="57">
+    <div class="helpCenterText">詳しい使い方については、ヘルプセンターをご覧ください。 </div>
+    <a class="external" data-element-type="281" href="https://www.pinterest.com/_/_/help/?source=question_mark">
+      <button class=" Button Module btn hasText primary rounded" type="button">
+        <span class="buttonText">ヘルプセンターにアクセス </span>
+      </button>
+    </a>
+  </div>
+</div> -->
+<div class="Module Dropdown PositionModule positionModuleFixed">
+  <span class="positionModuleCaret" style="top: 160.5px;"></span>
+  <div class="AddPin Module isDropdown" data-component-type="7">
+    <button class="Button Module addPinterestButton addPinDropdown borderless hasIcon hasText" data-element-type="279" type="button">
+      <em></em>
+      <span class="buttonText">ブラウザボタンをインストールすると、アイデアを
+        <br>すぐに保存できます。
+      </span>
+    </button>
+    <button class="Button Module ShowModalButton borderless hasIcon hasText pinUpload addPinDropdown" data-element-type="454" type="button">
+      <em></em>
+      <span class="buttonText">ピンをアップロード </span>
+    </button>
+    <button class="Button Module ShowModalButton borderless hasIcon hasText pinAddURL addPinDropdown" data-element-type="455" type="button">
+      <em></em>
+      <span class="buttonText">ウェブサイトから保存 </span>
+    </button>
+  </div>
+</div>
