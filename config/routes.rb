@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resource :pins do
     member do
-      get 'upload'
+      get :upload, :find
       post 'upload'
     end
   end
